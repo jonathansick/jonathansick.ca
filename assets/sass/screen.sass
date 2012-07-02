@@ -8,17 +8,17 @@
 @import susy
 
 // Setup Susy grid
-$total-columns: 4
-$column-width: 12em
+$total-columns: 2
+$column-width: 4em
 $gutter-width: 2em
 $grid-passing: $gutter-width
-$break: 4
+$break: 8
 
 .page
   +container($total-columns, $break)
 
-.homepage_section
-  +span_columns(1, 4)
-
-.homepage_papers_sec
-  +span_columns(1 omega, 4)
++at-breakpoint($break)
+  .homepage_section
+    +span_columns(2, 8)
+  .homepage_papers_sec
+    +span_columns(2 omega, 8)
