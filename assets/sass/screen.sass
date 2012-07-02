@@ -5,3 +5,20 @@
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
 @import compass/reset
+@import susy
+
+// Setup Susy grid
+$total-columns: 4
+$column-width: 12em
+$gutter-width: 2em
+$grid-passing: $gutter-width
+$break: 4
+
+.page
+  +container($total-columns, $break)
+
+.homepage_section
+  +span_columns(1, 4)
+
+.homepage_papers_sec
+  +span_columns(1 omega, 4)
