@@ -12,13 +12,22 @@ $total-columns: 4
 $column-width: 5em
 $gutter-width: 2em
 $grid-passing: $gutter-width
-$break: 8
+$break-demi: 4
+$break-full: 8
 
 .page
-  +container($total-columns, $break)
+  +container($total-columns, $break-full)
 
-+at-breakpoint($break)
+// Half scale site, 4 text columns (8 logical cols)
++at-breakpoint($break-demi)
   .homepage_section
-    +span_columns(2, 8)
+    +span_columns(2, $break-demi)
+  .homepage_papers_sec, .homepage_androids_sec
+    +span_columns(2 omega, $break-demi)
+
+// Full scale site, 4 text columns (8 logical cols)
++at-breakpoint($break-full)
+  .homepage_section
+    +span_columns(2, $break-full)
   .homepage_papers_sec
-    +span_columns(2 omega, 8)
+    +span_columns(2 omega, $break-full)
