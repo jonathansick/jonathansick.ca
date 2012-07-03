@@ -18,20 +18,24 @@ $break-full: 4
 .page
   +container
 
-  // Half scale site, 4 text columns (8 logical cols)
+  // Half scale site, 2 text columns
   +at-breakpoint($break-demi)
-    +container
+    +set-container-width
 
-    .homepage_section
-      +span_columns(1, $break-demi)
-    .homepage_papers_sec, .homepage_androids_sec
-      +span_columns(1 omega, $break-demi)
-
-  // Full scale site, 4 text columns (8 logical cols)
+  // Full scale site, 4 text columns
   +at-breakpoint($break-full)
-    +container
+    +set-container-width
 
-    .homepage_section
-      +span_columns(1, $break-full)
-    .homepage_papers_sec
-      +span_columns(1 omega, $break-full)
+// Demi layout
++at-breakpoint($break-demi)
+  .homepage_section
+    +span_columns(1, $break-demi)
+  .homepage_papers_sec, .homepage_androids_sec
+    +span_columns(1 omega, $break-demi)
+
+// Full layout
++at-breakpoint($break-full)
+  .homepage_section
+    +span_columns(1, $break-full)
+  .homepage_papers_sec
+    +span_columns(1 omega, $break-full)
