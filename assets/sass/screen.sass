@@ -8,26 +8,30 @@
 @import susy
 
 // Setup Susy grid
-$total-columns: 4
-$column-width: 5em
+$total-columns: 1
+$column-width: 12em
 $gutter-width: 2em
 $grid-passing: $gutter-width
-$break-demi: 4
-$break-full: 8
+$break-demi: 2
+$break-full: 4
 
 .page
-  +container($total-columns, $break-full)
+  +container
 
-// Half scale site, 4 text columns (8 logical cols)
-+at-breakpoint($break-demi)
-  .homepage_section
-    +span_columns(2, $break-demi)
-  .homepage_papers_sec, .homepage_androids_sec
-    +span_columns(2 omega, $break-demi)
+  // Half scale site, 4 text columns (8 logical cols)
+  +at-breakpoint($break-demi)
+    +container
 
-// Full scale site, 4 text columns (8 logical cols)
-+at-breakpoint($break-full)
-  .homepage_section
-    +span_columns(2, $break-full)
-  .homepage_papers_sec
-    +span_columns(2 omega, $break-full)
+    .homepage_section
+      +span_columns(1, $break-demi)
+    .homepage_papers_sec, .homepage_androids_sec
+      +span_columns(1 omega, $break-demi)
+
+  // Full scale site, 4 text columns (8 logical cols)
+  +at-breakpoint($break-full)
+    +container
+
+    .homepage_section
+      +span_columns(1, $break-full)
+    .homepage_papers_sec
+      +span_columns(1 omega, $break-full)
