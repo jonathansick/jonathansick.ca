@@ -4,7 +4,36 @@
 <title> {% if page.title %} {{ page.title }} | {% endif %} Jonathan Sick </title>
 <link rel="stylesheet" media="screen, projection" href="/assets/css/screen.css" type="text/css" />
 </head>
-<body>
-
+<body id="interiorpage">
+<div id="pagebanner">
+<header id="page_header">
+<h1>Jonathan Sick</h1>
+<nav id="bannernav">
+<ul>
+    <li>Blog</li>
+    <li>GitHub</li>
+    <li>Publications</li>
+</ul>
+</nav>
+</header>
+</div> <!-- /#pagebanner -->
+{{ content }}
+<div id="pagefooterbanner">
+<footer id="pagefooter">
+<nav id="footernav">
+  <ul>
+    <li>jonathansick.ca</li>
+    <li>Blog</li>
+    <li>Gallery</li>
+  </ul>
+</nav>
+<div id="credits">
+  <ul>
+    <li>Copyright 2012 Jonathan Sick, all rights reserved.</li>
+    <li>Typeset in Skolar and Museo Slab by Typekit.</li>
+  </ul>
+</div>
+</footer>
+</div>
 </body>
 </html>
