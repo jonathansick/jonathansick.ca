@@ -8,19 +8,20 @@ module Jekyll
             puts "Im a publications page"
 
             self.process(@name)
-            # self.read_yaml(File.join(base, "_layouts"), "publications.html")
-            # self.data["projects"] = self.get_projects(site)
+            self.read_yaml(File.join(base, "_layouts"), "publications.html")
+            self.data["pubs"] = self.get_publications(site)
         end
 
-        # def get_publications(site)
-            # {}.tap do |publications|
-                # Dir['_pubs/*.yml'].each do |path|
-                    # name = File.basename(path, '.yml')
-                    # config = YAML.load(File.read(File.join(@base, path)))
-                    # publications[name] = config
-                # end
-            # end
-        # end
+        def get_publications(site)
+            {}.tap do |publications|
+                Dir['_pubs/*.yml'].each do |path|
+                    name = File.basename(path, '.yml')
+                    puts name
+                    config = YAML.load(File.read(File.join(@base, path)))
+                    publications[name] = config
+                end
+            end
+        end
     end
     
     class GeneratePublicationsPage < Generator
