@@ -30,18 +30,18 @@ module Jekyll
             puts "Running GeneratePublicationsPage"
             if Dir.exists?('_publications')
                 puts "has _publications/"
-                # self.write_publicationspage(site)
+                self.write_publicationspage(site)
             end
         end
 
         # Loop through list of publications and process each one
-        # def write_publicationspage(site)
-            # Dir.chdir(site.source)
+        def write_publicationspage(site)
+            Dir.chdir(site.source)
             # publications = PublicationsIndex.new(site, site.source, "/publications")
             # publications.render(site.layouts, site.site_payload)
             # publications.write(site.dest)
             # site.pages << publications
             # site.static_files << publications
-        # end
+        end
     end
 end
