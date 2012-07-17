@@ -14,7 +14,7 @@ module Jekyll
 
         def get_publications(site)
             {}.tap do |publications|
-                Dir['_pubs/*.yml'].each do |path|
+                Dir['_publications/*.yml'].each do |path|
                     name = File.basename(path, '.yml')
                     puts name
                     config = YAML.load(File.read(File.join(@base, path)))
