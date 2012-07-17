@@ -5,11 +5,12 @@ module Jekyll
             @base = base
             @dir = dir
             @name = "publications.html"
-            puts "Im a publications page"
+            puts "In PublicationsPage.initialize()"
 
             self.process(@name)
             self.read_yaml(File.join(base, "_layouts"), "publications.html")
             self.data["pubs"] = self.get_publications(site)
+            puts self.data
         end
 
         def get_publications(site)
@@ -18,32 +19,33 @@ module Jekyll
                     name = File.basename(path, '.yml')
                     puts name
                     config = YAML.load(File.read(File.join(@base, path)))
+                    puts config
                     publications[name] = config
                 end
             end
         end
     end
     
-    class GeneratePublicationsPage < Generator
+    class PublicationsPageGenerator < Generator
         safe true
         priority :normal
 
         def generate(site)
-            puts "Running GeneratePublicationsPage"
+            puts "Running PublicationsPageGenerator"
             if Dir.exists?('_publications')
                 puts "has _publications/"
-                self.write_publicationspage(site)
+                self.write_publications_page(site)
             end
         end
 
         # Loop through list of publications and process each one
-        def write_publicationspage(site)
+        def write_publications_page(site)
             Dir.chdir(site.source)
-            publications = PublicationsPage.new(site, site.source, "/")
-            # publications.render(site.layouts, site.site_payload)
-            # publications.write(site.dest)
-            # site.pages << publications
-            # site.static_files << publications
+            publications_page = PublicationsPage.new(site, site.source, "/")
+            publications_page.render(site.layouts, site.site_payload)
+            publications_page.write(site.dest)
+            site.pages << publications_page
+            site.static_files << publications_page
         end
     end
 end

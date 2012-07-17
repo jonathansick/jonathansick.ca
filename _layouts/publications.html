@@ -24,8 +24,8 @@ title: Publications
 <section>
 <h1>Publications</h1>
 <ul>
-    {% for project in page.publications %}
-        <li>{{ project.title }}</li>
+    {% for pub in page.pubs %}
+        <li>{{ pub[1].title }}</li>
     {% endfor %}
 </ul>
 </section>
