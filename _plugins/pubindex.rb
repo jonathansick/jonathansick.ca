@@ -7,7 +7,7 @@ module Jekyll
             @name = "publications.html"
             puts "Im a publications page"
 
-            # self.process(@name)
+            self.process(@name)
             # self.read_yaml(File.join(base, "_layouts"), "publications.html")
             # self.data["projects"] = self.get_projects(site)
         end
