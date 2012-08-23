@@ -9,19 +9,52 @@ module Jekyll
 
             self.process(@name)
             self.read_yaml(File.join(base, "_layouts"), "publications.html")
-            self.data["pubs"] = self.get_publications(site)
+            self.data["published"] = self.get_published(site)
+            self.data["unpublished"] = self.get_unpublished(site)
+            self.data["conference"] = self.get_conference(site)
+            self.data["talks"] = self.get_talks(site)
             puts self.data
         end
 
-        def get_publications(site)
+        def get_published(site)
             # This itererator emits the YAML hash of each publication file.
-            puts "in get_publications()"
             {}.tap do |publications|
-                Dir['_publications/*.yml'].each do |path|
+                Dir['_publications/published/*.yml'].each do |path|
                     name = File.basename(path, '.yml')
-                    puts name
                     config = YAML.load(File.read(File.join(@base, path)))
-                    puts config
+                    publications[name] = config
+                end
+            end
+        end
+
+        def get_unpublished(site)
+            # This itererator emits the YAML hash of each publication file.
+            {}.tap do |publications|
+                Dir['_publications/unpublished/*.yml'].each do |path|
+                    name = File.basename(path, '.yml')
+                    config = YAML.load(File.read(File.join(@base, path)))
+                    publications[name] = config
+                end
+            end
+        end
+
+        def get_conference(site)
+            # This itererator emits the YAML hash of each publication file.
+            {}.tap do |publications|
+                Dir['_publications/conference/*.yml'].each do |path|
+                    name = File.basename(path, '.yml')
+                    config = YAML.load(File.read(File.join(@base, path)))
+                    publications[name] = config
+                end
+            end
+        end
+
+        def get_talks(site)
+            # This itererator emits the YAML hash of each publication file.
+            {}.tap do |publications|
+                Dir['_publications/talks/*.yml'].each do |path|
+                    name = File.basename(path, '.yml')
+                    config = YAML.load(File.read(File.join(@base, path)))
                     publications[name] = config
                 end
             end
