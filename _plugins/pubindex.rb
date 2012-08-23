@@ -14,6 +14,8 @@ module Jekyll
         end
 
         def get_publications(site)
+            # This itererator emits the YAML hash of each publication file.
+            puts "in get_publications()"
             {}.tap do |publications|
                 Dir['_publications/*.yml'].each do |path|
                     name = File.basename(path, '.yml')
@@ -32,10 +34,10 @@ module Jekyll
 
         def generate(site)
             puts "Running PublicationsPageGenerator"
-            if Dir.exists?('_publications')
-                puts "has _publications/"
-                self.write_publications_page(site)
-            end
+            # if Dir.exists?('_publications')
+            puts "has _publications/"
+            self.write_publications_page(site)
+            # end
         end
 
         # Loop through list of publications and process each one
