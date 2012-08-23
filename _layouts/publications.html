@@ -23,8 +23,31 @@ title: Publications
 
 <section>
 <h1>Publications</h1>
+
+<h2>Published Articles</h2>
 <ul>
-    {% for pub in page.pubs %}
+    {% for pub in page.published %}
+        <li>{{ pub[1].title }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Conference Contributons</h2>
+<ul>
+    {% for pub in page.conference %}
+        <li>{{ pub[1].title }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Unpublished Articles</h2>
+<ul>
+    {% for pub in page.unpublished %}
+        <li>{{ pub[1].title }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Talks</h2>
+<ul>
+    {% for pub in page.talks %}
         <li>{{ pub[1].title }}</li>
     {% endfor %}
 </ul>
