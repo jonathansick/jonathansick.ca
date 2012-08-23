@@ -1,3 +1,6 @@
+require 'parsedate'
+include ParseDate
+
 module Jekyll
     class PublicationsPage < Page
         def initialize(site, base, dir)
