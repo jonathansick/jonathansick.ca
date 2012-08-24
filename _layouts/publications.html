@@ -25,6 +25,20 @@ title: Publications
 <section>
 <h1>Publications</h1>
 
+<h2>Theses</h2>
+<ul>
+    {% for pub in page.theses %}
+    <li>
+    {{ pub[1].title }}.
+    Sick, Jonathan
+    ({{ pub[1].date | date: '%Y' }}).
+    {{ pub[1].level }} Thesis.
+    Advised by {{ pub[1].advisor }}.
+    {{ pub[1].school }}.
+    </li>
+    {% endfor %}
+</ul>
+
 <h2>Published Articles</h2>
 <ul>
     {% for pub in page.published %}

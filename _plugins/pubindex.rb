@@ -16,6 +16,7 @@ module Jekyll
             self.data["unpublished"] = self.get_unpublished(site)
             self.data["conference"] = self.get_conference(site)
             self.data["talks"] = self.get_talks(site)
+            self.data["theses"] = self.get_theses(site)
             # puts self.data
             puts self.data["published"]
         end
@@ -57,6 +58,17 @@ module Jekyll
             # This itererator emits the YAML hash of each publication file.
             {}.tap do |publications|
                 Dir['_publications/talks/*.yml'].each do |path|
+                    name = File.basename(path, '.yml')
+                    config = YAML.load(File.read(File.join(@base, path)))
+                    publications[name] = config
+                end
+            end
+        end
+
+        def get_theses(site)
+            # This itererator emits the YAML hash of each publication file.
+            {}.tap do |publications|
+                Dir['_publications/theses/*.yml'].each do |path|
                     name = File.basename(path, '.yml')
                     config = YAML.load(File.read(File.join(@base, path)))
                     publications[name] = config
