@@ -1,0 +1,9 @@
+title: A New Method for Detecting Stellar Streams in the Halos of Galaxies
+date: 2006-01-10
+authors:
+    - Sick, Jonathan
+    - de Jong, Roelof
+conf: American Astronomical Society Meeting Abstracts, 209, \#211.05
+links:
+    - [NASA/ADS, http://adsabs.harvard.edu/abs/2006AAS...20921105S]
+abstract: Observations of stellar streams from accreting dwarf galaxies provide tantalizing insight into the processes of galaxy formation. While such stellar streams are difficult to detect due to their extremely low surface brightnesses, the new GHOSTS survey is resolving stellar populations in the halos of nearby galaxies to an unprecedented depth. The challenge then rests in developing a means to effectively search through resolved stellar halo populations to detect stellar streams. We propose that producing halo surface brightness maps using an adaptive spatial binning scheme can allow structures in the stellar populations to be identified. In particular, the Centroidal Voronoi Tessellation binning algorithm allows bins to be sized and placed in a manner that is responsive to the underlying signal to noise ratio characteristics of the photometry. Thus far in testing, the technique has been able to recover the existence of the low surface brightness dwarf galaxy above the plane of NGC 4631 as an unusually bright region in the computed surface brightness map. Additionally, we shall discuss the methods for removing biases due to background galaxies, and the use of colour magnitude diagram region selections for contrast enhancement in the surface brightness maps. This work was done as part of the Space Telescope Science Institute Summer Student Program.

@@ -27,7 +27,8 @@ title: Publications
 <h2>Published Articles</h2>
 <ul>
     {% for pub in page.published %}
-    <li>{{ pub[1].title }}.
+    <li>
+    {{ pub[1].title }}.
     {{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].journal}}, {{ pub[1].volume }} {{ pub[1].number }}.
@@ -41,7 +42,15 @@ title: Publications
 <h2>Conference Contributons</h2>
 <ul>
     {% for pub in page.conference %}
-        <li>{{ pub[1].title }}</li>
+    <li>
+    {{ pub[1].title }}.
+    {{ pub[1].authors | array_to_sentence_string }}
+    ({{ pub[1].date | date: '%Y' }}).
+    {{ pub[1].conf }}
+    {% for link in pub[1].links %}
+        <a href="{{ link[1] }}">{{ link[0] }}</a>
+    {% endfor %}
+    </li>
     {% endfor %}
 </ul>
 
