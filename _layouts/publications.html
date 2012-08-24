@@ -27,7 +27,10 @@ title: Publications
 <h2>Published Articles</h2>
 <ul>
     {% for pub in page.published %}
-        <li>{{ pub[1].title }}</li>
+    <li>{{ pub[1].title }}.
+    {{ pub[1].authors | join: ', ' }}
+    ({{ pub[1].date | date: '%Y' }}).
+    </li>
     {% endfor %}
 </ul>
 
