@@ -28,14 +28,11 @@ title: Publications
 <ul>
     {% for pub in page.published %}
     <li>{{ pub[1].title }}.
-    {{ pub[1].authors | join: ', ' }}
+    {{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].journal}}, {{ pub[1].volume }} {{ pub[1].number }}.
     {% for link in pub[1].links %}
-    <a href="{{ link[1] }}">{{ link[0] }}</a>
-    <!-- {{ link[0] }} -->
-    <!-- {{ link[1] }} -->
-    <!-- {{ pub[0] }} -->
+        <a href="{{ link[1] }}">{{ link[0] }}</a>
     {% endfor %}
     </li>
     {% endfor %}
