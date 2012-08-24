@@ -16,7 +16,8 @@ module Jekyll
             self.data["unpublished"] = self.get_unpublished(site)
             self.data["conference"] = self.get_conference(site)
             self.data["talks"] = self.get_talks(site)
-            puts self.data
+            # puts self.data
+            puts self.data["published"]
         end
 
         def get_published(site)
