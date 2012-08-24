@@ -30,6 +30,7 @@ title: Publications
     <li>{{ pub[1].title }}.
     {{ pub[1].authors | join: ', ' }}
     ({{ pub[1].date | date: '%Y' }}).
+    {{ pub[1].journal}}, {{ pub[1].volume }} {{ pub[1].number }}.
     </li>
     {% endfor %}
 </ul>
