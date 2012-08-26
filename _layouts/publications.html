@@ -23,15 +23,14 @@ title: Publications
 </div> <!-- /#pagebanner -->
 
 <section>
-<h1>Jonathan Sick&#8217;s Publications</h1> 
-<a name=theses></a><h2>Theses</h2>
+<h1 class="halpha">Jonathan Sick&#8217;s Publications</h1> 
 
-
+<a name=theses></a><h2 class="hbeta">Theses</h2>
 <ul class=publist>
     {% for pub in page.theses %}
     <li>
     <a name={{ pub[0] }}></a>
-    <h3>{{ pub[1].title }}</h3>
+    <h3 class="hdelta">{{ pub[1].title }}</h3>
     <span class=me>Sick, Jonathan</span>
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].level }} Thesis.
@@ -41,12 +40,12 @@ title: Publications
     {% endfor %}
 </ul>
 
-<a name=published></a><h2>Published Articles</h2>
+<a name=published></a><h2 class="hbeta">Published Articles</h2>
 <ul class=publist>
     {% for pub in page.published %}
     <li>
     <a name={{ pub[0] }}></a>
-    </h3>{{ pub[1].title }}</h3>
+    <h3 class="hdelta">{{ pub[1].title }}</h3>
     {{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     <span class=journal>{{ pub[1].journal}}</span>, {{ pub[1].volume }} {{ pub[1].number }}.
@@ -57,12 +56,12 @@ title: Publications
     {% endfor %}
 </ul>
 
-<a name=conference></a><h2>Conference Contributons</h2>
+<a name=conference></a><h2 class="hbeta">Conference Contributons</h2>
 <ul class=publist>
     {% for pub in page.conference %}
     <li>
     <a name={{ pub[0] }}></a>
-    <h3>{{ pub[1].title }}</h3>
+    <h3 class="hdelta">{{ pub[1].title }}</h3>
     {{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].conf }}
@@ -73,12 +72,12 @@ title: Publications
     {% endfor %}
 </ul>
 
-<a name=unpublished></a><h2>Unpublished Articles</h2>
+<a name=unpublished></a><h2 class="hbeta">Unpublished Articles</h2>
 <ul class=publist>
     {% for pub in page.unpublished %}
     <li>
     <a name={{ pub[0] }}></a>
-    <h3>{{ pub[1].title }}</h3>
+    <h3 class="hdelta">{{ pub[1].title }}</h3>
     {{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].note }}
@@ -89,13 +88,13 @@ title: Publications
     {% endfor %}
 </ul>
 
-<a name=talks></a><h2>Talks</h2>
+<a name=talks></a><h2 class="hbeta">Talks</h2>
 
 <ul class=publist>
     {% for pub in page.talks %}
     <li>
     <a name={{ pub[0] }}></a>
-    <h3>{{ pub[1].title }}</h3>
+    <h3 class="hdelta">{{ pub[1].title }}</h3>
     {{ pub[1].authors | array_to_sentence_string }}.
     {{ pub[1].note }}, {{ pub[1].date | date: '%B %d, %Y' }}.
     {% for link in pub[1].links %}
