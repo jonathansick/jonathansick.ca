@@ -31,11 +31,11 @@ title: Publications
     <li>
     <a name={{ pub[0] }}></a>
     <h3 class="hdelta">{{ pub[1].title }}</h3>
-    <span class=me>Sick, Jonathan</span>
+    <p><span class=me>Sick, Jonathan</span>
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].level }} Thesis.
     Advised by {{ pub[1].advisor }}.
-    {{ pub[1].school }}.
+    {{ pub[1].school }}.</p>
     </li>
     {% endfor %}
 </ul>
@@ -46,12 +46,12 @@ title: Publications
     <li>
     <a name={{ pub[0] }}></a>
     <h3 class="hdelta">{{ pub[1].title }}</h3>
-    {{ pub[1].authors | array_to_sentence_string }}
+    <p>{{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     <span class=journal>{{ pub[1].journal}}</span>, {{ pub[1].volume }} {{ pub[1].number }}.
     {% for link in pub[1].links %}
         <a href="{{ link[1] }}">{{ link[0] }}</a>
-    {% endfor %}
+    {% endfor %}</p>
     </li>
     {% endfor %}
 </ul>
@@ -62,12 +62,12 @@ title: Publications
     <li>
     <a name={{ pub[0] }}></a>
     <h3 class="hdelta">{{ pub[1].title }}</h3>
-    {{ pub[1].authors | array_to_sentence_string }}
+    <p>{{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].conf }}
     {% for link in pub[1].links %}
         <a href="{{ link[1] }}">{{ link[0] }}</a>
-    {% endfor %}
+    {% endfor %}</p>
     </li>
     {% endfor %}
 </ul>
@@ -78,12 +78,12 @@ title: Publications
     <li>
     <a name={{ pub[0] }}></a>
     <h3 class="hdelta">{{ pub[1].title }}</h3>
-    {{ pub[1].authors | array_to_sentence_string }}
+    <p>{{ pub[1].authors | array_to_sentence_string }}
     ({{ pub[1].date | date: '%Y' }}).
     {{ pub[1].note }}
     {% for link in pub[1].links %}
     <a href="{{ link[1] }}">{{ link[0] }}</a>
-    {% endfor %}
+    {% endfor %}</p>
     </li>
     {% endfor %}
 </ul>
@@ -95,11 +95,11 @@ title: Publications
     <li>
     <a name={{ pub[0] }}></a>
     <h3 class="hdelta">{{ pub[1].title }}</h3>
-    {{ pub[1].authors | array_to_sentence_string }}.
+    <p>{{ pub[1].authors | array_to_sentence_string }}.
     {{ pub[1].note }}, {{ pub[1].date | date: '%B %d, %Y' }}.
     {% for link in pub[1].links %}
     <a href="{{ link[1] }}">{{ link[0] }}</a>
-    {% endfor %}
+    {% endfor %}</p>
     </li>
     {% endfor %}
 </ul>
