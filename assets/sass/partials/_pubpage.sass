@@ -20,3 +20,8 @@ $gutter-width: 1em
     +span_columns(2, $break-cols)
   .pagemain
     +span_columns(7, $total-columns)
+
+// Lay out pagetoc
+.pagetoc ul
+  +horizontal_list(1em)
+// TODO undo the horizontal list when past breakpoint
