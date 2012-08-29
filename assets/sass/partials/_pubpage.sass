@@ -1,0 +1,16 @@
+// Styling for the publications page
+
+// Publications Page Grid ===================================================
+$total-columns: 7  /* n cols in mobile layout */
+$break-cols: 12  /* n cols in three cols layout */
+$column-width: 4em
+$gutter-width: 1em
+.pubpage
+  +container
+
+  +at-breakpoint($break-cols)
+    +set-container-width
+
++at-breakpoint($break-cols)
+  .bodycol
+    +span_columns(7, $break-cols)
