@@ -1,4 +1,4 @@
-// Typography for the site
+// Typography for the site ===================================================
 
 // Base font size of 18 px, lineheight of 27 pixels
 $base-font-size: 18px
@@ -26,42 +26,37 @@ body
 h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl
   +rem(margin-bottom, $line-height-ratio * $base-font-size)
 
-// Typekit kit: jsickweb
+// Typekit kit: jsickweb =====================================================
 =skolar
   font-family: "skolar", "Lucida Bright", Georgia, serif
   font-style: normal
   font-weight: 400
-
 =skolar-it
   +skolar
   font-style: italic
-
 =skolar-bold
   +skolar
   font-weight: 700
-
 =skolar-bold-it
   +skolar
   font-weight: 700
   font-style: italic
-
 =museo-slab-heavy
   font-family: "museo-slab", "Helvetica Neue", Helvetica, Arial, sans-serif
   font-style: normal
   // this is still museo-slab 1000
   font-weight: 900
-
 =proxima-nova-semi
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif
   font-style: normal
   font-weight: 600
-
 =source-code-pro
   font-family: "source-code-pro", Menlo, Consolas, "Lucida Console", monospace
   font-style: normal
   font-weight: 400
 
-// Headlines
+// Headlines =================================================================
+
 // optimizeLegibility forces the use of a font's native kerning, but
 // may create performance drawbacks, so don't use for body fonts
 h1, h2, h3, h4, h5, h6
@@ -71,13 +66,20 @@ h1, h2, h3, h4, h5, h6
 // http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
 h1, .alpha
   +rem(font-size, $base-font-size * 2.18)
+  +museo-slab-heavy
 h2, .beta
   +rem(font-size, $base-font-size * 1.64)
+  +museo-slab-heavy
 h3, .gamma
   +rem(font-size, $base-font-size * 1.45)
+  +skolar-bold-it
 h4, .delta
   +rem(font-size, $base-font-size * 1.18)
+  +skolar-bold
 h5, .epsilon
   +rem(font-size, $base-font-size * 1.1)
+  +skolar-it
 h6, .zeta
   +rem(font-size, $base-font-size * 1.0)
+  +skolar
+  text-transform: uppercase
