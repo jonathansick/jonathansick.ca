@@ -7,14 +7,8 @@
 @import compass
 @import compass/reset
 @import susy
+@import "partials/typography"
 @import "partials/pubpage"
-
-// Set up vertical baseline
-$relative-font-sizing: false
-$base-font-size: 18px
-$base-line-height: 1.5 * $base-font-size
-
-+establish-baseline($base-font-size)
 
 // Homepage grid
 $total-columns: 2
@@ -57,22 +51,6 @@ $break-full: 4
 #pagefooterbanner
   width: 100%
   background: red
-
-
-// Header size hierarchy is defined by classes, rather than directly to the
-// header types to separate sematic hierarchy from presentation
-.halpha
-  // font-size: 2.18em
-  +adjust-font-size-to(2.18 * $base-font-size, 2)
-.hbeta
-  // font-size: 1.64em
-  +adjust-font-size-to(1.64 * $base-font-size, 1)
-.hgamma
-  // font-size: 1.45em
-  +adjust-font-size-to(1.45 * $base-font-size, 1)
-.hdelta
-  // font-size: 1.18em
-  +adjust-font-size-to(1.18 * $base-font-size, 1)
 
 
 // Publication list styling
