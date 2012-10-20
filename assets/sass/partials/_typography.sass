@@ -7,6 +7,7 @@ $rem-ratio: $base-font-size / 1rem
 
 // Utility mixin for sizing in rem with px fallback
 // http://stackoverflow.com/questions/6927007/how-do-you-remove-units-of-measurement-from-a-sass-mixin-equation
+// Usage: rem(font-size,14px);
 =rem($key, $px)
   #{$key}: $px
   #{$key}: $px/$rem-ratio
@@ -53,5 +54,23 @@ body
   font-style: normal
   font-weight: 400
 
+// Headlines
+// optimizeLegibility forces the use of a font's native kerning, but
+// may create performance drawbacks, so don't use for body fonts
+h1, h2, h3, h4, h5, h6
+  text-rendering: optimizeLegibility
+
 // Header size hierarchy
 // http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
+h1, .alpha
+  +rem(font-size, $base-font-size * 2.18)
+h2, .beta
+  +rem(font-size, $base-font-size * 1.64)
+h3, .gamma
+  +rem(font-size, $base-font-size * 1.45)
+h4, .delta
+  +rem(font-size, $base-font-size * 1.18)
+h5, .epsilon
+  +rem(font-size, $base-font-size * 1.1)
+h6, .zeta
+  +rem(font-size, $base-font-size * 1.0)
