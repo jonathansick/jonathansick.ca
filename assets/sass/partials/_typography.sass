@@ -1,8 +1,22 @@
 // Typography for the site
 
 // Base font size of 18 px, lineheight of 27 pixels
-$base-font-size-em: 18 / 16
-$base-line-height: 1.5 * $base-font-size-em
+$base-font-size: 18px
+$base-line-height: 1.5 * $base-font-size / 16
+$rem-ratio: $base-font-size / 1rem
+
+// Utility mixin for sizing in rem with px fallback
+// http://stackoverflow.com/questions/6927007/how-do-you-remove-units-of-measurement-from-a-sass-mixin-equation
+=rem($key, $px)
+  #{$key}: $px
+  #{$key}: $px/$rem-ratio
+
+// The font size for html is our root (rem) font size
+html
+  font-size: 100%
+body
+  +rem(font-size, $base-font-size)
+  line-height: $base-line-height
 
 // Typekit kit: jsickweb
 =skolar
@@ -38,3 +52,6 @@ $base-line-height: 1.5 * $base-font-size-em
   font-family: "source-code-pro", Menlo, Consolas, "Lucida Console", monospace
   font-style: normal
   font-weight: 400
+
+// Header size hierarchy
+// http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
