@@ -16,6 +16,11 @@ $break: $break-cols  // full size media layout
 // Lay out columns for the full-size breakpoint
 +at-breakpoint($break)
   // site header layout
+  .site-header
+    +span_columns(2, $break-cols)
+  .site-nav
+    +post(2, $break-cols)
+    +span_columns(4 omega, $break-cols)
   // page header layout
   .page-hgroup
     +pre(2, $break-cols)
