@@ -13,6 +13,7 @@ $break: $break-cols  // full size media layout
   +at-breakpoint($break)
     +set-container-width
 
+
 // Lay out columns for the full-size breakpoint
 +at-breakpoint($break)
   // site header layout
@@ -39,7 +40,20 @@ $break: $break-cols  // full size media layout
     +post(2, $break-cols)
     +span_columns(4, $break-cols)
 
+  // Transformations for the site-nav
+  .sitenav ul
+    +horizontal_list(1em)
+    text-align: right
+    float: right
 
+// Tricks for site-header logo type
+// invisible for mobile; visible for full site
+.site-header
+  display: none
++at-breakpoint($break)
+  // Make my logo face visible
+  .site-header
+    display: block
 
 // Lay out pagetoc
 .pagetoc ul
@@ -53,3 +67,7 @@ $break: $break-cols  // full size media layout
       margin-left: 0
       padding-left: 0
       white-space: nowrap
+
+// Never wrap my logo text
+.site-header h1
+  white-space: nowrap
