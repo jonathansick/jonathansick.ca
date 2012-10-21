@@ -8,21 +8,33 @@ $break-cols: 8
 $break: $break-cols  // full size media layout
 
 // Organize the container at each breakpoint
-.pubpage
+.pubpage, .sitebanner, .pagefooterbanner, .pageheader
   +container
   +at-breakpoint($break)
     +set-container-width
 
 // Lay out columns for the full-size breakpoint
 +at-breakpoint($break)
-  .pagebanner
-    +prefix(2, $break-cols)
+  // site header layout
+  // page header layout
+  .page-hgroup
+    +pre(2, $break-cols)
+    +span_columns(6 omega, $break-cols)  // full width
+  // pubpage layout (TODO really means page content area)
   .pagetoc
     +span_columns(2, $break-cols)
+    // TODO be more specific in 
     ul li
       display: block
   .pagemain
     +span_columns(4, $break-cols)
+  // page footer layout
+  .footernav, .sitecredits
+    +pre(2, $break-cols)
+    +post(2, $break-cols)
+    +span_columns(4, $break-cols)
+
+
 
 // Lay out pagetoc
 .pagetoc ul
