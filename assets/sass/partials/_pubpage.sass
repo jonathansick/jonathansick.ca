@@ -18,10 +18,20 @@ $gutter-width: 1em
     +prefix(2, $break-cols)
   .pagetoc
     +span_columns(2, $break-cols)
+    ul li
+      display: block
   .pagemain
     +span_columns(7, $total-columns)
 
 // Lay out pagetoc
 .pagetoc ul
   +horizontal_list(1em)
-// TODO undo the horizontal list when past breakpoint
+// Undo the horizontal list when past breakpoint
++at-breakpoint($break-cols)
+  .pagetoc
+    ul li
+      display: block
+      float: none
+      margin-left: 0
+      padding-left: 0
+      white-space: nowrap
