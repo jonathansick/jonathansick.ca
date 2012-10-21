@@ -94,6 +94,12 @@ h6, .zeta
 .divider-header:after
   content: " —"
 
+// Use .iterm-header for headings that appear in list-like environments
+// These collapse the margin to whatever appears below
+// TODO maybe this should be a mixin instead?
+.item-header
+  margin-bottom: 0
+
 // Paragraphs ================================================================
 body
   +skolar
