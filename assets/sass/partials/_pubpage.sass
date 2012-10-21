@@ -1,19 +1,20 @@
 // Styling for the publications page
 
 // Publications Page Grid ===================================================
-$total-columns: 7  /* n cols in mobile layout */
-$break-cols: 12  /* n cols in three cols layout */
-$column-width: 4em
-$gutter-width: 1em
+$total-columns: 4  // n cols in mobile layout
+$column-width: 6em
+$gutter-width: 2em
+$break-cols: 8
+$break: $break-cols  // full size media layout
 
 // Organize the container at each breakpoint
 .pubpage
   +container
-  +at-breakpoint($break-cols)
+  +at-breakpoint($break)
     +set-container-width
 
-// Lay out columns for the 12-column breakpoint
-+at-breakpoint($break-cols)
+// Lay out columns for the full-size breakpoint
++at-breakpoint($break)
   .pagebanner
     +prefix(2, $break-cols)
   .pagetoc
@@ -21,13 +22,13 @@ $gutter-width: 1em
     ul li
       display: block
   .pagemain
-    +span_columns(7, $total-columns)
+    +span_columns(4, $break-cols)
 
 // Lay out pagetoc
 .pagetoc ul
   +horizontal_list(1em)
 // Undo the horizontal list when past breakpoint
-+at-breakpoint($break-cols)
++at-breakpoint($break)
   .pagetoc
     ul li
       display: block
