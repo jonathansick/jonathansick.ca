@@ -4,36 +4,36 @@
 $total-columns: 1
 $column-width: 18em
 $gutter-width: 2em
-$grid-passing: $gutter-width
-$break-demi: 2
-$break-full: 4
+// Set breakpoint media layouts
+$break-demi: 1.5*$column-width 2
+$break-full: 2*1.5*$column-width 4
 .page, #homepage_header, #pagefooter
   +container
   #pagebanner
     background: red
 
   // Half scale site, 2 text columns
-  +at-breakpoint(1.5*$column-width $break-demi)
+  +at-breakpoint($break-demi)
     +set-container-width
-    #pagebanner
-      background: green
 
   // Full scale site, 4 text columns
-  +at-breakpoint(2*1.5*$column-width $break-full)
+  +at-breakpoint($break-full)
     +set-container-width
-    #pagebanner
-      background: blue
 
 // Demi layout
 +at-breakpoint($break-demi)
   .homepage_section
-    +span_columns(1, $break-demi)
+    +span_columns(1, 2)
   .homepage_papers_sec, .homepage_androids_sec
-    +span_columns(1 omega, $break-demi)
+    +span_columns(1 omega, 2)
+  #pagebanner
+    background: green
 
 // Full layout
 +at-breakpoint($break-full)
   .homepage_section
-    +span_columns(1, $break-full)
+    +span_columns(1, 4)
   .homepage_papers_sec
-    +span_columns(1 omega, $break-full)
+    +span_columns(1 omega, 4)
+  #pagebanner
+    background: blue
