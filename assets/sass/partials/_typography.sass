@@ -84,6 +84,16 @@ h6, .zeta
   +skolar
   text-transform: uppercase
 
+// Use divider-header to provide a typographical break with a flourish
+// combine with any regular header
+// TODO maybe use sone nicer typography, or longer lines here?
+.divider-header
+  text-align: center
+.divider-header:before
+  content: "— "
+.divider-header:after
+  content: " —"
+
 // Paragraphs ================================================================
 body
   +skolar
