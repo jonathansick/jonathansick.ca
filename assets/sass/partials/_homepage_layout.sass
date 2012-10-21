@@ -1,22 +1,28 @@
 // Structure for jonathansick.ca/index.html ==================================
 
 // Homepage grid
-$total-columns: 2
-$column-width: 12em
+$total-columns: 1
+$column-width: 18em
 $gutter-width: 2em
 $grid-passing: $gutter-width
 $break-demi: 2
 $break-full: 4
 .page, #homepage_header, #pagefooter
   +container
+  #pagebanner
+    background: red
 
   // Half scale site, 2 text columns
-  +at-breakpoint($break-demi)
+  +at-breakpoint(1.5*$column-width $break-demi)
     +set-container-width
+    #pagebanner
+      background: green
 
   // Full scale site, 4 text columns
-  +at-breakpoint($break-full)
+  +at-breakpoint(2*1.5*$column-width $break-full)
     +set-container-width
+    #pagebanner
+      background: blue
 
 // Demi layout
 +at-breakpoint($break-demi)
