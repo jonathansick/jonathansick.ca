@@ -7,10 +7,10 @@ $gutter-width: 2em
 // Set breakpoint media layouts
 $break-demi: 2*$column-width 4
 $break-full: 4*$column-width 4
-.homepage_content, #homepage_header, #pagefooter
+.homepage_content, .homepagesitebanner, #pagefooter
   +container
-  #pagebanner
-    background: red
+  // #pagebanner
+  //   background: red
 
   // Half scale site, 2 text columns
   +at-breakpoint($break-demi)
@@ -22,18 +22,27 @@ $break-full: 4*$column-width 4
 
 // Demi layout
 +at-breakpoint($break-demi)
+  .homepage_header, .homepage_bannernav
+    +span_columns(2, 2)
   .homepage_section
     +span_columns(1, 2)
   .homepage_papers_sec, .homepage_androids_sec
     +span_columns(1 omega, 2)
-  #pagebanner
-    background: green
+  // #pagebanner
+  //   background: green
 
 // Full layout
 +at-breakpoint($break-full)
+  .homepage_header, .homepage_bannernav
+    +pre(1, 4)
+    +span_columns(3, 4)
   .homepage_section
     +span_columns(1, 4)
   .homepage_papers_sec
     +span_columns(1 omega, 4)
-  #pagebanner
-    background: blue
+  // #pagebanner
+  //   background: blue
+
+// TODO refactor into general .sitenav ul used by pubpage
+.homepage_bannernav ul
+  +horizontal_list(1em)
