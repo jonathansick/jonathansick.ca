@@ -5,19 +5,18 @@ $total-columns: 2  // number of columns in mobile design
 $column-width: 8em
 $gutter-width: 2em
 
+// Number of columns are each breakpoint
+$break-demi-cols: 4
+$break-full-cols: 8
 // Set breakpoint media layouts
 // format: http://susy.oddbird.net/guides/reference/#ref-media-layouts
 // min ems; use N columns
-$break-demi-cols: 4
-$break-full-cols: 8
 $break-demi: 4*$column-width $break-demi-cols
 $break-full: 8*$column-width $break-full-cols
 
 .homepage_content, .homepagesitebanner, #pagefooter
   +container
   +susy-grid-background
-  // #pagebanner
-  //   background: red
 
   // Half scale site, 2 text columns
   +at-breakpoint($break-demi)
@@ -38,8 +37,6 @@ $break-full: 8*$column-width $break-full-cols
     // background-color: orange
   .homepage_papers_sec, .homepage_androids_sec
     +span_columns(2 omega, $break-demi-cols)
-  // #pagebanner
-  //   background: green
 
 // Full layout
 +at-breakpoint($break-full)
@@ -53,11 +50,7 @@ $break-full: 8*$column-width $break-full-cols
     // background-color: red
   .homepage_papers_sec
     +span_columns(2 omega, $break-full-cols)
-  // #pagebanner
-  //   background: blue
 
 // TODO refactor into general .sitenav ul used by pubpage
 .homepage_bannernav ul
   +horizontal_list(1em)
-
-
