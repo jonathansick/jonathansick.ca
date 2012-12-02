@@ -1,14 +1,21 @@
 // Structure for jonathansick.ca/index.html ==================================
 
-// Homepage grid
-$total-columns: 2
-$column-width: 18em
+// Unified grid
+$total-columns: 2  // number of columns in mobile design
+$column-width: 8em
 $gutter-width: 2em
+
 // Set breakpoint media layouts
-$break-demi: 2*$column-width 4
-$break-full: 4*$column-width 4
+// format: http://susy.oddbird.net/guides/reference/#ref-media-layouts
+// min ems; use N columns
+$break-demi-cols: 4
+$break-full-cols: 8
+$break-demi: 4*$column-width $break-demi-cols
+$break-full: 8*$column-width $break-full-cols
+
 .homepage_content, .homepagesitebanner, #pagefooter
   +container
+  +susy-grid-background
   // #pagebanner
   //   background: red
 
@@ -22,27 +29,35 @@ $break-full: 4*$column-width 4
 
 // Demi layout
 +at-breakpoint($break-demi)
+  .homepage_content
+    +susy-grid-background
   .homepage_header, .homepage_bannernav
     +span_columns(2, 2)
   .homepage_section
-    +span_columns(1, 2)
+    +span_columns(2, $break-demi-cols)
+    // background-color: orange
   .homepage_papers_sec, .homepage_androids_sec
-    +span_columns(1 omega, 2)
+    +span_columns(2 omega, $break-demi-cols)
   // #pagebanner
   //   background: green
 
 // Full layout
 +at-breakpoint($break-full)
+  .homepage_content
+    +susy-grid-background
   .homepage_header, .homepage_bannernav
     +pre(1, 4)
     +span_columns(3, 4)
   .homepage_section
-    +span_columns(1, 4)
+    +span_columns(2, $break-full-cols)
+    // background-color: red
   .homepage_papers_sec
-    +span_columns(1 omega, 4)
+    +span_columns(2 omega, $break-full-cols)
   // #pagebanner
   //   background: blue
 
 // TODO refactor into general .sitenav ul used by pubpage
 .homepage_bannernav ul
   +horizontal_list(1em)
+
+
