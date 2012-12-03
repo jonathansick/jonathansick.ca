@@ -21,7 +21,7 @@ $break-full: 8*$column-width $break-full-cols
 // Set up grid containers ====================================================
 .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
   +container
-  +susy-grid-background
+  // +susy-grid-background
 
   // Half scale site, 2 text columns
   +at-breakpoint($break-demi)
@@ -33,8 +33,8 @@ $break-full: 8*$column-width $break-full-cols
 
 // Demi layout ===============================================================
 +at-breakpoint($break-demi)
-  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
-    +susy-grid-background
+  // .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
+  //   +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
     +span_columns(4 omega, $break-demi-cols)
@@ -43,7 +43,6 @@ $break-full: 8*$column-width $break-full-cols
   // Homepage Content grid ---------------------------------------------------
   .homepage_section
     +span_columns(2, $break-demi-cols)
-    // background-color: orange
   .homepage_papers_sec, .homepage_androids_sec
     +span_columns(2 omega, $break-demi-cols)
   // Page content grid -------------------------------------------------------
@@ -74,8 +73,8 @@ $break-full: 8*$column-width $break-full-cols
 
 // Full layout ===============================================================
 +at-breakpoint($break-full)
-  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
-    +susy-grid-background
+  // .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
+  //   +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
     +span_columns(8 omega, $break-full-cols)
