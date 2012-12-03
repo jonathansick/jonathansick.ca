@@ -14,7 +14,7 @@ $break-full-cols: 8
 $break-demi: 4*$column-width $break-demi-cols
 $break-full: 8*$column-width $break-full-cols
 
-.homepage_content, .homepagesitebanner, #pagefooter
+.homepage_content, .pagefooter
   +container
   +susy-grid-background
 
@@ -28,27 +28,33 @@ $break-full: 8*$column-width $break-full-cols
 
 // Demi layout
 +at-breakpoint($break-demi)
-  .homepage_content
+  .homepage_content, .pagefooter
     +susy-grid-background
-  .homepage_header, .homepage_bannernav
-    +span_columns(2, 2)
   .homepage_section
     +span_columns(2, $break-demi-cols)
     // background-color: orange
   .homepage_papers_sec, .homepage_androids_sec
     +span_columns(2 omega, $break-demi-cols)
+  // Footer grid
+  .footernav
+    +span_columns(2, $break-demi-cols)
+  .credits
+    +span_columns(2 omega, $break-demi-cols)
 
 // Full layout
 +at-breakpoint($break-full)
-  .homepage_content
+  .homepage_content, .pagefooter
     +susy-grid-background
-  .homepage_header, .homepage_bannernav
-    +pre(1, 4)
-    +span_columns(3, 4)
   .homepage_section
     +span_columns(2, $break-full-cols)
     // background-color: red
   .homepage_papers_sec
+    +span_columns(2 omega, $break-full-cols)
+  // Footer grid
+  .footernav
+    +pre(4)
+    +span_columns(2, $break-full-cols)
+  .credits
     +span_columns(2 omega, $break-full-cols)
 
 // TODO refactor into general .sitenav ul used by pubpage
