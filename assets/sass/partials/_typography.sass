@@ -1,7 +1,7 @@
 // Typography for the site ===================================================
 
-// Base font size of 18 px, lineheight of 27 pixels
-$base-font-size: 18px
+// Base font size of 18 px, lineheight of 25.5 pixels
+$base-font-size: 17px
 $line-height-ratio: 1.5
 $base-line-height: $line-height-ratio * $base-font-size / 16px
 $rem-ratio: $base-font-size / 1rem
@@ -13,6 +13,13 @@ $rem-ratio: $base-font-size / 1rem
   #{$key}: $px
   #{$key}: $px/$rem-ratio
 
+// Helper for making centered horizontal lists for navigation
+=my-centered-nav-list
+  +horizontal_list(1em)
+  display: inline-block
+  margin-left: auto
+  margin-right: auto
+
 // The font size for html is our root (rem) font size
 html
   font-size: $base-font-size
@@ -23,7 +30,7 @@ body
 // Vertical rythm using rems and margin-bottom
 // https://github.com/csswizardry/hry.rbrts.me/blob/master/css/style.css#LC152
 // http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style/
-h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl,.pagetoc,.sitebannerwrapper,.homepagebannerwrapper
+h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl,.pagetoc,.sitebannerwrapper,.homepagebannerwrapper,nav
   +rem(margin-bottom, $line-height-ratio * $base-font-size)
 
 // Typekit kit: jsickweb =====================================================
@@ -124,7 +131,7 @@ code,pre,samp,kdb
 
 // Site banner styling =======================================================
 // These are for text in the very top of a page
-.sitenav, .site-header h1, .homepage_bannernav ul
+.sitenav, .page-sitelogo h1, .homepage_bannernav ul
   +rem(font-size, $base-font-size * 1.0)
   // +proxima-nova-semi
   // +skolar-bold
@@ -132,10 +139,19 @@ code,pre,samp,kdb
   // +skolar
   letter-spacing: 0.1em
   text-transform: uppercase
+  color: #FFFFFF
 
+.page-sitelogo h1, .sitenav
+  text-align: center
 
 // Homepage styling ==========================================================
 .homepagesitebanner
   color: #FFFFFF
 .homepage_header h1
   +rem(font-size, $base-font-size * 4.0)
+
+// Publication list styling ==================================================
+// Outdent paragraph with bibliographic information
+.publist p
+  margin-left: 1em
+  text-indent: -1em

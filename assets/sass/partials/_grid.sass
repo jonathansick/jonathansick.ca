@@ -1,0 +1,119 @@
+// Structure for jonathansick.ca/index.html ==================================
+
+// Unified grid
+$total-columns: 2  // number of columns in mobile design
+$column-width: 8em
+$gutter-width: 2em
+
+// Number of columns are each breakpoint
+$break-demi-cols: 4
+$break-full-cols: 8
+// Set breakpoint media layouts
+// format: http://susy.oddbird.net/guides/reference/#ref-media-layouts
+// min ems; use N columns
+$break-demi: 4*$column-width $break-demi-cols
+$break-full: 8*$column-width $break-full-cols
+
+#responsive-title
+  +rem(font-size, $base-font-size * 2.2)
+  text-align: center
+
+// Set up grid containers ====================================================
+.homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
+  +container
+  +susy-grid-background
+
+  // Half scale site, 2 text columns
+  +at-breakpoint($break-demi)
+    +set-container-width
+
+  // Full scale site, 4 text columns
+  +at-breakpoint($break-full)
+    +set-container-width
+
+// Demi layout ===============================================================
++at-breakpoint($break-demi)
+  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
+    +susy-grid-background
+  // Header grid -------------------------------------------------------------
+  .homepage_header
+    +span_columns(4 omega, $break-demi-cols)
+  .homepage_bannernav
+    +span_columns(4 omega, $break-demi-cols)
+  // Homepage Content grid ---------------------------------------------------
+  .homepage_section
+    +span_columns(2, $break-demi-cols)
+    // background-color: orange
+  .homepage_papers_sec, .homepage_androids_sec
+    +span_columns(2 omega, $break-demi-cols)
+  // Page content grid -------------------------------------------------------
+  .page-hgroup
+    +span_columns(4 omega, $break-demi-cols)
+  .pagetoc
+    +span_columns(1, $break-demi-cols)
+  .pagemain
+    +span_columns(3 omega, $break-demi-cols)
+  // Footer grid -------------------------------------------------------------
+  .footernav
+    +span_columns(2, $break-demi-cols)
+  .credits
+    +span_columns(2 omega, $break-demi-cols)
+
+  // Horizontal navigation only for demi+ layouts
+  .homepage_bannernav ul
+    +my-centered-nav-list
+  #responsive-title
+    +rem(font-size, $base-font-size * 4.0)
+
+  // Horizontal site page nav for full layouts
+  .page-sitelogo h1, .sitenav
+    text-align: left
+  .sitenav ul
+    +horizontal-list(1em)
+
+
+// Full layout ===============================================================
++at-breakpoint($break-full)
+  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
+    +susy-grid-background
+  // Header grid -------------------------------------------------------------
+  .homepage_header
+    +span_columns(8 omega, $break-full-cols)
+  .homepage_bannernav
+    +span_columns(8 omega, $break-full-cols)
+  // Homepage Content grid ---------------------------------------------------
+  .homepage_section
+    +span_columns(2, $break-full-cols)
+    // background-color: red
+  .homepage_papers_sec
+    +span_columns(2 omega, $break-full-cols)
+  // Page site navigation banner ---------------------------------------------
+  .page-sitelogo
+    +span_columns(2, $break-full-cols)
+  .sitenav
+    +span_columns(6 omega, $break-full-cols)
+  // Page content grid -------------------------------------------------------
+  .page-hgroup
+    +pre(1)
+    +span_columns(3 omega, $break-demi-cols)
+  .pagetoc
+    +span_columns(2, $break-full-cols)
+  .pagemain
+    +span_columns(4 omega, $break-full-cols)
+    +post(2)
+  // Footer grid -------------------------------------------------------------
+  .footernav
+    +pre(4)
+    +span_columns(2, $break-full-cols)
+  .credits
+    +span_columns(2 omega, $break-full-cols)
+
+  // Horizontal navigation only for demi+ layouts
+  .homepage_bannernav ul
+    +my-centered-nav-list
+  #responsive-title
+    +rem(font-size, $base-font-size * 6.0)
+
+
+.homepage_bannernav
+  text-align: center
