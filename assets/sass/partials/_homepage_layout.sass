@@ -14,7 +14,8 @@ $break-full-cols: 8
 $break-demi: 4*$column-width $break-demi-cols
 $break-full: 8*$column-width $break-full-cols
 
-.homepage_content, .pagefooter
+// Set up grid containers ====================================================
+.homepage_content, .pagefooter, .homepagesitebanner
   +container
   +susy-grid-background
 
@@ -26,37 +27,59 @@ $break-full: 8*$column-width $break-full-cols
   +at-breakpoint($break-full)
     +set-container-width
 
-// Demi layout
+// Demi layout ===============================================================
 +at-breakpoint($break-demi)
-  .homepage_content, .pagefooter
+  .homepage_content, .pagefooter, .homepagesitebanner
     +susy-grid-background
+  // Header grid -------------------------------------------------------------
+  .homepage_header
+    +span_columns(4 omega, $break-demi-cols)
+  .homepage_bannernav
+    +span_columns(4 omega, $break-demi-cols)
+  // Content grid ------------------------------------------------------------
   .homepage_section
     +span_columns(2, $break-demi-cols)
     // background-color: orange
   .homepage_papers_sec, .homepage_androids_sec
     +span_columns(2 omega, $break-demi-cols)
-  // Footer grid
+  // Footer grid -------------------------------------------------------------
   .footernav
     +span_columns(2, $break-demi-cols)
   .credits
     +span_columns(2 omega, $break-demi-cols)
 
-// Full layout
+  // Horizontal navigation only for demi+ layouts
+  .homepage_bannernav ul
+    +horizontal_list(1em)
+
+// Full layout ===============================================================
 +at-breakpoint($break-full)
-  .homepage_content, .pagefooter
+  .homepage_content, .pagefooter, .homepagesitebanner
     +susy-grid-background
+  // Header grid -------------------------------------------------------------
+  .homepage_header
+    +pre(2)
+    +span_columns(4 omega, $break-full-cols)
+    +post(2)
+  .homepage_bannernav
+    +pre(2)
+    +span_columns(6 omega, $break-full-cols)
+  // Content grid ------------------------------------------------------------
   .homepage_section
     +span_columns(2, $break-full-cols)
     // background-color: red
   .homepage_papers_sec
     +span_columns(2 omega, $break-full-cols)
-  // Footer grid
+  // Footer grid -------------------------------------------------------------
   .footernav
     +pre(4)
     +span_columns(2, $break-full-cols)
   .credits
     +span_columns(2 omega, $break-full-cols)
 
-// TODO refactor into general .sitenav ul used by pubpage
-.homepage_bannernav ul
-  +horizontal_list(1em)
+  // Horizontal navigation only for demi+ layouts
+  .homepage_bannernav ul
+    +horizontal_list(1em)
+
+.homepage_bannernav
+  text-align: center
