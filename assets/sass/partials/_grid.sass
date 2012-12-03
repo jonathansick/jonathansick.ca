@@ -19,7 +19,7 @@ $break-full: 8*$column-width $break-full-cols
   text-align: center
 
 // Set up grid containers ====================================================
-.homepage_content, .pagefooter, .homepagesitebanner
+.homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
   +container
   +susy-grid-background
 
@@ -33,19 +33,26 @@ $break-full: 8*$column-width $break-full-cols
 
 // Demi layout ===============================================================
 +at-breakpoint($break-demi)
-  .homepage_content, .pagefooter, .homepagesitebanner
+  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
     +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
     +span_columns(4 omega, $break-demi-cols)
   .homepage_bannernav
     +span_columns(4 omega, $break-demi-cols)
-  // Content grid ------------------------------------------------------------
+  // Homepage Content grid ---------------------------------------------------
   .homepage_section
     +span_columns(2, $break-demi-cols)
     // background-color: orange
   .homepage_papers_sec, .homepage_androids_sec
     +span_columns(2 omega, $break-demi-cols)
+  // Page content grid -------------------------------------------------------
+  .page-hgroup
+    +span_columns(4 omega, $break-demi-cols)
+  .pagetoc
+    +span_columns(1, $break-demi-cols)
+  .pagemain
+    +span_columns(3 omega, $break-demi-cols)
   // Footer grid -------------------------------------------------------------
   .footernav
     +span_columns(2, $break-demi-cols)
@@ -58,21 +65,42 @@ $break-full: 8*$column-width $break-full-cols
   #responsive-title
     +rem(font-size, $base-font-size * 4.0)
 
+  // Horizontal site page nav for full layouts
+  .page-sitelogo h1, .sitenav
+    text-align: left
+  .sitenav ul
+    +horizontal-list(1em)
+
+
 // Full layout ===============================================================
 +at-breakpoint($break-full)
-  .homepage_content, .pagefooter, .homepagesitebanner
+  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
     +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
     +span_columns(8 omega, $break-full-cols)
   .homepage_bannernav
     +span_columns(8 omega, $break-full-cols)
-  // Content grid ------------------------------------------------------------
+  // Homepage Content grid ---------------------------------------------------
   .homepage_section
     +span_columns(2, $break-full-cols)
     // background-color: red
   .homepage_papers_sec
     +span_columns(2 omega, $break-full-cols)
+  // Page site navigation banner ---------------------------------------------
+  .page-sitelogo
+    +span_columns(2, $break-full-cols)
+  .sitenav
+    +span_columns(6 omega, $break-full-cols)
+  // Page content grid -------------------------------------------------------
+  .page-hgroup
+    +pre(1)
+    +span_columns(3 omega, $break-demi-cols)
+  .pagetoc
+    +span_columns(2, $break-full-cols)
+  .pagemain
+    +span_columns(4 omega, $break-full-cols)
+    +post(2)
   // Footer grid -------------------------------------------------------------
   .footernav
     +pre(4)
@@ -85,6 +113,7 @@ $break-full: 8*$column-width $break-full-cols
     +my-centered-nav-list
   #responsive-title
     +rem(font-size, $base-font-size * 6.0)
+
 
 .homepage_bannernav
   text-align: center
