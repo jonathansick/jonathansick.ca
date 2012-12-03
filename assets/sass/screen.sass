@@ -21,4 +21,7 @@ body
 // TODO get rid of these IDs; use classes
 .homepagebannerwrapper, .sitebannerwrapper, .pagefooterbanner
   width: 100%
-  // background: red
+
+// Top padding works well with div backgrounds
+.homepagebannerwrapper, .sitebannerwrapper, .pagefooterbanner
+  +rem(padding-top, $line-height-ratio * $base-font-size)

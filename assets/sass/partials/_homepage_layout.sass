@@ -54,7 +54,7 @@ $break-full: 8*$column-width $break-full-cols
 
   // Horizontal navigation only for demi+ layouts
   .homepage_bannernav ul
-    +horizontal_list(1em)
+    +my-centered-nav-list
   #responsive-title
     +rem(font-size, $base-font-size * 4.0)
 
@@ -66,8 +66,7 @@ $break-full: 8*$column-width $break-full-cols
   .homepage_header
     +span_columns(8 omega, $break-full-cols)
   .homepage_bannernav
-    +pre(2)
-    +span_columns(6 omega, $break-full-cols)
+    +span_columns(8 omega, $break-full-cols)
   // Content grid ------------------------------------------------------------
   .homepage_section
     +span_columns(2, $break-full-cols)
@@ -83,7 +82,7 @@ $break-full: 8*$column-width $break-full-cols
 
   // Horizontal navigation only for demi+ layouts
   .homepage_bannernav ul
-    +horizontal_list(1em)
+    +my-centered-nav-list
   #responsive-title
     +rem(font-size, $base-font-size * 6.0)
 
