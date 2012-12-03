@@ -19,7 +19,7 @@ $break-full: 8*$column-width $break-full-cols
   text-align: center
 
 // Set up grid containers ====================================================
-.homepage_content, .page, .pagefooter, .homepagesitebanner
+.homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
   +container
   +susy-grid-background
 
@@ -33,7 +33,7 @@ $break-full: 8*$column-width $break-full-cols
 
 // Demi layout ===============================================================
 +at-breakpoint($break-demi)
-  .homepage_content, .page, .pagefooter, .homepagesitebanner
+  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
     +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
@@ -65,9 +65,16 @@ $break-full: 8*$column-width $break-full-cols
   #responsive-title
     +rem(font-size, $base-font-size * 4.0)
 
+  // Horizontal site page nav for full layouts
+  .page-sitelogo h1, .sitenav
+    text-align: left
+  .sitenav ul
+    +horizontal-list(1em)
+
+
 // Full layout ===============================================================
 +at-breakpoint($break-full)
-  .homepage_content, .page, .pagefooter, .homepagesitebanner
+  .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
     +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
@@ -80,6 +87,11 @@ $break-full: 8*$column-width $break-full-cols
     // background-color: red
   .homepage_papers_sec
     +span_columns(2 omega, $break-full-cols)
+  // Page site navigation banner ---------------------------------------------
+  .page-sitelogo
+    +span_columns(2, $break-full-cols)
+  .sitenav
+    +span_columns(6 omega, $break-full-cols)
   // Page content grid -------------------------------------------------------
   .page-hgroup
     +pre(1)
@@ -101,6 +113,7 @@ $break-full: 8*$column-width $break-full-cols
     +my-centered-nav-list
   #responsive-title
     +rem(font-size, $base-font-size * 6.0)
+
 
 .homepage_bannernav
   text-align: center
