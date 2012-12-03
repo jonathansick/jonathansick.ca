@@ -14,6 +14,10 @@ $break-full-cols: 8
 $break-demi: 4*$column-width $break-demi-cols
 $break-full: 8*$column-width $break-full-cols
 
+#responsive-title
+  +rem(font-size, $base-font-size * 2.2)
+  text-align: center
+
 // Set up grid containers ====================================================
 .homepage_content, .pagefooter, .homepagesitebanner
   +container
@@ -51,6 +55,8 @@ $break-full: 8*$column-width $break-full-cols
   // Horizontal navigation only for demi+ layouts
   .homepage_bannernav ul
     +horizontal_list(1em)
+  #responsive-title
+    +rem(font-size, $base-font-size * 4.0)
 
 // Full layout ===============================================================
 +at-breakpoint($break-full)
@@ -58,9 +64,7 @@ $break-full: 8*$column-width $break-full-cols
     +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
-    +pre(2)
-    +span_columns(4 omega, $break-full-cols)
-    +post(2)
+    +span_columns(8 omega, $break-full-cols)
   .homepage_bannernav
     +pre(2)
     +span_columns(6 omega, $break-full-cols)
@@ -80,6 +84,8 @@ $break-full: 8*$column-width $break-full-cols
   // Horizontal navigation only for demi+ layouts
   .homepage_bannernav ul
     +horizontal_list(1em)
+  #responsive-title
+    +rem(font-size, $base-font-size * 6.0)
 
 .homepage_bannernav
   text-align: center
