@@ -13,6 +13,13 @@ $rem-ratio: $base-font-size / 1rem
   #{$key}: $px
   #{$key}: $px/$rem-ratio
 
+// Helper for making centered horizontal lists for navigation
+=my-centered-nav-list
+  +horizontal_list(1em)
+  display: inline-block
+  margin-left: auto
+  margin-right: auto
+
 // The font size for html is our root (rem) font size
 html
   font-size: $base-font-size
