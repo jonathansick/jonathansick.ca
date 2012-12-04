@@ -3,3 +3,4 @@ _site
 assets/.sass-cache
 assets/css
 .DS_STORE
+.vagrant
