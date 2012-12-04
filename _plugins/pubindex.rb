@@ -1,5 +1,4 @@
-require 'parsedate'
-include ParseDate
+require 'date'
 
 module Jekyll
     class PublicationsPage < Page
@@ -27,6 +26,12 @@ module Jekyll
                 Dir['_publications/published/*.yml'].each do |path|
                     name = File.basename(path, '.yml')
                     config = YAML.load(File.read(File.join(@base, path)))
+                    puts path
+                    # Can't get strptime to work :(
+                    # puts Date.strptime(config['date'], "%Y-%m-%d")
+                    d =  Date.new(config['year'], config['month'], config['day'])
+                    puts d
+                    config['date'] = d
                     publications[name] = config
                 end
             end
