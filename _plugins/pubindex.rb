@@ -21,9 +21,25 @@ module Jekyll
         end
 
         def get_published(site)
+            pubHash = load_publication_files('_publications/published/*.yml')
+            puts "1. --"
+            puts pubHash.type
+            puts pubHash
+            puts "2. --"
+            sorted = pubHash.values.sort_by { |k| k["date"] }
+            puts sorted
+            puts sorted.inspect
+            puts "3. --"
+            sorted = sorted.reverse
+            puts sorted
+            puts "4. --"
+            return sorted
+        end
+
+        def load_publication_files(globStr)
             # This itererator emits the YAML hash of each publication file.
             {}.tap do |publications|
-                Dir['_publications/published/*.yml'].each do |path|
+                Dir[globStr].each do |path|
                     name = File.basename(path, '.yml')
                     config = YAML.load(File.read(File.join(@base, path)))
                     puts path
