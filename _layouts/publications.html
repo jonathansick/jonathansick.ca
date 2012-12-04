@@ -53,13 +53,13 @@ title: Publications
 <ul class=publist>
     {% for pub in page.theses %}
     <li>
-    <a name={{ pub[0] }}></a>
-    <h3 class="delta item-header">{{ pub[1].title }}</h3>
+    <a name={{ pub.key }}></a>
+    <h3 class="delta item-header">{{ pub.title }}</h3>
     <p><span class=me>Sick, Jonathan</span>
-    ({{ pub[1].date | date: '%Y' }}).
-    {{ pub[1].level }} Thesis.
-    Advised by {{ pub[1].advisor }}.
-    {{ pub[1].school }}.</p>
+    ({{ pub.date | date: '%Y' }}).
+    {{ pub.level }} Thesis.
+    Advised by {{ pub.advisor }}.
+    {{ pub.school }}.</p>
     </li>
     {% endfor %}
 </ul>
@@ -68,7 +68,7 @@ title: Publications
 <ul class=publist>
     {% for pub in page.published %}
     <li>
-    <a name={{ pub[0] }}></a>
+    <a name={{ pub.key }}></a>
     <h3 class="delta item-header">{{ pub.title }}</h3>
     <p>{{ pub.authors | array_to_sentence_string }}
     ({{ pub.date | date: '%Y' }}).
@@ -84,12 +84,12 @@ title: Publications
 <ul class=publist>
     {% for pub in page.conference %}
     <li>
-    <a name={{ pub[0] }}></a>
-    <h3 class="delta item-header">{{ pub[1].title }}</h3>
-    <p>{{ pub[1].authors | array_to_sentence_string }}
-    ({{ pub[1].date | date: '%Y' }}).
-    {{ pub[1].conf }}
-    {% for link in pub[1].links %}
+    <a name={{ pub.key }}></a>
+    <h3 class="delta item-header">{{ pub.title }}</h3>
+    <p>{{ pub.authors | array_to_sentence_string }}
+    ({{ pub.date | date: '%Y' }}).
+    {{ pub.conf }}
+    {% for link in pub.links %}
         <a href="{{ link[1] }}">{{ link[0] }}</a>
     {% endfor %}</p>
     </li>
@@ -100,12 +100,12 @@ title: Publications
 <ul class=publist>
     {% for pub in page.unpublished %}
     <li>
-    <a name={{ pub[0] }}></a>
+    <a name={{ pub.key }}></a>
     <h3 class="delta item-header">{{ pub[1].title }}</h3>
-    <p>{{ pub[1].authors | array_to_sentence_string }}
-    ({{ pub[1].date | date: '%Y' }}).
-    {{ pub[1].note }}
-    {% for link in pub[1].links %}
+    <p>{{ pub.authors | array_to_sentence_string }}
+    ({{ pub.date | date: '%Y' }}).
+    {{ pub.note }}
+    {% for link in pub.links %}
     <a href="{{ link[1] }}">{{ link[0] }}</a>
     {% endfor %}</p>
     </li>
@@ -117,11 +117,11 @@ title: Publications
 <ul class=publist>
     {% for pub in page.talks %}
     <li>
-    <a name={{ pub[0] }}></a>
-    <h3 class="delta item-header">{{ pub[1].title }}</h3>
-    <p>{{ pub[1].authors | array_to_sentence_string }}.
-    {{ pub[1].note }}, {{ pub[1].date | date: '%B %d, %Y' }}.
-    {% for link in pub[1].links %}
+    <a name={{ pub.key }}></a>
+    <h3 class="delta item-header">{{ pub.title }}</h3>
+    <p>{{ pub.authors | array_to_sentence_string }}.
+    {{ pub.note }}, {{ pub.date | date: '%B %d, %Y' }}.
+    {% for link in pub.links %}
     <a href="{{ link[1] }}">{{ link[0] }}</a>
     {% endfor %}</p>
     </li>

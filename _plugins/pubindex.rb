@@ -22,18 +22,7 @@ module Jekyll
 
         def get_published(site)
             pubHash = load_publication_files('_publications/published/*.yml')
-            puts "1. --"
-            puts pubHash.type
-            puts pubHash
-            puts "2. --"
-            sorted = pubHash.values.sort_by { |k| k["date"] }
-            puts sorted
-            puts sorted.inspect
-            puts "3. --"
-            sorted = sorted.reverse
-            puts sorted
-            puts "4. --"
-            return sorted
+            return sort_publications(pubHash)
         end
 
         def load_publication_files(globStr)
@@ -48,53 +37,45 @@ module Jekyll
                     d =  Date.new(config['year'], config['month'], config['day'])
                     puts d
                     config['date'] = d
+                    config['key'] = name  # pub filename as a key for links
                     publications[name] = config
                 end
             end
+        end
+
+        def sort_publications(pubHash)
+            # puts "1. --"
+            # puts pubHash.type
+            # puts pubHash
+            # puts "2. --"
+            sorted = pubHash.values.sort_by { |k| k["date"] }
+            # puts sorted
+            # puts sorted.inspect
+            # puts "3. --"
+            sorted = sorted.reverse
+            # puts sorted
+            # puts "4. --"
+            return sorted
         end
 
         def get_unpublished(site)
-            # This itererator emits the YAML hash of each publication file.
-            {}.tap do |publications|
-                Dir['_publications/unpublished/*.yml'].each do |path|
-                    name = File.basename(path, '.yml')
-                    config = YAML.load(File.read(File.join(@base, path)))
-                    publications[name] = config
-                end
-            end
+            pubHash = load_publication_files('_publications/unpublished/*.yml')
+            return sort_publications(pubHash)
         end
 
         def get_conference(site)
-            # This itererator emits the YAML hash of each publication file.
-            {}.tap do |publications|
-                Dir['_publications/conference/*.yml'].each do |path|
-                    name = File.basename(path, '.yml')
-                    config = YAML.load(File.read(File.join(@base, path)))
-                    publications[name] = config
-                end
-            end
+            pubHash = load_publication_files('_publications/conference/*.yml')
+            return sort_publications(pubHash)
         end
 
         def get_talks(site)
-            # This itererator emits the YAML hash of each publication file.
-            {}.tap do |publications|
-                Dir['_publications/talks/*.yml'].each do |path|
-                    name = File.basename(path, '.yml')
-                    config = YAML.load(File.read(File.join(@base, path)))
-                    publications[name] = config
-                end
-            end
+            pubHash = load_publication_files('_publications/talks/*.yml')
+            return sort_publications(pubHash)
         end
 
         def get_theses(site)
-            # This itererator emits the YAML hash of each publication file.
-            {}.tap do |publications|
-                Dir['_publications/theses/*.yml'].each do |path|
-                    name = File.basename(path, '.yml')
-                    config = YAML.load(File.read(File.join(@base, path)))
-                    publications[name] = config
-                end
-            end
+            pubHash = load_publication_files('_publications/theses/*.yml')
+            return sort_publications(pubHash)
         end
     end
     
