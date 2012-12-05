@@ -5,11 +5,22 @@ module Jekyll
     class PubRefTag < Liquid::Tag
         def initialize(tag_name, text, tokens)
             super
-            @text = text
+            # @text = text
+            @fname = text.strip
+            puts "initialize PubRefTag"
+            puts tag_name
+            puts @fname
         end
 
         def render(context)
-            "#{@text} #{Time.now}"
+            site = context.registers[:site]
+            # Get type of publication from filename
+            pubType = @fname.split('/').first
+            # Make full path to yml in _publications/ dir
+            fullPath = File.join(site.config['source'], "_publications/" + @fname)
+            # Load publication YAML
+            pubData = YAML.load(File.read(fullPath))
+            pubData['title']
         end
     end
 end
