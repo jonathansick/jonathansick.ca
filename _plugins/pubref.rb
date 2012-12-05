@@ -20,7 +20,8 @@ module Jekyll
             fullPath = File.join(site.config['source'], "_publications/" + @fname)
             # Load publication YAML
             pubData = YAML.load(File.read(fullPath))
-            pubData['title']
+            key = File.basename(fullPath, '.yml')
+            "<a class='pubref-title' href='/publications.html/##{key}'>#{pubData['title']}</a>"
         end
     end
 end
