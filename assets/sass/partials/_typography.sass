@@ -71,6 +71,15 @@ h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl,.pagetoc,.sitebannerwrapper,.homepagebanner
   font-style: normal
   font-weight: 400
 
+// Basic links ===============================================================
+// Triad colours
+$link-color: #0033cc
+$hover-color: #cc5d00
+$visited-color: #ccaf00
+a
+  +link-colors($link-color, $hover-color, $visited-color)
+  +hover-link
+
 // Headlines =================================================================
 
 // optimizeLegibility forces the use of a font's native kerning, but
@@ -142,8 +151,21 @@ code,pre,samp,kdb
   text-transform: uppercase
   color: #FFFFFF
 
+  a
+    +unstyled-link
+    +link-colors(#ffffff, $visited-color, $hover-color)
+    &:hover
+      border-bottom: $visited-color
+      border-bottom-width: 3px
+      border-style: solid
+    &:active
+      border-bottom: $hover-color
+      border-bottom-width: 3px
+      border-style: solid
+
 .page-sitelogo h1, .sitenav
   text-align: center
+
 
 // Homepage styling ==========================================================
 .homepagesitebanner
