@@ -72,10 +72,6 @@ h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl,.pagetoc,.sitebannerwrapper,.homepagebanner
   font-weight: 400
 
 // Basic links ===============================================================
-// Triad colours
-$link-color: #0033cc
-$hover-color: #cc5d00
-$visited-color: #ccaf00
 a
   +link-colors($link-color, $hover-color, $visited-color)
   +hover-link
@@ -153,7 +149,7 @@ code,pre,samp,kdb
 
   a
     +unstyled-link
-    +link-colors(#ffffff, $visited-color, $hover-color)
+    +link-colors($reverse-link-color, $reverse-hover-color, $reverse-visited-color)
     &:hover
       border-bottom: $visited-color
       border-bottom-width: 3px
