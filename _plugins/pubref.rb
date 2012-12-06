@@ -39,23 +39,23 @@ module Jekyll
 
         def render_published(pubData, key)
             puts "render_published"
-            render_title(pubData, key) + " (#{pubData['year']})."
+            "<p>" + render_title(pubData, key) + " (#{pubData['year']}).</p>"
         end
 
         def render_thesis(pubData, key)
-             render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}). #{pubData['level']} thesis."
+             "<p>" + render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}). #{pubData['level']} thesis.</p>"
         end
 
         def render_talk(pubData, key)
-             render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}/#{pubData['day']}). #{pubData['note']}."
+             "<p>" + render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}/#{pubData['day']}). #{pubData['note']}.</p>"
         end
 
         def render_unpublished(pubData, key)
-             render_title(pubData, key) + " (#{pubData['year']}). #{pubData['note']}."
+             "<p>" + render_title(pubData, key) + " (#{pubData['year']}). #{pubData['note']}.</p>"
         end
 
         def render_conference(pubData, key)
-             render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}). #{pubData['conf']}."
+             "<p>" + render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}). #{pubData['conf']}.</p>"
         end
 
         def render_title(pubData, key)
