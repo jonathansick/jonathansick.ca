@@ -23,6 +23,14 @@ module Jekyll
             key = File.basename(fullPath, '.yml')
             if pubType == 'published'
                 output = render_published(pubData, key)
+            elsif pubType == 'theses'
+                output = render_thesis(pubData, key)
+            elsif pubType == 'talks'
+                output = render_talk(pubData, key)
+            elsif pubType == 'conference'
+                output = render_conference(pubData, key)
+            elsif pubType == 'unpublished'
+                output = render_unpublished(pubData, key)
             else
                 puts "no type known"
             end
@@ -31,7 +39,27 @@ module Jekyll
 
         def render_published(pubData, key)
             puts "render_published"
-            "<a class='pubref-title' href='/publications.html/##{key}'>#{pubData['title']}</a> (#{pubData['year']})"
+            render_title(pubData, key) + " (#{pubData['year']})."
+        end
+
+        def render_thesis(pubData, key)
+             render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}). #{pubData['level']} thesis."
+        end
+
+        def render_talk(pubData, key)
+             render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}/#{pubData['day']}). #{pubData['note']}."
+        end
+
+        def render_unpublished(pubData, key)
+             render_title(pubData, key) + " (#{pubData['year']}). #{pubData['note']}."
+        end
+
+        def render_conference(pubData, key)
+             render_title(pubData, key) + " (#{pubData['year']}/#{pubData['month']}). #{pubData['conf']}."
+        end
+
+        def render_title(pubData, key)
+            "<a class='pubref-title' href='/publications.html/##{key}'>#{pubData['title']}</a>"
         end
     end
 end
