@@ -21,7 +21,17 @@ module Jekyll
             # Load publication YAML
             pubData = YAML.load(File.read(fullPath))
             key = File.basename(fullPath, '.yml')
-            "<a class='pubref-title' href='/publications.html/##{key}'>#{pubData['title']}</a>"
+            if pubType == 'published'
+                output = render_published(pubData, key)
+            else
+                puts "no type known"
+            end
+            return output
+        end
+
+        def render_published(pubData, key)
+            puts "render_published"
+            "<a class='pubref-title' href='/publications.html/##{key}'>#{pubData['title']}</a> (#{pubData['year']})"
         end
     end
 end
