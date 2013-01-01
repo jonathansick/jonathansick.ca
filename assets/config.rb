@@ -6,6 +6,7 @@ http_path = "/assets/"
 css_dir = "css"
 sass_dir = "sass"
 images_dir = "img"
+fonts_dir = "fonts"
 javascripts_dir = "js"
 
 # You can select your preferred output style here (can be overridden via the command line):

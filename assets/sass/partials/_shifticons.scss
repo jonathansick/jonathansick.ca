@@ -1,0 +1,38 @@
+/*
+ * Shifticons (shifticons.com)
+ * Order #1742
+*/
+
+@font-face {
+  font-family: "Shifticons";
+  src: font-url("shifticons_1742/shifticons.eot"); /* IE9 Compat Modes */
+  src: font-url("shifticons_1742/shifticons.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       font-url("shifticons_1742/shifticons.woff") format("woff"), /* Modern Browsers */
+       font-url("shifticons_1742/shifticons.ttf")  format("truetype"), /* Safari, Android, iOS */
+       font-url("shifticons_1742/shifticons.svg#Shifticons") format("svg"); /* Legacy iOS */
+}
+
+/* Shifticon styles */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: Shifticons;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: baseline;
+  text-decoration: inherit;
+  padding-right: .25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Order-specific styles */
+.icon-twitter:before { content: ""; }
+.icon-identification-tag:before { content: ""; }
+.icon-museum:before { content: ""; }
+.icon-paper-aeroplane:before { content: ""; }
+.icon-rss:before { content: ""; }
+.icon-lab-flask:before { content: ""; }
+.icon-globe:before { content: ""; }
+
+
+/* IE8 hack */
+@media \0screen\,screen\9 { body:hover{} }
