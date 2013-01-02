@@ -40,15 +40,15 @@ layout: basic
 <!-- A lede paragraph goes here -->
 </hgroup>
 
+{% if page.toc %}
 <nav class="pagetoc">
 <ul>
-  <li><a href="#theses">Theses</a></li>
-  <li><a href="#published">Published</a></li>
-  <li><a href="#conference">Conferences</a></li>
-  <li><a href="#unpublished">Unpublished</a></li>
-  <li><a href="#talks">Talks</a></li>
+  {% for item in page.toc %}
+  <li><a href="{{ item.a }}">{{ item.label }}</a></li>
+  {% endfor %}
 </ul>
 </nav>
+{% endif %}
 
 <section class="pagemain">
 {{ content }}
