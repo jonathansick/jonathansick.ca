@@ -1,1 +1,4 @@
-<button class="button_download">Download v{{ page.version }}</button>
+<a href="{{ page.download_url }}">
+  <button class="button_download">Download v{{ page.version }}</button>
+</a>
+<p>Updated {{ page.updated | date: "%b  %d, %Y" }}.</p>
