@@ -7,4 +7,58 @@ version: 3.0.6
 download_url: http://files.jonathansick.ca/adsbibdesk/adsbibdesk_3.0.6.zip
 updated: 2012-10-30
 ---
-<p>This is content, more...</p>
+<h2>How to use it</h2>
+<ol>
+  <li>You can gather papers from many sources. In any browser window or document, select one of the following pieces of text:
+  <ul>
+    <li>The URL of an ADS or arXiv article page,</li>
+    <li>The ADS bibcode of an article (<emph>e.g.</emph> <tt>1998ApJ...500..525S</tt>), or</li>
+    <li>The arXiv identifier of an article (<emph>e.g.</emph> <tt>astro-ph/9710327</tt> or <tt>0911.4956</tt>).</li>
+    <li>A DOI on ADS (<emph>e.g.</emph> <tt>10.1086/305772</tt>)</li>
+  </ul>
+  </li>
+  <li>Now activate the ADS to BibDesk scripts: <ul>
+    <li><strong>If using the Services version,</strong> right-click on the selected text and choose 'Services > Add to BibDesk'.</li>
+    <li><strong>If using the Application version</strong>, copy the selected text to the clipboard and launch the Add to BibDesk application.</li>
+  </ul>
+  </li>
+  <li>The BibTeX and abstract of the article will be copied into your currently-open BibDesk database. The article's PDF from ADS, or arXiv, is downloaded if possible. A <a href="http://growl.info/">Growl</a> notification will appear when the import&nbsp;is&nbsp;complete.</li>
+</ol>
+
+
+<h2>Updating astro-ph articles to the published&nbsp;editions</h2>
+<p>Quite often we first encounter an article as a pre-print on astro-ph, but once that article is published we want to update the BibDesk record and PDF to the refereed version. A great new feature in v2 is the ability to remove an older BibDesk reference if an article is re-imported.</p>
+<p>That is, if you import an article with the same title and author information as an article that already exists in your database, 'Add to BibDesk' will delete that older article and import the new BibTeX and PDF. <emph>New in version 2.1:</emph> if you annotated the pre-print PDF in Skim, we keep it alongside the refereed copy.</p>
+
+<h3>Updating astro-ph articles in bulk</h3>
+<p>With <tt>update_bibdesk_arxiv.sh</tt> you can find and update all astro-ph articles in your BibDesk bibliography that have been published. Run the shell script in your terminal while your BibDesk bibliography is open. The shell script will find articles to update, and you will be prompted to initiate the downloads. The update may take some time&mdash;we throttle the downloads to limit the load on ADS servers.</p>
+
+<h2>Configurations</h2>
+<p>ADS to BibDesk reads configurations from a hidden preferences file located at <tt>~/.adsbibdesk</tt> (ADS to BibDesk will automatically create it if missing). The configurations, and defaults, are:</p>
+<ul> <li><tt>ads_mirror=adsabs.harvard.edu</tt> &mdash; domain name of your local ADS server</li> <li><tt>arxiv_mirror=None</tt> &mdash; leave unset to use the arXiv mirror pointed to by your ADS mirror</li> <li><tt>download_pdf=True</tt>&mdash; <tt>True</tt> to automatically get PDF of a paper from ADS/arXiv; <tt>False</tt> to skip PDFs.</li>
+</ul>
+
+<h3>SSH Proxy</h3>
+<p>You can have ADS to BibDesk download PDFs through a remote machine over SSH. This is useful if you're working from home or abroad and don't have access to journals, yet you have an account on a machine in home institution's network. By setting a SSH URL and user name (see below), ADS to BibDesk will use the computer at your institution to log into the journal and download the PDF.</p>
+<ul> <li><tt>ssh_user=None</tt> &mdash; set to your username on your institutional computer</li> <li><tt>ssh_server=None</tt> &mdash; set to the domain name of your institutional computer (e.g. <tt>mymac.university.edu</tt>)</li>
+</ul>
+<p><emph>Note:</emph> the computer at your institution must have <a href="http://www.gnu.org/software/wget/">wget</a> installed. You'll also need to setup a public/private key for smooth SSH access.</p>
+
+<h2>History</h2> <ul>
+<li>v3.0.6 October 30, 2012 &mdash; Fixes a problem with parsing ADS pages for papers with quotation marks in their titles. Also adds logging support and pip installation support for the command line version.</li>
+<li>v3.0.5 October 11, 2012 &mdash; More robust method of passing data to the injector AppleScript (via a temporary file rather than over the shell).</li>
+<li>v3.0.4 October 6, 2012 &mdash; Supports A&amp;A and ARAA articles that don't have DOIs (via Adam Ginsburg)</li>
+<li>v3.0.3 September 24, 2012 &mdash; Better escaping of text passed between Python and AppleScript.</li>
+<li>v3.0.2 September 23, 2012 &mdash; Integrate PDF ingest workflow into adsbibdesk.py commands and better command line usage</li>
+<li>v3.0.1 September 23, 2012 &mdash; Introduce PDF ingest workflow and adsbibdesk.py can be <code>setup.py install</code>'d.</li>
+<li>v3.0 September 16, 2012 &mdash; Supports Mac OS 10.8 with new Automator architecture.</li>
+<li>v2.1.3 October 24, 2011 &mdash; Fixes growl support is Mac OS 10.7 Lion.</li>
+<li>v2.1 May 2011
+<ul><li><tt>update_bibdesk_arxiv.sh</tt> for bulk updates of astro-ph articles.</li><li>Saves astro-ph PDFs with Skim annotations.</li><li>Numerous bug fixes.</li><li>Build script for developers.</li></ul></li>
+<li>v2.1.1 June 21, 2011 &mdash; fix handling of user preferences of ADS mirrors</li>
+<li>v2.1.2 June 22, 2011<ul><li>MNRAS articles are downloaded (<emph>mostly</emph>) properly. MNRAS has changed their distribution methods over time; a future version will soon address all these cases.</li><li>Better resolution of arXiv identifiers (<emph>e.g.</emph> astro-ph/YYMMNNN, arxiv:YYMMNNNN), ADS bibcodes and (new!) DOIs.</li><li>Strings without 'http://' can still be treated as URLs (useful for Chrome users)</li></ul></li> <li>v2.0 Nov 2009 Robust web parsing and PDF downloading (R. Pereira)
+<ul> <li>Automatically downloads the refereed PDF from ADS if possible, or the PDF from arXiv if not. Can set the script to fetch the article through your institution's network using SSH (see instructions above).</li> <li>Now accepts ADS bibcodes and arxiv reference IDs in addition to URLs.</li> <li>Works from any application, not just Safari.</li> <li>Robust parsing of ADS webpages; proper parsing of HTML/UTF-8 entities in the ADS page; no temporary files.</li> <li>Handles old scanned articles whose abstract is an image.</li> <li>Adds BibDesk external URLs with ADS/DOI links.</li> <li>Uses growl notification</li>
+</ul>
+</li>
+<li>v1.1 Dec 2007 Changed webpage parsing logic (R. de Jong)</li>
+<li>v1.0 Aug 2007 First release. (J. Sick)</li> </ul>
