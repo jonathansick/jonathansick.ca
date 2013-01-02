@@ -1,42 +1,79 @@
+---
+layout: basic
+---
 <!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <!-- The jsickweb kit --> 
 <script type="text/javascript" src="//use.typekit.net/jxq8dyb.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 <title> {% if page.title %} {{ page.title }} | {% endif %} Jonathan Sick </title>
+<meta name="viewport" content="width=device-width">
 <link rel="stylesheet" media="screen, projection" href="/assets/css/screen.css" type="text/css" />
 </head>
-<body id="interiorpage">
-<div id="pagebanner">
-<header id="page_header">
-<h1>Jonathan Sick</h1>
-<nav id="bannernav">
+<body>
+
+<div class="sitebannerwrapper">
+<div class="sitebanner">
+<hgroup class="page-sitelogo">
+<h1><a href="/index.html" title="to Homepage">Jonathan Sick</a></h1>
+</hgroup>
+<nav class="sitenav">
 <ul>
-    <li>Blog</li>
-    <li>GitHub</li>
-    <li>Publications</li>
+  <li><a href="http://blog.jonathansick.ca" title="Jonathan Sick's Blog">Blog</a></li>
+  <li><a href="http://github.com/jonathansick" title="Jonathan Sick's Public Code Portfolio">GitHub</a></li>
+  <li><a href="/publications.html" title="Jonathan Sick's Publications and Talks">Publications</a></li>
 </ul>
 </nav>
-</header>
-</div> <!-- /#pagebanner -->
+</div> <!-- /.sitebanner -->
+</div> <!-- /.sitebannerwrapper -->
+
+
+<section class="page">
+
+<hgroup class="page-hgroup">
+<h1 class="alpha">{{ page.title }}</h1> 
+{% if page.lede %}
+<p class="lede">{{ page.lede }}</p>
+{% endif %}
+<!-- A lede paragraph goes here -->
+</hgroup>
+
+<nav class="pagetoc">
+<ul>
+  <li><a href="#theses">Theses</a></li>
+  <li><a href="#published">Published</a></li>
+  <li><a href="#conference">Conferences</a></li>
+  <li><a href="#unpublished">Unpublished</a></li>
+  <li><a href="#talks">Talks</a></li>
+</ul>
+</nav>
+
+<section class="pagemain">
 {{ content }}
-<div id="pagefooterbanner">
-<footer id="pagefooter">
-<nav id="footernav">
+</section> <!-- /.pagemain -->
+</section> <!-- /.page -->
+
+<div class="pagefooterbanner">
+<!-- <div class="pagefooter"> -->
+<footer class="pagefooter">
+<nav class="footernav">
   <ul>
     <li>jonathansick.ca</li>
     <li>Blog</li>
     <li>Gallery</li>
   </ul>
 </nav>
-<div id="credits">
+<div class="credits">
   <ul>
     <li>Copyright 2012 Jonathan Sick, all rights reserved.</li>
     <li>Typeset in Skolar and Museo Slab by Typekit.</li>
   </ul>
 </div>
+<!-- </div> -->
 </footer>
 </div>
+
 </body>
 </html>
