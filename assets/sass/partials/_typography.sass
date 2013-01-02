@@ -19,6 +19,7 @@ $rem-ratio: $base-font-size / 1rem
   display: inline-block
   margin-left: auto
   margin-right: auto
+  list-style-type: none
 
 // The font size for html is our root (rem) font size
 html
@@ -160,6 +161,7 @@ code,pre,samp,kdb
   letter-spacing: 0.1em
   text-transform: uppercase
   color: #FFFFFF
+  list-style-type: none
 
   a
     +unstyled-link
@@ -176,6 +178,9 @@ code,pre,samp,kdb
 .page-sitelogo h1, .sitenav
   text-align: center
 
+.sitenav ul
+  list-style-type: none
+
 
 // Homepage styling ==========================================================
 .homepagesitebanner
@@ -190,6 +195,10 @@ code,pre,samp,kdb
 .publist p
   margin-left: 1em
   text-indent: -1em
+
+// Table of Contents styling
+.pagetoc ul
+  list-style-type: none
 
 // Icon lists ================================================================
 // i.e. the icon list on homepage
