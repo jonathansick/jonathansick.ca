@@ -50,6 +50,12 @@ layout: basic
 </nav>
 {% endif %}
 
+{% if page.type %}
+<div class="sidebar-main">
+  {% include adsbibdesk_sidebar.html %}
+</div>
+{% endif %}
+
 <section class="pagemain">
 {{ content }}
 </section> <!-- /.pagemain -->
