@@ -101,7 +101,7 @@ title: Publications
     {% for pub in page.unpublished %}
     <li>
     <a name={{ pub.key }}></a>
-    <h3 class="delta item-header">{{ pub[1].title }}</h3>
+    <h3 class="delta item-header">{{ pub.title }}</h3>
     <p>{{ pub.authors | array_to_sentence_string }}
     ({{ pub.date | date: '%Y' }}).
     {{ pub.note }}
