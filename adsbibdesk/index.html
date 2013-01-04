@@ -10,14 +10,15 @@ updated: 2012-10-30
 <h2>How to use it</h2>
 <ol>
   <li>You can gather papers from many sources. In any browser window or document, select one of the following pieces of text:
-  <ul>
+  <ul class='ul-alpha'>
     <li>The URL of an ADS or arXiv article page,</li>
     <li>The ADS bibcode of an article (<emph>e.g.</emph> <tt>1998ApJ...500..525S</tt>), or</li>
     <li>The arXiv identifier of an article (<emph>e.g.</emph> <tt>astro-ph/9710327</tt> or <tt>0911.4956</tt>).</li>
     <li>A DOI on ADS (<emph>e.g.</emph> <tt>10.1086/305772</tt>)</li>
   </ul>
   </li>
-  <li>Now activate the ADS to BibDesk scripts: <ul>
+  <li>Now activate the ADS to BibDesk scripts:
+  <ul class='ul-alpha'>
     <li><strong>If using the Services version,</strong> right-click on the selected text and choose 'Services > Add to BibDesk'.</li>
     <li><strong>If using the Application version</strong>, copy the selected text to the clipboard and launch the Add to BibDesk application.</li>
   </ul>
@@ -35,7 +36,8 @@ updated: 2012-10-30
 
 <h2>Configurations</h2>
 <p>ADS to BibDesk reads configurations from a hidden preferences file located at <tt>~/.adsbibdesk</tt> (ADS to BibDesk will automatically create it if missing). The configurations, and defaults, are:</p>
-<ul> <li><tt>ads_mirror=adsabs.harvard.edu</tt> &mdash; domain name of your local ADS server</li> <li><tt>arxiv_mirror=None</tt> &mdash; leave unset to use the arXiv mirror pointed to by your ADS mirror</li> <li><tt>download_pdf=True</tt>&mdash; <tt>True</tt> to automatically get PDF of a paper from ADS/arXiv; <tt>False</tt> to skip PDFs.</li>
+<ul class='ul-alpha'>
+  <li><tt>ads_mirror=adsabs.harvard.edu</tt> &mdash; domain name of your local ADS server</li> <li><tt>arxiv_mirror=None</tt> &mdash; leave unset to use the arXiv mirror pointed to by your ADS mirror</li> <li><tt>download_pdf=True</tt>&mdash; <tt>True</tt> to automatically get PDF of a paper from ADS/arXiv; <tt>False</tt> to skip PDFs.</li>
 </ul>
 
 <h3>SSH Proxy</h3>
@@ -44,7 +46,8 @@ updated: 2012-10-30
 </ul>
 <p><emph>Note:</emph> the computer at your institution must have <a href="http://www.gnu.org/software/wget/">wget</a> installed. You'll also need to setup a public/private key for smooth SSH access.</p>
 
-<h2>History</h2> <ul>
+<h2>History</h2>
+<ul class='ul-alpha'>
 <li>v3.0.6 October 30, 2012 &mdash; Fixes a problem with parsing ADS pages for papers with quotation marks in their titles. Also adds logging support and pip installation support for the command line version.</li>
 <li>v3.0.5 October 11, 2012 &mdash; More robust method of passing data to the injector AppleScript (via a temporary file rather than over the shell).</li>
 <li>v3.0.4 October 6, 2012 &mdash; Supports A&amp;A and ARAA articles that don't have DOIs (via Adam Ginsburg)</li>
