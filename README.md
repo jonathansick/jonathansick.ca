@@ -22,6 +22,15 @@ and
 
 Then visit [http://localhost:4000/]()
 
+## Deployment
+
+After building the site (with Compass and Jekyll, see above), the site is deployed to S3 using the [jekyll-s3](https://github.com/laurilehmijoki/jekyll-s3) Ruby gem.
+
+    jekyll-s3
+
+Note that the first run of `jekyll-s3` will create a `_jekyll_s3.yml` file where S3/Cloudfront info must be entered.
+This file isn't included in the git repository for obvious reasons.
+
 ## Notes on pubindex.rb
 
 To generate populate the publications page I've written te `pubindex.rb` ruby plugin.
