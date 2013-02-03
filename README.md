@@ -4,6 +4,12 @@ This is the content and code for Jonathan Sick's [website](http://www.jonathansi
 In this edition of the site, I'm using [Jekyll](https://github.com/mojombo/jekyll/) to help generate the HTML from templates and markdown.
 Lets also throw in some SASS, with a Susy responsive grid.
 
+## Dependencies
+
+The website needs the following Ruby gems to compile:
+
+    gem install jekyll sass compass susy sassy-buttons
+
 ## Development Setup
 
 To develop, in separate terminals run
