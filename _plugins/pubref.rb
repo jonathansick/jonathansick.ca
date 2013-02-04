@@ -59,7 +59,7 @@ module Jekyll
         end
 
         def render_title(pubData, key)
-            "<a class='pubref-title' href='/publications.html/##{key}'>#{pubData['title']}</a>"
+            "<a class='pubref-title' href='/publications.html##{key}'>#{pubData['title']}</a>"
         end
     end
 end
