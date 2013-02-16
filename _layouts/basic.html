@@ -50,9 +50,9 @@ layout: basic
 </nav>
 {% endif %}
 
-{% if page.type %}
-<div class="sidebar-main">
-  {% include adsbibdesk_sidebar.html %}
+{% if page.type == adsbibdesk %}
+<div class="ads_download">
+  {% include adsbibdesk_downloads.html %}
 </div>
 {% endif %}
 
