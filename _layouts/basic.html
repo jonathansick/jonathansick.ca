@@ -40,6 +40,12 @@ layout: basic
 <!-- A lede paragraph goes here -->
 </hgroup>
 
+{% if page.type == 'adsbibdesk' %}
+<div class="ads_download">
+  {% include ads_download.html %}
+</div>
+{% endif %}
+
 {% if page.toc %}
 <nav class="pagetoc">
 <ul>
@@ -48,12 +54,6 @@ layout: basic
   {% endfor %}
 </ul>
 </nav>
-{% endif %}
-
-{% if page.type == 'adsbibdesk' %}
-<div class="ads_download">
-  {% include ads_download.html %}
-</div>
 {% endif %}
 
 <section class="pagemain">
