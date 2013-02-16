@@ -6,8 +6,14 @@ lede: Retrieve the BibTeX, abstract and PDF of an astrophysics journal article p
 version: 3.1
 download_url: http://files.jonathansick.ca/adsbibdesk/adsbibdesk_3.1.0.zip
 updated: 2013-1-15
+toc:
+  - {a: usage, label: How to use it}
+  - {a: updating, label: Updating Preprints}
+  - {a: configs, label: Configurations}
+  - {a: history, label: Release Notes}
 ---
-<h2>How to use it</h2>
+<a name="usage"></a><h2>How to use it</h2>
+
 <ol>
   <li>You can gather papers from many sources. In any browser window or document, select one of the following pieces of text:
   <ul class='ul-alpha'>
@@ -27,14 +33,14 @@ updated: 2013-1-15
 </ol>
 
 
-<h2>Updating astro-ph articles to the published&nbsp;editions</h2>
+<a name="updating"></a><h2>Updating astro-ph articles to the published&nbsp;editions</h2>
 <p>Quite often we first encounter an article as a pre-print on astro-ph, but once that article is published we want to update the BibDesk record and PDF to the refereed version. A great new feature in v2 is the ability to remove an older BibDesk reference if an article is re-imported.</p>
 <p>That is, if you import an article with the same title and author information as an article that already exists in your database, 'Add to BibDesk' will delete that older article and import the new BibTeX and PDF. <emph>New in version 2.1:</emph> if you annotated the pre-print PDF in Skim, we keep it alongside the refereed copy.</p>
 
 <h3>Updating astro-ph articles in bulk</h3>
 <p>With <tt>update_bibdesk_arxiv.sh</tt> you can find and update all astro-ph articles in your BibDesk bibliography that have been published. Run the shell script in your terminal while your BibDesk bibliography is open. The shell script will find articles to update, and you will be prompted to initiate the downloads. The update may take some time&mdash;we throttle the downloads to limit the load on ADS servers.</p>
 
-<h2>Configurations</h2>
+<a name="configs"></a><h2>Configurations</h2>
 <p>ADS to BibDesk reads configurations from a hidden preferences file located at <tt>~/.adsbibdesk</tt> (ADS to BibDesk will automatically create it if missing). The configurations, and defaults, are:</p>
 <ul class='ul-alpha'>
   <li><tt>ads_mirror=adsabs.harvard.edu</tt> &mdash; domain name of your local ADS server</li> <li><tt>arxiv_mirror=None</tt> &mdash; leave unset to use the arXiv mirror pointed to by your ADS mirror</li> <li><tt>download_pdf=True</tt>&mdash; <tt>True</tt> to automatically get PDF of a paper from ADS/arXiv; <tt>False</tt> to skip PDFs.</li>
@@ -46,7 +52,7 @@ updated: 2013-1-15
 </ul>
 <p><emph>Note:</emph> the computer at your institution must have <a href="http://www.gnu.org/software/wget/">wget</a> installed. You'll also need to setup a public/private key for smooth SSH access.</p>
 
-<h2>History</h2>
+<a name="history"></a><h2>History</h2>
 <ul class='ul-alpha'>
 <li>v3.0.6 October 30, 2012 &mdash; Fixes a problem with parsing ADS pages for papers with quotation marks in their titles. Also adds logging support and pip installation support for the command line version.</li>
 <li>v3.0.5 October 11, 2012 &mdash; More robust method of passing data to the injector AppleScript (via a temporary file rather than over the shell).</li>
