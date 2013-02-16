@@ -34,7 +34,8 @@ $break-full: 8*$column-width $break-full-cols
 // Demi layout ===============================================================
 +at-breakpoint($break-demi)
   // .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
-  //   +susy-grid-background
+  .page
+    +susy-grid-background
   // Header grid -------------------------------------------------------------
   .homepage_header
     +span_columns(4 omega, $break-demi-cols)
@@ -48,6 +49,12 @@ $break-full: 8*$column-width $break-full-cols
   // Page content grid -------------------------------------------------------
   .page-hgroup
     +span_columns(4 omega, $break-demi-cols)
+  .ads_download
+    +span_columns(4 omega, $break-demi-cols)
+  .ads_service_download
+    +span_columns(2, $break-demi-cols)
+  .ads_cli_download
+    +span_columns(2 omega, $break-demi-cols)
   .pagetoc, .sidebar-main
     +span_columns(1, $break-demi-cols)
   .pagemain
@@ -95,6 +102,14 @@ $break-full: 8*$column-width $break-full-cols
   .page-hgroup
     +pre(1)
     +span_columns(3 omega, $break-demi-cols)
+  .ads_download
+    +pre(2)
+    +span_columns(4 omega, $break-full-cols)
+    +post(2)
+  .ads_service_download
+    +span_columns(2, 4)
+  .ads_cli_download
+    +span_columns(2 omega, 4)
   .pagetoc, .sidebar-main
     +span_columns(2, $break-full-cols)
   .pagemain
