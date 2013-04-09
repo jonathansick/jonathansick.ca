@@ -1,10 +1,14 @@
-title: "ANDROIDS I. Near-Infrared Imaging of the Andromeda Galaxy"
+title: "Andromeda Optical and Infrared Disk Survey I. New Insights in Wide-Field Near-IR Surface Photometry"
 year: 2013
-month: 2
-day: 1
+month: 3
+day: 27
 authors:
     - Sick, J.
     - Courteau, S.
-    - McDonald, M.
     - Cuillandre, J.C.
-journal: In prep.
+    - McDonald, M.
+    - de Jong, R. S.
+    - Tully, R. B.
+journal: Submitted to AJ.
+links:
+    - [arXiv, http://arXiv.org/abs/1303.6290]
