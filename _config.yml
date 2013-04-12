@@ -1,4 +1,4 @@
 markdown: rdiscount
 pygments: true
 safe: False
-exclude: [assets/sass/, assets/config.rb, README.md, Vagrantfile]
+exclude: [assets/sass, assets/config.rb, README.md, Vagrantfile]
