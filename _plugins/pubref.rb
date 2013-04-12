@@ -39,7 +39,15 @@ module Jekyll
 
         def render_published(pubData, key)
             puts "render_published"
-            "<p>" + render_title(pubData, key) + " (#{pubData['year']}).</p>"
+            n = pubData['authors'].size
+            puts n
+            if n > 3
+                authorStr = pubData['authors'].slice(0, 3).join(", ") + " et al."
+            else
+                authorStr = pubData['authors'].join(", ")
+            end
+            puts authorStr
+            "<p>" + render_title(pubData, key) + " (#{pubData['year']}). #{authorStr}.</p>"
         end
 
         def render_thesis(pubData, key)
