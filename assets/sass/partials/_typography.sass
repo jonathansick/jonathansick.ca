@@ -40,6 +40,7 @@ body
 h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl,table,.pagetoc,.sitebannerwrapper,.homepagebannerwrapper,nav,pre,.boardered-image
   +rem(margin-bottom, $line-height-ratio * $base-font-size)
 
+
 // Typekit kit: jsickweb =====================================================
 =skolar
   font-family: "skolar", "Lucida Bright", Georgia, serif
@@ -155,8 +156,11 @@ ul
 .ul-blank
   list-style-type: none
 ul ul, ul ol, ol ol, ol ul
-  +rem(margin-top, $line-height-ratio * $base-font-size)
   margin-left: 2em
+li > ul
+  margin-bottom: 0
+  list-style-type: circle
+
 
 // Source code ===============================================================
 code,pre,samp,kdb
