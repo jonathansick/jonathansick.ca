@@ -31,13 +31,18 @@ After building the site (with Compass and Jekyll, see above), the site is deploy
 Note that the first run of `jekyll-s3` will create a `_jekyll_s3.yml` file where S3/Cloudfront info must be entered.
 This file isn't included in the git repository for obvious reasons.
 
-## Notes on pubindex.rb
+## Jekyll Plugins for Managing Publication Lists
 
-To generate populate the publications page I've written te `pubindex.rb` ruby plugin.
-I use the [generator](https://github.com/mojombo/jekyll/wiki/Plugins) plugin pattern, where Jekyll will process the plugins, and run any class that inherits from `Generator`.
+To generate the publications page I've written the `pubindex.rb` ruby plugin.
+All publication items are stored as YAML files in the `_publications/` directory.
+The plugin uses the [generator](https://github.com/mojombo/jekyll/wiki/Plugins) plugin pattern, where Jekyll will process the plugins, and run any class that inherits from `Generator`.
 
 The entry-point is the `generate()` method of the `PublicationsPageGenerator` class.
 It first checks to make sure a `_publications/` directory exists (containing yml publication metadata files), then call the `write_publications_page()` method. It is here that we create a `PublicationsPage` instance that processes the `publications.html` template.
+
+To generate a short list of new papers and talks on the homepage, I also wrote the `pubref.rb` plugin. To add a publication block, the plugin expands the following example liquid markup:
+
+    {% pubref published/2013-02-1-skysubpub.yml %}
 
 ***
 
