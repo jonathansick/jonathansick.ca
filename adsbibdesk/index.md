@@ -3,9 +3,9 @@ layout: basic
 type: adsbibdesk
 title: "ADS to BibDesk"
 lede: Retrieve the BibTeX, abstract and PDF of an astrophysics journal article published on SAO/NASA ADS or astro-ph on arXiv.org and add it to your BibDesk database with a single click. Now updated for Mac OS X 10.8 Mountain Lion!
-version: 3.1
-download_url: http://files.jonathansick.ca/adsbibdesk/adsbibdesk_3.1.0.zip
-updated: 2013-1-15
+version: 3.1.1
+download_url: http://files.jonathansick.ca/adsbibdesk/adsbibdesk_3.1.1.zip
+updated: 2013-5-5
 toc:
   - {a: usage, label: How to use it}
   - {a: updating, label: Updating Preprints}
@@ -100,6 +100,7 @@ You'll also need to setup a public/private key for smooth SSH access.
 <a name="history"></a>
 ## History ##
 
+- v3.1.1 May 5, 2013 &mdash; Fixes for users of Python 2.6, and fixes for quotation marks in ADS comments (R. Pereira).
 - v3.1.0 January 15, 2013 &mdash; New engine for interacting with BibDesk (we use pyobjc rather than AppleScript); Integration of arXiv updating pipeline with the adsbibdesk command line program; Integration with the arXiv API for cases where ADS does not yet have the paper in its database (R. Pereira).
 - v3.0.6 October 30, 2012 &mdash; Fixes a problem with parsing ADS pages for papers with quotation marks in their titles. Also adds logging support and pip installation support for the command line version.
 - v3.0.5 October 11, 2012 &mdash; More robust method of passing data to the injector AppleScript (via a temporary file rather than over the shell).
