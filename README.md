@@ -4,21 +4,23 @@ This is the content and code for Jonathan Sick's [website](http://www.jonathansi
 In this edition of the site, I'm using [Jekyll](https://github.com/mojombo/jekyll/) to help generate the HTML from templates and markdown.
 Lets also throw in some SASS, with a Susy responsive grid.
 
-## Dependencies
+## Ruby Environment
 
-The website needs the following Ruby gems to compile:
+Ruby 2.0.0-p247 is selected using rbenv.
 
-    gem install jekyll sass compass susy sassy-buttons
+The website uses the following ruby gems: `jekyll`, `rdiscount`, `sass`, `compass`, `susy`, `sassy-buttons` and `jekyll-s3`. All dependencies are listed in the ``Gemfile``. Then can be installed using
+
+    bundle install
 
 ## Development Setup
 
 To develop, in separate terminals run
 
-    jekyll --auto --server
+    bundle exec compass watch assets/
 
 and
 
-    compass watch assets/
+    bundle exec jekyll serve --watch
 
 Then visit [http://localhost:4000/]()
 

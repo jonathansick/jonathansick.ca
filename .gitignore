@@ -5,3 +5,5 @@ assets/css
 .DS_STORE
 .vagrant
 _jekyll_s3.yml
+.bundle/
+vendor/
