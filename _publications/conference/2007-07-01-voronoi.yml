@@ -1,10 +1,10 @@
-title: Detecting Stellar Streams in the Halos of Galaxies with Voronoi Tessellations
+title: "Detecting Stellar Streams in the Halos of Galaxies with Voronoi Tessellations"
 year: 2007
 month: 7
 day: 1
 authors:
-    - Sick, Jonathan
-    - de Jong, Roelof
-conf: In Gold, C., editor, Proceedings of the International Symposium on Voronoi Diagrams in Science and Engineering. IEEE Computer Society.
+    - "Sick, Jonathan"
+    - "de Jong, Roelof"
+conf: "In Gold, C., editor, Proceedings of the International Symposium on Voronoi Diagrams in Science and Engineering. IEEE Computer Society."
 links:
-    - [PDF, http://files.jonathansick.ca/papers/sick_isvd2007.pdf]
+    - ["PDF", "http://files.jonathansick.ca/papers/sick_isvd2007.pdf"]

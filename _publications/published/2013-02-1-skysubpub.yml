@@ -3,12 +3,12 @@ year: 2013
 month: 3
 day: 27
 authors:
-    - Sick, J.
-    - Courteau, S.
-    - Cuillandre, J.C.
-    - McDonald, M.
-    - de Jong, R. S.
-    - Tully, R. B.
-journal: Submitted to AJ.
+    - "Sick, J."
+    - "Courteau, S."
+    - "Cuillandre, J.C."
+    - "McDonald, M."
+    - "de Jong, R. S."
+    - "Tully, R. B."
+journal: "Submitted to AJ."
 links:
-    - [arXiv:1303.6290, http://arXiv.org/abs/1303.6290]
+    - ["arXiv:1303.6290", "http://arXiv.org/abs/1303.6290"]

@@ -3,8 +3,8 @@ year: 2008
 month: 12
 day: 1
 authors:
-    - Sick, Jonathan
+    - "Sick, Jonathan"
 note: "Applying spectroscopic analysis to unveil the characteristics of T Tauri stars. For Stellar Atmosphers at the Royal Military College of Canada."
 links:
-    - [Screencast, http://files.jonathansick.ca/unpublished/ttauri-jsick.mov]
-    - [PDF, http://files.jonathansick.ca/unpublished/jsick_2008_ttauri.pdf]
+    - ["Screencast", "http://files.jonathansick.ca/unpublished/ttauri-jsick.mov"]
+    - ["PDF", "http://files.jonathansick.ca/unpublished/jsick_2008_ttauri.pdf"]
