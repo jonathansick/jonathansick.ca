@@ -1,0 +1,295 @@
+// Typography for the site ===================================================
+
+// Base font size of 18 px, lineheight of 25.5 pixels
+$base-font-size: 16px;
+$line-height-ratio: 1.5;
+$base-line-height: $line-height-ratio * $base-font-size / 16px;
+$rem-ratio: $base-font-size / 1rem;
+
+// Utility mixin for sizing in rem with px fallback
+// http://stackoverflow.com/questions/6927007/how-do-you-remove-units-of-measurement-from-a-sass-mixin-equation
+// Usage: rem(font-size,14px)
+@mixin rem($key, $px) {
+  #{$key}: $px;
+  #{$key}: $px / $rem-ratio;
+}
+
+// Helper for making centered horizontal lists for navigation
+@mixin my-centered-nav-list {
+  @include horizontal_list(1em);
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  list-style-type: none;
+}
+
+// The font size for html is our root (rem) font size
+html {
+  font-size: $base-font-size;
+}
+
+body {
+  @include rem(font-size, $base-font-size);
+  line-height: $base-line-height;
+  @include hyphenation;
+}
+
+.no-hyphen {
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+}
+
+// Vertical rythm using rems and margin-bottom
+// https://github.com/csswizardry/hry.rbrts.me/blob/master/css/style.css#LC152
+// http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style/
+h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl,table,.pagetoc,.sitebannerwrapper,.homepagebannerwrapper,nav,pre,.boardered-image {
+  @include rem(margin-bottom, $line-height-ratio * $base-font-size);
+}
+
+// Typekit kit: jsickweb =====================================================
+@mixin skolar {
+  font-family: "skolar", "Lucida Bright", Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin skolar-it {
+  @include skolar;
+  font-style: italic;
+}
+
+@mixin skolar-bold {
+  @include skolar;
+  font-weight: 700;
+}
+
+@mixin skolar-bold-it {
+  @include skolar;
+  font-weight: 700;
+  font-style: italic;
+}
+
+@mixin museo-slab-heavy {
+  font-family: "museo-slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  // this is still museo-slab 1000
+  font-weight: 900;
+}
+
+@mixin museo-slab-700 {
+  font-family: "museo-slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin museo-slab-900 {
+  font-family: "museo-slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
+
+@mixin proxima-nova-semi {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin source-code-pro {
+  font-family: "source-code-pro", Menlo, Consolas, "Lucida Console", monospace;
+  font-style: normal;
+  font-weight: 400;
+}
+
+// Basic links ===============================================================
+a {
+  @include link-colors($link-color, $hover-color, $visited-color);
+  @include hover-link;
+}
+
+// Headlines =================================================================
+
+// optimizeLegibility forces the use of a font's native kerning, but
+// may create performance drawbacks, so don't use for body fonts
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+}
+
+// Header size hierarchy
+// http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
+h1, .alpha {
+  @include rem(font-size, $base-font-size * 2.18);
+  @include museo-slab-heavy;
+}
+
+h2, .beta {
+  @include rem(font-size, $base-font-size * 1.64);
+  @include museo-slab-heavy;
+}
+
+h3, .gamma {
+  @include rem(font-size, $base-font-size * 1.45);
+  @include skolar-bold-it;
+}
+
+h4, .delta {
+  @include rem(font-size, $base-font-size * 1.18);
+  @include skolar-bold;
+}
+
+h5, .epsilon {
+  @include rem(font-size, $base-font-size * 1.1);
+  @include skolar-it;
+}
+
+h6, .zeta {
+  @include rem(font-size, $base-font-size * 1);
+  @include skolar;
+  text-transform: uppercase;
+}
+
+// Use divider-header to provide a typographical break with a flourish
+// combine with any regular header
+// TODO maybe use sone nicer typography, or longer lines here?
+.divider-header {
+  text-align: center;
+}
+
+.divider-header:before {
+  content: "— ";
+}
+
+.divider-header:after {
+  content: " —";
+}
+
+// Use .iterm-header for headings that appear in list-like environments
+// These collapse the margin to whatever appears below
+// TODO maybe this should be a mixin instead?
+.item-header {
+  margin-bottom: 0;
+}
+
+// Paragraphs ================================================================
+body {
+  @include skolar;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-style: bold;
+}
+
+.lede {
+  @include rem(font-size, $base-font-size * 1.4);
+  font-style: italic;
+}
+
+// Lists =====================================================================
+ul {
+  list-style-type: disc;
+}
+
+.numeric-list {
+  list-style-type: decimal;
+}
+
+.ul-alpha {
+  list-style-type: disc;
+}
+
+.ul-beta {
+  list-style-type: circle;
+}
+
+.ul-gamma {
+  list-style-type: square;
+}
+
+.ul-blank {
+  list-style-type: none;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-left: 2em;
+}
+
+li > ul {
+  margin-bottom: 0;
+  list-style-type: circle;
+}
+
+// Source code ===============================================================
+code,pre,samp,kdb {
+  @include source-code-pro;
+}
+
+// Site banner styling =======================================================
+// These are for text in the very top of a page
+.sitenav, .page-sitelogo h1, .homepage_bannernav ul {
+  @include rem(font-size, $base-font-size * 1);
+  // +proxima-nova-semi
+  // +skolar-bold
+  @include museo-slab-700;
+  // +skolar
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+  list-style-type: none;
+  a {
+    @include unstyled-link;
+    @include link-colors($reverse-link-color, $reverse-hover-color, $reverse-visited-color);
+    &:hover {
+      border-bottom: $visited-color;
+      border-bottom-width: 3px;
+      border-style: solid;
+    }
+    &:active {
+      border-bottom: $hover-color;
+      border-bottom-width: 3px;
+      border-style: solid;
+    }
+  }
+}
+
+.page-sitelogo h1, .sitenav {
+  text-align: center;
+}
+
+.sitenav ul {
+  list-style-type: none;
+}
+
+// Homepage styling ==========================================================
+.homepagesitebanner {
+  color: white;
+}
+
+.homepage_header h1 {
+  @include rem(font-size, $base-font-size * 4);
+}
+
+// Publication list styling ==================================================
+// Outdent paragraph with bibliographic information
+.publist, .pubref-list {
+  list-style-type: none;
+}
+
+.publist p {
+  margin-left: 1em;
+  text-indent: -1em;
+}
+
+// Table of Contents styling
+.pagetoc ul {
+  list-style-type: none;
+}
+
+// Icon lists ================================================================
+// i.e. the icon list on homepage
+.icon-col {
+  width: 2em;
+}

@@ -1,0 +1,170 @@
+// Structure for jonathansick.ca/index.html ==================================
+
+// Unified grid
+$total-columns: 2;
+$column-width: 9em;
+$gutter-width: 2.5em;
+
+// Number of columns are each breakpoint
+$break-demi-cols: 4;
+$break-full-cols: 8;
+
+// Set breakpoint media layouts
+// format: http://susy.oddbird.net/guides/reference/#ref-media-layouts
+// min ems; use N columns
+$break-demi: 4 * $column-width $break-demi-cols;
+$break-full: 8 * $column-width $break-full-cols;
+
+#responsive-title {
+  @include rem(font-size, $base-font-size * 2.2);
+  text-align: center;
+}
+
+// Set up grid containers ====================================================
+.homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner {
+  @include container;
+  // +susy-grid-background
+  // Half scale site, 2 text columns
+  @include at-breakpoint($break-demi) {
+    @include set-container-width;
+  }
+
+  // Full scale site, 4 text columns
+  @include at-breakpoint($break-full) {
+    @include set-container-width;
+  }
+}
+
+// Demi layout ===============================================================
+@include at-breakpoint($break-demi) {
+  // .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
+  // .page
+  //   +susy-grid-background
+  // Header grid -------------------------------------------------------------
+  .homepage_header {
+    @include span_columns(4 omega, $break-demi-cols);
+  }
+  .homepage_bannernav {
+    @include span_columns(4 omega, $break-demi-cols);
+  }
+  // Homepage Content grid ---------------------------------------------------
+  .homepage_section {
+    @include span_columns(2, $break-demi-cols);
+  }
+  .homepage_papers_sec, .homepage_androids_sec {
+    @include span_columns(2 omega, $break-demi-cols);
+  }
+  // Page content grid -------------------------------------------------------
+  .page-hgroup {
+    @include span_columns(4 omega, $break-demi-cols);
+  }
+  .ads_download {
+    @include span_columns(4 omega, $break-demi-cols);
+  }
+  .ads_service_download {
+    @include span_columns(2, $break-demi-cols);
+  }
+  .ads_cli_download {
+    @include span_columns(2 omega, $break-demi-cols);
+  }
+  .pagetoc, .sidebar-main {
+    @include span_columns(1, $break-demi-cols);
+  }
+  .pagemain {
+    @include span_columns(3 omega, $break-demi-cols);
+  }
+  // Footer grid -------------------------------------------------------------
+  .footernav {
+    @include span_columns(1, $break-demi-cols);
+  }
+  .credits {
+    @include span_columns(3 omega, $break-demi-cols);
+  }
+  // Horizontal navigation only for demi+ layouts
+  .homepage_bannernav ul {
+    @include my-centered-nav-list;
+  }
+  #responsive-title {
+    @include rem(font-size, $base-font-size * 4);
+  }
+  // Horizontal site page nav for full layouts
+  .page-sitelogo h1, .sitenav {
+    text-align: left;
+  }
+  .sitenav ul {
+    @include horizontal-list(1em);
+  }
+}
+
+
+// Full layout ===============================================================
+@include at-breakpoint($break-full) {
+  // .homepage_content, .page, .pagefooter, .homepagesitebanner, .sitebanner
+  //   +susy-grid-background
+  // Header grid -------------------------------------------------------------
+  .homepage_header {
+    @include span_columns(8 omega, $break-full-cols);
+  }
+  .homepage_bannernav {
+    @include span_columns(8 omega, $break-full-cols);
+  }
+  // Homepage Content grid ---------------------------------------------------
+  .homepage_section {
+    @include span_columns(2, $break-full-cols);
+    // background-color: red
+ 
+  }
+  .homepage_papers_sec {
+    @include span_columns(2 omega, $break-full-cols);
+  }
+  // Page site navigation banner ---------------------------------------------
+  .page-sitelogo {
+    @include span_columns(2, $break-full-cols);
+  }
+  .sitenav {
+    @include span_columns(6 omega, $break-full-cols);
+  }
+  // Page content grid -------------------------------------------------------
+  .page-hgroup {
+    @include pre(1);
+    @include span_columns(3 omega, $break-demi-cols);
+  }
+  .ads_download {
+    @include pre(2);
+    @include span_columns(4 omega, $break-full-cols);
+    @include post(2);
+  }
+  .ads_service_download {
+    @include span_columns(2, 4);
+  }
+  .ads_cli_download {
+    @include span_columns(2 omega, 4);
+  }
+  .pagetoc, .sidebar-main {
+    @include span_columns(2, $break-full-cols);
+  }
+  .pagemain {
+    @include span_columns(4 omega, $break-full-cols);
+    @include post(2);
+  }
+  // Footer grid -------------------------------------------------------------
+  .footernav {
+    // +pre(4)
+    @include span_columns(2, $break-full-cols);
+  }
+  .credits {
+    @include span_columns(6 omega, $break-full-cols);
+  }
+  // Horizontal navigation only for demi+ layouts
+  .homepage_bannernav ul {
+    @include my-centered-nav-list;
+  }
+  #responsive-title {
+    @include rem(font-size, $base-font-size * 6);
+  }
+}
+
+
+.homepage_bannernav {
+  text-align: center;
+}
