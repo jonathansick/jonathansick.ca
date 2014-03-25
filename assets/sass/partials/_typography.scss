@@ -8,8 +8,8 @@ $rem-ratio: $base-font-size / 1rem;
 
 // Utility mixin for sizing in rem with px fallback
 // http://stackoverflow.com/questions/6927007/how-do-you-remove-units-of-measurement-from-a-sass-mixin-equation
-// Usage: rem(font-size,14px)
-@mixin rem($key, $px) {
+// Usage: myrem(font-size,14px)
+@mixin myrem($key, $px) {
   #{$key}: $px;
   #{$key}: $px / $rem-ratio;
 }
@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  @include rem(font-size, $base-font-size);
+  @include myrem(font-size, $base-font-size);
   line-height: $base-line-height;
   @include hyphenation;
 }
@@ -44,7 +44,7 @@ body {
 // https://github.com/csswizardry/hry.rbrts.me/blob/master/css/style.css#LC152
 // http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style/
 h1,h2,h3,h4,h5,h6,article,p,ul,ol,dl,table,.pagetoc,.sitebannerwrapper,.homepagebannerwrapper,nav,pre,.boardered-image {
-  @include rem(margin-bottom, $line-height-ratio * $base-font-size);
+  @include myrem(margin-bottom, $line-height-ratio * $base-font-size);
 }
 
 // Typekit kit: jsickweb =====================================================
@@ -118,32 +118,32 @@ h1, h2, h3, h4, h5, h6 {
 // Header size hierarchy
 // http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
 h1, .alpha {
-  @include rem(font-size, $base-font-size * 2.18);
+  @include myrem(font-size, $base-font-size * 2.18);
   @include museo-slab-heavy;
 }
 
 h2, .beta {
-  @include rem(font-size, $base-font-size * 1.64);
+  @include myrem(font-size, $base-font-size * 1.64);
   @include museo-slab-heavy;
 }
 
 h3, .gamma {
-  @include rem(font-size, $base-font-size * 1.45);
+  @include myrem(font-size, $base-font-size * 1.45);
   @include skolar-bold-it;
 }
 
 h4, .delta {
-  @include rem(font-size, $base-font-size * 1.18);
+  @include myrem(font-size, $base-font-size * 1.18);
   @include skolar-bold;
 }
 
 h5, .epsilon {
-  @include rem(font-size, $base-font-size * 1.1);
+  @include myrem(font-size, $base-font-size * 1.1);
   @include skolar-it;
 }
 
 h6, .zeta {
-  @include rem(font-size, $base-font-size * 1);
+  @include myrem(font-size, $base-font-size * 1);
   @include skolar;
   text-transform: uppercase;
 }
@@ -184,7 +184,7 @@ strong {
 }
 
 .lede {
-  @include rem(font-size, $base-font-size * 1.4);
+  @include myrem(font-size, $base-font-size * 1.4);
   font-style: italic;
 }
 
@@ -230,7 +230,7 @@ code,pre,samp,kdb {
 // Site banner styling =======================================================
 // These are for text in the very top of a page
 .sitenav, .page-sitelogo h1, .homepage_bannernav ul {
-  @include rem(font-size, $base-font-size * 1);
+  @include myrem(font-size, $base-font-size * 1);
   // +proxima-nova-semi
   // +skolar-bold
   @include museo-slab-700;
@@ -269,7 +269,7 @@ code,pre,samp,kdb {
 }
 
 .homepage_header h1 {
-  @include rem(font-size, $base-font-size * 4);
+  @include myrem(font-size, $base-font-size * 4);
 }
 
 // Publication list styling ==================================================

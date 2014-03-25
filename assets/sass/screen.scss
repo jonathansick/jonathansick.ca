@@ -5,7 +5,7 @@
 
 @import 'compass';
 @import 'compass/reset';
-@import 'susy';
+@import 'susyone';
 @import 'sassy-buttons';
 @import 'partials/shifticons';
 @import 'partials/colour';
@@ -29,7 +29,7 @@ body {
 
 // Top padding works well with div backgrounds
 .homepagebannerwrapper, .sitebannerwrapper, .pagefooterbanner {
-  @include rem(padding-top, $line-height-ratio * $base-font-size);
+  @include myrem(padding-top, $line-height-ratio * $base-font-size);
 }
 
 // TODO: refactor this into an image partial!
@@ -39,5 +39,5 @@ body {
 }
 
 .ads_download {
-  @include rem(margin-bottom, $base-font-size * 2);
+  @include myrem(margin-bottom, $base-font-size * 2);
 }
