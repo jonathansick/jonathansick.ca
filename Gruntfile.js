@@ -17,6 +17,17 @@ module.exports = function(grunt) {
             },
         },
 
+        compass: {
+            dev: {
+                options: {
+                    config: 'assets/config.rb',
+                    bundleExec: true,
+                    sassDir: 'assets/sass',
+                    cssDir: 'assets/css',
+                }
+            },
+        },
+
         watch: { // for development run 'grunt watch'
             jekyll: {
                 files: ['templates/*.html'],
@@ -27,10 +38,12 @@ module.exports = function(grunt) {
 
     // Default task. Run standard jekyll server.
     grunt.registerTask('default', ['jekyll:dev']);
+    grunt.registerTask('compass', ['compass:dev']);
 
     // Plugin tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jekyll');
+    grunt.loadNpmTasks('grunt-contrib-compass');
 
 
 };
