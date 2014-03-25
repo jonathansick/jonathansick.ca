@@ -12,9 +12,24 @@ The website uses the following ruby gems: `jekyll`, `rdiscount`, `sass`, `compas
 
     bundle install
 
-## Development Setup
+## Grunt Workflow
 
-To develop, in separate terminals run
+We use [Grunt]() to orchestrate the website builds and deployment. I found this [24 Ways article](http://24ways.org/2013/grunt-is-not-weird-and-hard/) to be a handy intro.
+
+Get ready (on a Mac) with
+
+    brew install npm
+    npm install -g grunt-cli
+    npm install
+
+To develop the site (booting a server and watching for changes), run:
+
+    grunt
+
+
+## Old School Development Setup
+
+Without Grunt, you can still develop by running, in separate terminals:
 
     bundle exec compass watch assets/
 

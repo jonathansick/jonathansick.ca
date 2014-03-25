@@ -7,3 +7,4 @@ assets/css
 _jekyll_s3.yml
 .bundle/
 vendor/
+node_modules/
