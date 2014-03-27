@@ -9,10 +9,10 @@ module.exports = function(grunt) {
             },
             dev : {
                 options: {
-                    serve: true,
-                    watch: true,
+                    serve: false,
+                    watch: false,
                     src: '.',
-                    server_port: 4000,
+                    // server_port: 4000,
                 }
             },
         },
@@ -28,22 +28,47 @@ module.exports = function(grunt) {
             },
         },
 
-        watch: { // for development run 'grunt watch'
-            jekyll: {
-                files: ['templates/*.html'],
-                tasks: ['jekyll:dev']
+        connect: {
+            server: {
+                options: {
+                    hostname: 'localhost',
+                    port: 4000,
+                    base: '_site/',
+                    livereload: true
+                },
             }
-        }
+        },
+
+        watch: {
+            options: {
+                livereload: true,
+            },
+            content: {
+                files: ['index.html', 'cv.html', 'publications.html',
+                        'adsbibdesk/*.html',
+                        'includes/*.html', '_layouts/*.html',
+                        '_publications/**/.yml',
+                        'assets/css'],
+                tasks: ['jekyll:dev'],
+            },
+            sass: {
+                files: ['assets/sass/**/*.scss'],
+                tasks: ['compass:dev']
+            },
+            js: {
+                files: ['js/**/*.js'],
+                tasks: ['jshint'],
+            },
+        },
     });
 
-    // Default task. Run standard jekyll server.
-    grunt.registerTask('default', ['jekyll:dev']);
-    grunt.registerTask('compass', ['compass:dev']);
+    // Default task.
+    grunt.registerTask('default', ['connect', 'watch']);
 
     // Plugin tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jekyll');
     grunt.loadNpmTasks('grunt-contrib-compass');
-
-
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 };
