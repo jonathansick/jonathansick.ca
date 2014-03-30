@@ -1,0 +1,67 @@
+// Variables and utilities for setting type sizes
+$base-font-size: 16px;
+$line-height-ratio: 2.0;
+$base-line-height: $base-font-size * $line-height-ratio;
+$rhythm-unit: 'rem';  // Rhythm unit (Compass vertical rhythm)
+$small-screen-width: 420px;
+
+$rem-ratio: $base-font-size / 1rem;
+
+// Utility mixin for sizing in rem with px fallback
+// http://stackoverflow.com/questions/6927007/how-do-you-remove-units-of-measurement-from-a-sass-mixin-equation
+// Usage: myrem(font-size,14px)
+@mixin my-rem($key, $px) {
+  #{$key}: $px;
+  #{$key}: $px / $rem-ratio;
+}
+
+// Font sizing and vertical rhythm, based on 
+// https://medium.com/typography/34fe2f1d2c02
+$tiny-font-size: 10px;
+$tiny-font-leading: 0.75;
+$small-font-size: 14px;
+$small-font-leading: 0.75;
+$base-font-size: 18px;
+$base-font-leading: 1;
+$medium-font-size: 24px;
+$medium-font-leading: 1.25;
+$large-font-size: 32px;
+$large-font-leading: 1.25;
+$xlarge-font-size: 43px;
+$xlarge-font-leading: 1.5;
+
+@mixin responsive-type-size($size) {
+    @if $size == "tiny" {
+            @include adjust-font-size-to($tiny-font-size, $tiny-font-leading);
+    }
+    @if $size == "small" {
+        @include adjust-font-size-to($tiny-font-size, $tiny-font-leading);
+        @include breakpoint($small-screen-width) {
+            @include adjust-font-size-to($tiny-font-size, $tiny-font-leading);
+        }
+    }
+    @if $size == "base" {
+        @include adjust-font-size-to($small-font-size, $small-font-leading);
+        @include breakpoint($small-screen-width) {
+            @include adjust-font-size-to($base-font-size, $base-font-leading);
+        }
+    }
+    @if $size == "medium" {
+        @include adjust-font-size-to($base-font-size, $base-font-leading);
+        @include breakpoint($small-screen-width) {
+            @include adjust-font-size-to($medium-font-size, $medium-font-leading);
+        }
+    }
+    @if $size == "large" {
+        @include adjust-font-size-to($medium-font-size, $medium-font-leading);
+        @include breakpoint($small-screen-width) {
+            @include adjust-font-size-to($large-font-size, $large-font-leading);
+        }
+    }
+    @if $size == "xlarge" {
+        @include adjust-font-size-to($large-font-size, $large-font-leading);
+        @include breakpoint($small-screen-width) {
+            @include adjust-font-size-to($xlarge-font-size, $xlarge-font-leading);
+        }
+    }
+}
