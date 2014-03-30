@@ -1,0 +1,20 @@
+$base-font-size: 16px;
+$line-height-ratio: 1.5;
+$base-line-height: $line-height-ratio * $base-font-size / 16px;
+$rem-ratio: $base-font-size / 1rem;
+
+// Utility mixin for sizing in rem with px fallback
+// http://stackoverflow.com/questions/6927007/how-do-you-remove-units-of-measurement-from-a-sass-mixin-equation
+// Usage: myrem(font-size,14px)
+@mixin myrem($key, $px) {
+  #{$key}: $px;
+  #{$key}: $px / $rem-ratio;
+}
+
+body {
+    @include tisa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include tisa-sans;
+}

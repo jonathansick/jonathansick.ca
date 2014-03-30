@@ -1,0 +1,25 @@
+// Type kit fonts (JSick CV kit)
+
+@mixin tisa {
+    font-family: "ff-tisa-web-pro", serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin tisa-italic {
+    font-family: "ff-tisa-web-pro",serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+@mixin tisa-sans {
+    font-family: "ff-tisa-sans-web-pro", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin tisa-sans-bold {
+    font-family: "ff-tisa-sans-web-pro",sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
