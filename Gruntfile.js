@@ -48,7 +48,7 @@ module.exports = function(grunt) {
                         'adsbibdesk/*.html',
                         'includes/*.html', '_layouts/*.html',
                         '_publications/**/.yml',
-                        'assets/css'],
+                        'assets/css/*.css'],
                 tasks: ['jekyll:dev'],
             },
             sass: {
