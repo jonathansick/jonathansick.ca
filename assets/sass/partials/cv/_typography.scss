@@ -1,10 +1,10 @@
 body {
-    @include tisa;
+    @extend %tisa;
     @include responsive-type-size("base");
 }
 
 h1, h2, h3, h4, h5, h6 {
-    @include tisa-sans;
+    @extend %tisa-sans;
 }
 h1 {
     @include responsive-type-size("xlarge");
