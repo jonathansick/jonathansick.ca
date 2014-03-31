@@ -3,11 +3,25 @@ body {
     @include responsive-type-size("base");
 }
 
-h1, h2, h3, h4, h5, h6 {
-    @extend %tisa-sans;
-}
-h1 {
+.h-myname {
+    @extend %tisa-sans-bold;
     @include responsive-type-size("xlarge");
 }
 
+.h-section {
+    @extend %tisa-sans-bold;
+    @include responsive-type-size("base");
+    text-transform:uppercase;
+    @include leading-border(3px, 0);
+    text-align: center;
+}
 
+.h-item {
+    @extend %tisa;
+    @include responsive-type-size("medium");
+}
+
+.p-date {
+    @extend %tisa-italic;
+    @include responsive-type-size("medium");
+}
