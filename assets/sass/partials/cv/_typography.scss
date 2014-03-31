@@ -8,6 +8,12 @@ body {
     @include responsive-type-size("xlarge");
 }
 
+.p-tagline {
+    @extend %tisa-italic;
+    @include responsive-type-size("medium");
+    @include trailer(1);
+}
+
 .h-section {
     @extend %tisa-sans-bold;
     @include responsive-type-size("base");

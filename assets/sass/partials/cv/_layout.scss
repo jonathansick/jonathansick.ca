@@ -51,3 +51,23 @@ $susy: (
 .h-section {
     @include trailer(1);
 }
+
+.cv-header {
+    @include leader(1);
+    @include trailer(2);
+    display: block;
+    overflow: auto;
+}
+
+.info-col {
+    @include span(last 6 of 12);
+    @include trailer(1);
+    display: block;
+    overflow: auto;
+}
+.address-col {
+    @include span(6 of 12);
+    @include trailer(1);
+    display: block;
+    overflow: auto;
+}
