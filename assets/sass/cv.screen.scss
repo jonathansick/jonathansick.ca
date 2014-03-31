@@ -3,7 +3,9 @@
 @import 'compass';
 @import 'compass/reset';
 @import 'breakpoint';
+@import 'susy';
 
 @import 'partials/cv/fonts';
 @import 'partials/cv/type-scale';
 @import 'partials/cv/typography';
+@import 'partials/cv/layout';

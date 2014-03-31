@@ -23,5 +23,5 @@ body {
 
 .p-date {
     @extend %tisa-italic;
-    @include responsive-type-size("medium");
+    @include responsive-type-size("base");
 }
