@@ -3,7 +3,6 @@ $base-font-size: 16px;
 $line-height-ratio: 2.0;
 $base-line-height: $base-font-size * $line-height-ratio;
 $rhythm-unit: 'rem';  // Rhythm unit (Compass vertical rhythm)
-$small-screen-width: 420px;
 
 $rem-ratio: $base-font-size / 1rem;
 
@@ -36,31 +35,31 @@ $xlarge-font-leading: 1.5;
     }
     @if $size == "small" {
         @include adjust-font-size-to($tiny-font-size, $tiny-font-leading);
-        @include breakpoint($small-screen-width) {
+        @include breakpoint($breakpoint-large) {
             @include adjust-font-size-to($tiny-font-size, $tiny-font-leading);
         }
     }
     @if $size == "base" {
         @include adjust-font-size-to($small-font-size, $small-font-leading);
-        @include breakpoint($small-screen-width) {
+        @include breakpoint($breakpoint-large) {
             @include adjust-font-size-to($base-font-size, $base-font-leading);
         }
     }
     @if $size == "medium" {
         @include adjust-font-size-to($base-font-size, $base-font-leading);
-        @include breakpoint($small-screen-width) {
+        @include breakpoint($breakpoint-large) {
             @include adjust-font-size-to($medium-font-size, $medium-font-leading);
         }
     }
     @if $size == "large" {
         @include adjust-font-size-to($medium-font-size, $medium-font-leading);
-        @include breakpoint($small-screen-width) {
+        @include breakpoint($breakpoint-large) {
             @include adjust-font-size-to($large-font-size, $large-font-leading);
         }
     }
     @if $size == "xlarge" {
         @include adjust-font-size-to($large-font-size, $large-font-leading);
-        @include breakpoint($small-screen-width) {
+        @include breakpoint($breakpoint-large) {
             @include adjust-font-size-to($xlarge-font-size, $xlarge-font-leading);
         }
     }
