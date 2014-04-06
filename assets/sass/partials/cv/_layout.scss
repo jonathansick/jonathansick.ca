@@ -40,14 +40,6 @@ $susy: (
     overflow: auto;
 }
 
-.item-main-col {
-    @include span(last 10 of 12);
-}
-
-.item-meta-col {
-    @include span(2 of 12);
-}
-
 .h-section {
     @include trailer(1);
 }
@@ -60,14 +52,37 @@ $susy: (
 }
 
 .info-col {
-    @include span(last 6 of 12);
     @include trailer(1);
     display: block;
     overflow: auto;
 }
+
 .address-col {
-    @include span(6 of 12);
     @include trailer(1);
     display: block;
     overflow: auto;
+}
+
+@include breakpoint($breakpoint-large) {
+    .item-main-col {
+        @include span(last 10 of 12);
+    }
+
+    .item-meta-col {
+        @include span(2 of 12);
+    }
+
+    .info-col {
+        @include span(last 6 of 12);
+        @include trailer(1);
+        display: block;
+        overflow: auto;
+    }
+
+    .address-col {
+        @include span(6 of 12);
+        @include trailer(1);
+        display: block;
+        overflow: auto;
+    }
 }
