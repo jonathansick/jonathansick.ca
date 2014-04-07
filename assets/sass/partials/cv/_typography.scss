@@ -37,3 +37,9 @@ body {
         @include horizontal-list(0.5em);
     }
 }
+
+@include breakpoint($breakpoint-large) {
+    .item-meta-col-list {
+        text-align: right;
+    }
+}
