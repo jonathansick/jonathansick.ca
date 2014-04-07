@@ -27,7 +27,13 @@ body {
     @include responsive-type-size("medium");
 }
 
-.p-date {
+.item-meta-col {
     @extend %tisa-italic;
     @include responsive-type-size("base");
+}
+
+@include breakpoint($breakpoint-small) {
+    .item-meta-col-list {
+        @include horizontal-list(0.5em);
+    }
 }
