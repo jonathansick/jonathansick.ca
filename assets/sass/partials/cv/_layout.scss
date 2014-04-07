@@ -66,11 +66,11 @@ $susy: (
 
 @include breakpoint($breakpoint-large) {
     .item-main-col {
-        @include span(last 10 of 12);
+        @include span(last 8 of 12);
     }
 
     .item-meta-col {
-        @include span(2 of 12);
+        @include span(4 of 12);
     }
 
     .info-col {
