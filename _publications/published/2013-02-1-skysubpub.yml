@@ -1,7 +1,7 @@
-title: "Andromeda Optical and Infrared Disk Survey I. New Insights in Wide-Field Near-IR Surface Photometry"
-year: 2013
-month: 3
-day: 27
+title: "Andromeda Optical and Infrared Disk Survey I. Insights in Wide-Field Near-IR Surface Photometry"
+year: 2014
+month: 4
+day: 10
 authors:
     - "Sick, J."
     - "Courteau, S."
@@ -9,6 +9,7 @@ authors:
     - "McDonald, M."
     - "de Jong, R. S."
     - "Tully, R. B."
-journal: "Submitted to AJ."
+journal: "AJ"
 links:
+    - ["NASA/ADS", "http://adsabs.harvard.edu/abs/2014AJ....147..109S"]
     - ["arXiv:1303.6290", "http://arXiv.org/abs/1303.6290"]
