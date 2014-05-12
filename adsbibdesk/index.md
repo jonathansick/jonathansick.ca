@@ -2,16 +2,17 @@
 layout: basic
 type: adsbibdesk
 title: "ADS to BibDesk"
-lede: Retrieve the BibTeX, abstract and PDF of an astrophysics journal article published on SAO/NASA ADS or astro-ph on arXiv.org and add it to your BibDesk database with a single click. Now updated for Mac OS X 10.8 Mountain Lion!
-version: 3.1.1
-download_url: http://files.jonathansick.ca/adsbibdesk/adsbibdesk_3.1.1.zip
-updated: 2013-5-5
+lede: Retrieve the BibTeX, abstract and PDF of an astrophysics journal article published on SAO/NASA ADS or astro-ph on arXiv.org and add it to your BibDesk database with a single click.
+version: 3.2.0
+download_url: http://files.jonathansick.ca/adsbibdesk/adsbibdesk_3.2.0.zip
+updated: 2014-5-12
 toc:
   - {a: usage, label: How to use it}
   - {a: updating, label: Updating Preprints}
   - {a: configs, label: Configurations}
   - {a: history, label: Release Notes}
 ---
+
 ## Using the Service ##
 <a name="usage"></a>
 
@@ -25,19 +26,13 @@ You can gather papers from many sources. In any browser window or document, sele
 With the text selected, right-click and choose `Services > Add to BibDesk`.
 An Automator icon should pop up in your menu bar while the article downloads, and a notification will appear when the import is complete.
 
-## Using the Application Edition ##
-
-Users of Mac OS X 10.5 will need to use the *Application* version of *ADS to BibDesk*, which can be downloaded above.
-The operation of this *Application* version is identical to the service except that the text token needs to be copied to the clipboard.
-Then launch the *ADS to BibDesk* application to import the article.
-
 ## Using the Command Line Edition ##
 
 Once the script `adsbibdesk` is installed (see above), you can run it with any of the above text tokens to add to add the paper to BibDesk:
 
     adsbibdesk 1998ApJ...500..525S
 
-You can also use the `-o` flag to download an article's PDF without adding the paper to BibDesk. Useful for quickly previewing an article.
+You can also use the `-o` flag to download an article&rsquo;s PDF without adding the paper to BibDesk. Useful for quickly previewing an article.
 
     adsbibdesk -o 1998ApJ...500..525S
 
@@ -89,25 +84,33 @@ The configurations, and defaults, are:
 
 ### SSH Proxy ###
 
-You can have ADS to BibDesk download PDFs through a remote machine over SSH. This is useful if you're working from home or abroad and don't have access to journals, yet you have an account on a machine in home institution's network. By setting a SSH URL and user name (see below), ADS to BibDesk will use the computer at your institution to log into the journal and download the PDF.
+You can have ADS to BibDesk download PDFs through a remote machine over SSH. This is useful if you&rsquo;re working from home or abroad and don&rsquo;t have access to journals, yet you have an account on a machine in home institution&rsquo;s network. By setting a SSH URL and user name (see below), ADS to BibDesk will use the computer at your institution to log into the journal and download the PDF.
 
 - `ssh_user=None` &mdash; set to your username on your institutional computer
 - `ssh_server=None` &mdash; set to the domain name of your institutional computer (e.g. mymac.university.edu)
 
 Note: the computer at your institution must have [wget](http://www.gnu.org/software/wget/) installed.
-You'll also need to setup a public/private key for smooth SSH access.
+You&rsquo;ll also need to setup a public/private key for smooth SSH access.
 
 <a name="history"></a>
 ## History ##
 
+- v3.2 May 12, 2014 &mdash; A number of improvements to make ADS to BibDesk rock solid:
+  - Improved handling of URL redirects (R. Pereira)
+  - We finally carry over custom bibtex fields and annotations when we update a paper! (R. Pereira)
+  - We open BibDesk if it&rsquo;s closed (R. Pereira)
+  - Better fuzzy comparisons of papers before replacing old versions (R. Pereira)
+  - Handling for cases when arXiv posts don&rsquo;t have comments (A. Ginsburg)
+  - Updated MNRAS PDF downloading (J. Sick)
+  - Cleaner package structure (J. Sick)
 - v3.1.1 May 5, 2013 &mdash; Fixes for users of Python 2.6, and fixes for quotation marks in ADS comments (R. Pereira).
 - v3.1.0 January 15, 2013 &mdash; New engine for interacting with BibDesk (we use pyobjc rather than AppleScript); Integration of arXiv updating pipeline with the adsbibdesk command line program; Integration with the arXiv API for cases where ADS does not yet have the paper in its database (R. Pereira).
 - v3.0.6 October 30, 2012 &mdash; Fixes a problem with parsing ADS pages for papers with quotation marks in their titles. Also adds logging support and pip installation support for the command line version.
 - v3.0.5 October 11, 2012 &mdash; More robust method of passing data to the injector AppleScript (via a temporary file rather than over the shell).
-- v3.0.4 October 6, 2012 &mdash; Supports A&amp;A and ARAA articles that don't have DOIs (via Adam Ginsburg).
+- v3.0.4 October 6, 2012 &mdash; Supports A&amp;A and ARAA articles that don&rsquo;t have DOIs (via Adam Ginsburg).
 - v3.0.3 September 24, 2012 &mdash; Better escaping of text passed between Python and AppleScript.
 - v3.0.2 September 23, 2012 &mdash; Integrate PDF ingest workflow into adsbibdesk.py commands and better command line usage
-- v3.0.1 September 23, 2012 &mdash; Introduce PDF ingest workflow and adsbibdesk.py can be <code>setup.py install</code>'d.
+- v3.0.1 September 23, 2012 &mdash; Introduce PDF ingest workflow and adsbibdesk.py can be <code>setup.py install</code>&rsquo;d.
 - v3.0 September 16, 2012 &mdash; Supports Mac OS 10.8 with new Automator architecture.
 - v2.1.3 October 24, 2011 &mdash; Fixes growl support is Mac OS 10.7 Lion.
 - v2.1 May 2011
@@ -118,29 +121,8 @@ You'll also need to setup a public/private key for smooth SSH access.
 - v2.1.2 June 22, 2011
   - MNRAS articles are downloaded (*mostly*) properly. MNRAS has changed their distribution methods over time; a future version will soon address all these cases.
   - Better resolution of arXiv identifiers (*e.g.,* astro-ph/YYMMNNN, arxiv:YYMMNNNN), ADS bibcodes and (new!) DOIs.
-  - Strings without 'http://' can still be treated as URLs (useful for Chrome users)
+  - Strings without &lsquo;http://&rsquo; can still be treated as URLs (useful for Chrome users)
 - v2.0 Nov 2009 Robust web parsing and PDF downloading (R. Pereira).
-  - Automatically downloads the refereed PDF from ADS if possible, or the PDF from arXiv if not. Can set the script to fetch the article through your institution's network using SSH (see instructions above). Now accepts ADS bibcodes and arxiv reference IDs in addition to URLs. Works from any application, not just Safari. Robust parsing of ADS webpages; proper parsing of HTML/UTF-8 entities in the ADS page; no temporary files. Handles old scanned articles whose abstract is an image. Adds BibDesk external URLs with ADS/DOI links. Uses growl notification.
+  - Automatically downloads the refereed PDF from ADS if possible, or the PDF from arXiv if not. Can set the script to fetch the article through your institution&rsquo;s network using SSH (see instructions above). Now accepts ADS bibcodes and arxiv reference IDs in addition to URLs. Works from any application, not just Safari. Robust parsing of ADS webpages; proper parsing of HTML/UTF-8 entities in the ADS page; no temporary files. Handles old scanned articles whose abstract is an image. Adds BibDesk external URLs with ADS/DOI links. Uses growl notification.
 - v1.1 Dec 2007 &mdash; Changed webpage parsing logic (R. de Jong)
 - v1.0 Aug 2007 &mdash; First release. (J. Sick)
-
-
-<!-- <a name="history"></a><h2>History</h2> -->
-<!-- <ul class='ul-alpha'> -->
-<!-- <li>v3.0.6 October 30, 2012 &mdash; Fixes a problem with parsing ADS pages for papers with quotation marks in their titles. Also adds logging support and pip installation support for the command line version.</li> -->
-<!-- <li>v3.0.5 October 11, 2012 &mdash; More robust method of passing data to the injector AppleScript (via a temporary file rather than over the shell).</li> -->
-<!-- <li>v3.0.4 October 6, 2012 &mdash; Supports A&amp;A and ARAA articles that don't have DOIs (via Adam Ginsburg)</li> -->
-<!-- <li>v3.0.3 September 24, 2012 &mdash; Better escaping of text passed between Python and AppleScript.</li> -->
-<!-- <li>v3.0.2 September 23, 2012 &mdash; Integrate PDF ingest workflow into adsbibdesk.py commands and better command line usage</li> -->
-<!-- <li>v3.0.1 September 23, 2012 &mdash; Introduce PDF ingest workflow and adsbibdesk.py can be <code>setup.py install</code>'d.</li> -->
-<!-- <li>v3.0 September 16, 2012 &mdash; Supports Mac OS 10.8 with new Automator architecture.</li> -->
-<!-- <li>v2.1.3 October 24, 2011 &mdash; Fixes growl support is Mac OS 10.7 Lion.</li> -->
-<!-- <li>v2.1 May 2011 -->
-<!-- <ul><li><tt>update_bibdesk_arxiv.sh</tt> for bulk updates of astro-ph articles.</li><li>Saves astro-ph PDFs with Skim annotations.</li><li>Numerous bug fixes.</li><li>Build script for developers.</li></ul></li> -->
-<!-- <li>v2.1.1 June 21, 2011 &mdash; fix handling of user preferences of ADS mirrors</li> -->
-<!-- <li>v2.1.2 June 22, 2011<ul><li>MNRAS articles are downloaded (<emph>mostly</emph>) properly. MNRAS has changed their distribution methods over time; a future version will soon address all these cases.</li><li>Better resolution of arXiv identifiers (<emph>e.g.</emph> astro-ph/YYMMNNN, arxiv:YYMMNNNN), ADS bibcodes and (new!) DOIs.</li><li>Strings without 'http://' can still be treated as URLs (useful for Chrome users)</li></ul></li> <li>v2.0 Nov 2009 Robust web parsing and PDF downloading (R. Pereira) -->
-<!-- <ul> <li>Automatically downloads the refereed PDF from ADS if possible, or the PDF from arXiv if not. Can set the script to fetch the article through your institution's network using SSH (see instructions above).</li> <li>Now accepts ADS bibcodes and arxiv reference IDs in addition to URLs.</li> <li>Works from any application, not just Safari.</li> <li>Robust parsing of ADS webpages; proper parsing of HTML/UTF-8 entities in the ADS page; no temporary files.</li> <li>Handles old scanned articles whose abstract is an image.</li> <li>Adds BibDesk external URLs with ADS/DOI links.</li> <li>Uses growl notification</li> -->
-<!-- </ul> -->
-<!-- </li> -->
-<!-- <li>v1.1 Dec 2007 Changed webpage parsing logic (R. de Jong)</li> -->
-<!-- <li>v1.0 Aug 2007 First release. (J. Sick)</li> </ul> -->

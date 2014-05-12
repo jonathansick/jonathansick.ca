@@ -45,7 +45,7 @@ module.exports = function(grunt) {
             },
             content: {
                 files: ['index.html', 'cv.html', 'publications.html',
-                        'adsbibdesk/*.html',
+                        'adsbibdesk/*.md',
                         'includes/*.html', '_layouts/*.html',
                         '_publications/**/.yml',
                         'assets/css/*.css'],
