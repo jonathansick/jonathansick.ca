@@ -1,6 +1,0 @@
-markdown: rdiscount
-pygments: true
-safe: False
-exclude: ["assets/sass", "assets/config.rb", "README.md", "Vagrantfile",
-    "vendor", "Gemfile", "Gemfile.lock", "Gruntfile.js", "package.json",
-    "node_modules"]
