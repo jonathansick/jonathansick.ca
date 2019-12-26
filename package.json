@@ -1,5 +1,5 @@
 {
-  "name": "jonathansick.ca",
+  "name": "jonathansick-ca",
   "private": true,
   "description": "The www.jonathansick.ca site source.",
   "version": "0.1.0",
@@ -19,6 +19,17 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -29,6 +40,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -40,5 +53,16 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "eslintConfig": {
+    "extends": [
+      "wesbos"
+    ]
+  },
+  "eslintIgnore": [
+    ".cache",
+    "package.json",
+    "package-lock.json",
+    "public"
+  ]
 }
