@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
+    "format:check": "prettier .",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx .",
     "prepare": "husky install"
   },
