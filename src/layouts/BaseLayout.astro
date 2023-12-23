@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+
+import Footer from "../components/Footer.astro"
+
 export interface Props {
   title: string;
   description: string;
@@ -29,6 +32,22 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <slot />
+    <main class="content">
+      <slot />
+    </main>
+    <Footer/>
   </body>
 </html>
+
+<style>
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+
+.content {
+  flex: 1; /* content expands to fill the page; creating a sticky footer. */
+}
+</style>
