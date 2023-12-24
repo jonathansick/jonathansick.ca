@@ -1,11 +1,12 @@
 ---
+import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header>
   <nav>
     <ul>
-      <li class="logo"><a href="/">Jonathan Sick</a></li>
-      <li><a href="/about">Is</a></li>
+      <HeaderLink href="/" logo={true}>Jonathan Sick</HeaderLink>
+      <HeaderLink href="/about">Is</HeaderLink>
     </ul>
   </nav>
 </header>
@@ -26,20 +27,5 @@
     align-items: center;
     gap: 2rem;
     list-style: none;
-  }
-
-  nav ul a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: all 0.2s ease-in;
-  }
-
-  nav ul a:hover {
-    color: var(--primary-color);
-  }
-
-  .logo {
-    font-weight: 500;
-    font-variation-settings: "wght" 500;
   }
 </style>

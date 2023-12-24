@@ -1,0 +1,57 @@
+---
+interface Props {
+  href: string;
+  logo?: boolean;
+}
+
+const { href, logo = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+let isActive = currentPath.startsWith(href);
+if (href === "/") {
+  isActive = currentPath === href;
+}
+
+let className = "";
+if (logo) {
+  className = "logo";
+}
+---
+
+<li>
+  {
+    isActive ? (
+      <a href={href} class={className} aria-current="page">
+        <slot />
+      </a>
+    ) : (
+      <a href={href} class={className}>
+        <slot />
+      </a>
+    )
+  }
+</li>
+
+<style>
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s ease-in;
+  }
+
+  a[aria-current="page"] {
+    font-weight: 400;
+    font-variation-settings: "wght" 400;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--primary-color);
+  }
+
+  a.logo {
+    font-weight: 500;
+    font-variation-settings: "wght" 500;
+    text-decoration: none;
+  }
+</style>
