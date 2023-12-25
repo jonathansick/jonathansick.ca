@@ -1,0 +1,32 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header>
+  <nav>
+    <ul>
+      <HeaderLink href="/" logo={true} label="Jonathan Sick" />
+      <HeaderLink href="/about" label="Is" />
+      <HeaderLink href="/making" label="Making" />
+    </ul>
+  </nav>
+</header>
+
+<style>
+  nav {
+    font-family: var(--enra-sans-font-family);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 350;
+    font-variation-settings: "wght" 350;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+</style>

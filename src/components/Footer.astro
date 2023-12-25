@@ -1,94 +1,119 @@
 ---
+
 ---
 
 <footer>
-    <aside class="info-container">
-      <p>Jonathan Sick is a full-stack developer and aspiring furniture maker living in Penetanguishene, Canada.</p>
-      <p>Interested in software for astronomy? Find me at <a href="https://www.jsick.codes">J.Sick Codes</a>.</p>
+  <aside class="info-container">
+    <p>
+      Jonathan Sick is a full-stack developer and aspiring furniture maker
+      living in Penetanguishene, Canada.
+    </p>
+    <p>
+      Interested in software for astronomy? Find me at <a
+        href="https://www.jsick.codes">J.Sick Codes</a
+      >.
+    </p>
 
-      <p>Copyright 2023 Jonathan Sick</p>
+    <p>Copyright 2023 Jonathan Sick</p>
 
-      <p>Coded by hand in Penetanguishene.</p>
-    </aside>
-    <nav class="links-container">
-      <h2>Elsewhere</h2>
-      <ul class="horizontal">
-        <li><a href="https://www.github.com/jonathansick" title="@jonathansick">GitHub</a></li>
-        <li><a href="https://www.jonathansick.blog/" title="jonathan@jonathansick.blog">Micro.blog</a></li>
-        <li><a href="https://instagram.com/jonathansick" title="@jonathansick">Instagram</a></li>
-      </ul>
-      <p>Follow me as <code>jonathan@jonathansick.blog</code> on Mastodon or the wider Fediverse.</p>
-    </nav>
+    <p>Coded by hand in Penetanguishene.</p>
+  </aside>
+  <nav class="links-container">
+    <h2>Elsewhere</h2>
+    <ul class="horizontal">
+      <li>
+        <a href="https://www.github.com/jonathansick" title="@jonathansick"
+          >GitHub</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.jonathansick.blog/"
+          title="jonathan@jonathansick.blog">Micro.blog</a
+        >
+      </li>
+      <li>
+        <a href="https://instagram.com/jonathansick" title="@jonathansick"
+          >Instagram</a
+        >
+      </li>
+    </ul>
+    <p>
+      Follow me as <code>jonathan@jonathansick.blog</code> on Mastodon or the
+      wider Fediverse.
+    </p>
+  </nav>
 </footer>
 
 <style>
-footer {
-  background-color: #99FFD6;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: minmax(20rem, 0.5fr) 1fr;
-  gap: 2rem;
-
-  font-family: var(--enra-sans-font-family);
-  font-weight: 400;
-}
-
-.info-container {
-  grid-column: 1 / 2;
-  padding-right: 1rem;
-  border-right: 1px solid var(--primary-color);
-  font-size: 0.8rem;
-  margin: 0;
-}
-
-.links-container {
-  grid-column: 2 / 3;
-}
-
-@media screen and (max-width: 800px) {
   footer {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    gap: 1rem;
+    background-color: #99ffd6;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: minmax(20rem, 0.5fr) 1fr;
+    gap: 2rem;
+
+    font-family: var(--enra-sans-font-family);
+    font-weight: 400;
   }
 
   .info-container {
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    border-right: none;
-    padding-right: 0;
-    padding-top: 1rem;
-    border-top: 1px solid var(--primary-color);
+    padding-right: 1rem;
+    border-right: 1px solid var(--primary-color);
+    font-size: 0.8rem;
+    margin: 0;
   }
 
   .links-container {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-column: 2 / 3;
   }
-}
 
-.info-container p {
-  margin: 0 0 1rem;
-}
+  @media screen and (max-width: 800px) {
+    footer {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+    }
 
-.info-container *:last-child, .links-container *:last-child {
-  margin-bottom: 0;
-}
+    .info-container {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      border-right: none;
+      padding-right: 0;
+      padding-top: 1rem;
+      border-top: 1px solid var(--primary-color);
+    }
 
-.links-container h2 {
-  font-size: 0.9rem;
-  font-weight: 200;
-  text-transform: uppercase;
-  margin: 0 0 0.5rem;
-}
+    .links-container {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+  }
 
-.links-container ul.horizontal {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 0 0 1rem;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-}
+  .info-container p {
+    margin: 0 0 1rem;
+  }
+
+  .info-container *:last-child,
+  .links-container *:last-child {
+    margin-bottom: 0;
+  }
+
+  .links-container h2 {
+    font-size: 0.9rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+
+  .links-container ul.horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 0 1rem;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+  }
 </style>

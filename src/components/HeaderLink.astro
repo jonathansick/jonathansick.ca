@@ -1,0 +1,73 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  logo?: boolean;
+}
+
+const { href, label, logo = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+let isActive = currentPath.startsWith(href);
+if (href === "/") {
+  // For homepage, the path must match exactly to no be active on all subpaths
+  isActive = currentPath === href;
+}
+
+const ariaCurrent = isActive ? "page" : "false";
+
+let className = "";
+if (logo) {
+  className = "logo";
+}
+---
+
+<li class={className}>
+  <a href={href} class={className} aria-current={ariaCurrent}>{label}</a>
+</li>
+
+<style>
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s ease-in;
+  }
+
+  a[aria-current="page"] {
+    font-weight: 400;
+    font-variation-settings: "wght" 400;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--primary-color);
+  }
+
+  a.logo {
+    font-weight: 500;
+    font-variation-settings: "wght" 500;
+    text-decoration: none;
+  }
+
+  li:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    width: 0.9em; /* Width of the SVG icon */
+    height: 0.9em; /* Height of the SVG icon */
+    background-image: url("/seperator.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 0 -2px 1.5em; /* Adjust spacing around the icon; see flex gap */
+  }
+
+  li.logo::after {
+    content: "";
+    display: inline-block;
+    width: 0.5em; /* Width of the SVG icon */
+    height: 0.9em; /* Height of the SVG icon */
+    background-image: url("/chevron.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 0 -2px 1.5em; /* Adjust spacing around the icon */
+  }
+</style>

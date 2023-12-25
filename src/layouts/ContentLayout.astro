@@ -1,0 +1,21 @@
+---
+/* A layout for generic markdown-based pages. */
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <main>
+    <h1>{frontmatter.title}</h1>
+    <slot />
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+</style>
