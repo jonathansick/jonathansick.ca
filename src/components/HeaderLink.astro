@@ -1,10 +1,11 @@
 ---
 interface Props {
   href: string;
+  label: string;
   logo?: boolean;
 }
 
-const { href, logo = false } = Astro.props;
+const { href, label, logo = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 let isActive = currentPath.startsWith(href);
@@ -13,6 +14,8 @@ if (href === "/") {
   isActive = currentPath === href;
 }
 
+const ariaCurrent = isActive ? "page" : "false";
+
 let className = "";
 if (logo) {
   className = "logo";
@@ -20,17 +23,7 @@ if (logo) {
 ---
 
 <li class={className}>
-  {
-    isActive ? (
-      <a href={href} class={className} aria-current="page">
-        <slot />
-      </a>
-    ) : (
-      <a href={href} class={className}>
-        <slot />
-      </a>
-    )
-  }
+  <a href={href} class={className} aria-current={ariaCurrent}>{label}</a>
 </li>
 
 <style>

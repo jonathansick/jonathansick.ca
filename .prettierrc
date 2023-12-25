@@ -1,12 +1,13 @@
 {
   "proseWrap": "preserve",
-  "htmlWhitespaceSensitivity": "css",
+  "htmlWhitespaceSensitivity": "strict",
   "plugins": ["prettier-plugin-astro"],
   "overrides": [
     {
       "files": "*.astro",
       "options": {
-        "parser": "astro"
+        "parser": "astro",
+        "htmlWhitespaceSensitivity": "strict"
       }
     }
   ]
