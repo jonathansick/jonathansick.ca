@@ -13,12 +13,12 @@
 
   "forwardPorts": [4321],
 
-  "postCreateCommand": "npm install && cd /workspaces/jonathansick.ca && npm run build",
+  "postCreateCommand": "pnpm install && cd /workspaces/jonathansick.ca && pnpm run build",
 
   "waitFor": "postCreateCommand",
 
   "postAttachCommand": {
-    "Server": "npm run start --host"
+    "Server": "pnpm run start --host"
   },
 
   "customizations": {
