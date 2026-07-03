@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier .",
     "lint": "eslint --ext .astro,.js,.jsx,.ts,.tsx .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{astro,js,jsx,ts,tsx,css,html}": [
@@ -30,8 +30,8 @@
     "eslint": "^8.44.0",
     "eslint-plugin-astro": "^0.31.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "husky": "^8.0.0",
-    "lint-staged": "^15.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.0"
   },
