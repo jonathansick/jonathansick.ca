@@ -26,7 +26,12 @@
       "openFiles": ["src/pages/index.astro"]
     },
     "vscode": {
-      "extensions": ["astro-build.astro-vscode", "esbenp.prettier-vscode"]
+      "extensions": [
+        "astro-build.astro-vscode",
+        "biomejs.biome",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
     }
   }
 }
