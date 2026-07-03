@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-03T15:55:50Z",
+  "title": "Design System: jonathansick.ca",
+  "extensions": {
+    "colorMeta": {
+      "cardinal-red": {
+        "role": "primary",
+        "displayName": "Cardinal Red",
+        "canonical": "#ed2024",
+        "tonalRamp": [
+          "oklch(20% 0.09 28)",
+          "oklch(30% 0.13 28)",
+          "oklch(40% 0.17 28)",
+          "oklch(50% 0.20 28)",
+          "oklch(60% 0.23 28)",
+          "oklch(72% 0.17 28)",
+          "oklch(84% 0.10 28)",
+          "oklch(94% 0.04 28)"
+        ]
+      },
+      "georgian-bay-mist": {
+        "role": "neutral",
+        "displayName": "Georgian Bay Mist",
+        "canonical": "#defff2",
+        "tonalRamp": [
+          "oklch(22% 0.05 163)",
+          "oklch(34% 0.07 163)",
+          "oklch(46% 0.09 163)",
+          "oklch(58% 0.11 163)",
+          "oklch(70% 0.12 163)",
+          "oklch(82% 0.10 163)",
+          "oklch(91% 0.07 163)",
+          "oklch(97% 0.04 163)"
+        ]
+      },
+      "cedar-mint": {
+        "role": "neutral",
+        "displayName": "Cedar Mint",
+        "canonical": "#99ffd6",
+        "tonalRamp": [
+          "oklch(22% 0.05 162)",
+          "oklch(34% 0.08 162)",
+          "oklch(46% 0.10 162)",
+          "oklch(58% 0.12 162)",
+          "oklch(70% 0.13 162)",
+          "oklch(80% 0.13 162)",
+          "oklch(91% 0.12 162)",
+          "oklch(96% 0.06 162)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "oklch(0% 0 0)",
+          "oklch(15% 0 0)",
+          "oklch(30% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(60% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(88% 0 0)",
+          "oklch(97% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The homepage bio register — one confident sentence at conversational scale, not a shouting hero."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose, in Skolar PE. 65–75ch measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase Enra Sans for nav and interface apparatus."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Footer metadata and colophon text."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-touch",
+        "value": "all 0.2s ease-in",
+        "purpose": "Nav and link hover transitions — the warm-and-tactile touch response."
+      },
+      {
+        "name": "ease-glide",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Reserved exponential ease-out for any future larger movements."
+      }
+    ],
+    "breakpoints": [{ "name": "footer-stack", "value": "800px" }]
+  },
+  "components": [
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Uppercase Enra Sans nav item; ink at rest, Cardinal Red on hover, underline when current.",
+      "html": "<ul class=\"ds-nav\"><li><a class=\"ds-nav-link ds-nav-logo\" href=\"#\">Jonathan Sick</a></li><li><a class=\"ds-nav-link\" href=\"#\" aria-current=\"page\">Is</a></li><li><a class=\"ds-nav-link\" href=\"#\">Making</a></li></ul>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; list-style: none; padding: 0; margin: 0; font-family: 'enra-sans-variable', system-ui, sans-serif; font-size: 0.9rem; text-transform: uppercase; font-weight: 350; background: #defff2; } .ds-nav li:not(:last-child)::after { content: ''; display: inline-block; width: 0.9em; height: 0.9em; margin: 0 0 -2px 1.5em; background: radial-gradient(circle, transparent 55%, #ed2024 56%, #ed2024 75%, transparent 76%); } .ds-nav-link { color: #000; text-decoration: none; transition: all 0.2s ease-in; } .ds-nav-link:hover { color: #ed2024; } .ds-nav-link:focus-visible { outline: 2px solid #ed2024; outline-offset: 2px; } .ds-nav-link[aria-current='page'] { font-weight: 400; text-decoration: underline; } .ds-nav-logo { font-weight: 500; text-decoration: none; }"
+    },
+    {
+      "name": "Inline Link",
+      "kind": "custom",
+      "refersTo": "link-inline",
+      "description": "Prose link: Cardinal Red inverting to ink on hover — the mirror of the nav's ink-to-red.",
+      "html": "<p class=\"ds-prose\">He’s pretty handy with a <a class=\"ds-link\" href=\"#\">jack plane</a> and dovetail saw.</p>",
+      "css": ".ds-prose { font-family: 'skolar-pe-variable', Georgia, serif; font-size: 1.2rem; line-height: 1.5; color: #000; background: #defff2; margin: 0; } .ds-link { color: #ed2024; text-decoration: underline; transition: all 0.2s ease-in; } .ds-link:hover { color: #000; } .ds-link:focus-visible { outline: 2px solid #ed2024; outline-offset: 2px; }"
+    },
+    {
+      "name": "Display Bio",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "The homepage register: one confident serif sentence at 2rem on the mint field.",
+      "html": "<p class=\"ds-bio\">Jonathan Sick is a full-stack developer for astronomy projects. He’s pretty handy with a jack plane and dovetail saw.</p>",
+      "css": ".ds-bio { font-family: 'skolar-pe-variable', Georgia, serif; font-size: 2rem; line-height: 1.5; font-weight: 400; color: #000; background: #defff2; max-width: 40rem; margin: 0; padding: 1rem; }"
+    },
+    {
+      "name": "Footer Panel",
+      "kind": "card",
+      "refersTo": "footer-panel",
+      "description": "Cedar Mint color-block footer with a 1px Cardinal Red rule between columns — depth without shadows.",
+      "html": "<div class=\"ds-footer\"><aside class=\"ds-footer-info\"><p>Coded by hand in Penetanguishene.</p></aside><nav class=\"ds-footer-links\"><h2>Elsewhere</h2><ul><li><a href=\"#\">GitHub</a></li><li><a href=\"#\">Micro.blog</a></li><li><a href=\"#\">Instagram</a></li></ul></nav></div>",
+      "css": ".ds-footer { background: #99ffd6; padding: 2rem; display: grid; grid-template-columns: minmax(12rem, 0.5fr) 1fr; gap: 2rem; font-family: 'enra-sans-variable', system-ui, sans-serif; color: #000; } .ds-footer-info { border-right: 1px solid #ed2024; padding-right: 1rem; font-size: 0.8rem; } .ds-footer-info p { margin: 0; } .ds-footer-links h2 { font-size: 0.9rem; font-weight: 200; text-transform: uppercase; margin: 0 0 0.5rem; } .ds-footer-links ul { display: flex; flex-wrap: wrap; gap: 1rem; list-style: none; margin: 0; padding: 0; } .ds-footer-links a { color: #ed2024; transition: all 0.2s ease-in; } .ds-footer-links a:hover { color: #000; }"
+    },
+    {
+      "name": "Section Rule",
+      "kind": "custom",
+      "refersTo": "ink",
+      "description": "The system's separator: a 1px Cardinal Red ruled line, like a line on a survey form.",
+      "html": "<div class=\"ds-rule-demo\"><p>Above the line</p><hr class=\"ds-rule\" /><p>Below the line</p></div>",
+      "css": ".ds-rule-demo { background: #defff2; padding: 1rem; font-family: 'skolar-pe-variable', Georgia, serif; color: #000; } .ds-rule-demo p { margin: 0.5rem 0; } .ds-rule { border: none; border-top: 1px solid #ed2024; margin: 1rem 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Surveyor's Field Kit",
+    "overview": "A precision instrument carried into the field: a scholarly serif for the notes, mechanical marks for the apparatus, and one bright signal color flagging what matters. The system is retrofuturistic craft in the Field Notes tradition — a traditional medium paired with precise, forward-looking marks. The mint field is the terrain; Cardinal Red is the surveyor's flag planted in it. Everything is flat, ink-on-paper: depth comes from blocks of color and thin ruled lines, never from shadows or glass. The personality is handmade, wry, and precise. Wit lives in the copy and structure (the nav reads as a sentence: \"Jonathan Sick / Is / Making\"), not in decorative flourishes.",
+    "keyCharacteristics": [
+      "Drenched mint field with a single red signal accent",
+      "Scholarly serif prose; uppercase mechanical sans for interface apparatus",
+      "Flat, ink-on-paper depth: color blocks and 1px red rules, no shadows",
+      "Warm and tactile interaction: generous targets, soft transitions, red revealed on touch",
+      "Inline SVG instrument marks (red circle separators, chevron) as navigation punctuation"
+    ],
+    "rules": [
+      {
+        "name": "The Field-Flag Rule",
+        "body": "Cardinal Red marks, it never fills. Links, rules, icons, hovers — yes. Backgrounds, large panels, full headings — no. Its rarity against the mint is the brand signature.",
+        "section": "colors"
+      },
+      {
+        "name": "The Large-Type Rule",
+        "body": "Cardinal Red on Georgian Bay Mist measures ≈4.1:1 — below the 4.5:1 AA threshold for body text. Red text is reserved for large type (≥1.5rem), hover states arriving from ink, and non-text marks.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mechanical Warmth Rule",
+        "body": "Serif for what Jonathan says; sans (and eventually mono) for what the machine says. Prose is always Skolar; apparatus — navigation, labels, metadata, status marks — is always the mechanical voice.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ink-on-Paper Rule",
+        "body": "If an element needs separation, give it a color block or a 1px red rule. box-shadow is prohibited.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the site drenched in Georgian Bay Mist (#defff2) — there is no white-background mode.",
+      "Do use Cardinal Red (#ed2024) as a mark: links, 1px rules, SVG punctuation, hover flashes.",
+      "Do set all prose in Skolar PE at ≥1.2rem with a 65–75ch measure; keep apparatus in Enra Sans (or a future typewriter mono).",
+      "Do preserve and extend the wordplay — the wit is load-bearing.",
+      "Do hold WCAG AA: ink for body text, red only at large sizes or as non-text marks.",
+      "Do ship real photography for making/garden content — the projects are physical objects; show them."
+    ],
+    "donts": [
+      "Don't use SaaS/startup landing-page grammar: no gradient heroes, feature grids, CTAs, or metric counters.",
+      "Don't build the dev-portfolio template: no project-card walls, skills badges, or GitHub stats.",
+      "Don't drift toward the minimalist gray blog: no Inter-on-white, no colorless \"restraint\".",
+      "Don't costume the craft: no kraft-paper textures, distressed type, or \"hand-crafted\" visual clichés.",
+      "Don't use box-shadow, glassmorphism, or gradients — flat ink-on-paper only.",
+      "Don't put body-size Cardinal Red text on mint without an AA-compliant treatment.",
+      "Don't imitate Card.astro — it is unused template boilerplate slated for removal, not a pattern."
+    ]
+  }
+}

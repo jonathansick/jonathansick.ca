@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal website (jonathansick.ca) — a static site built with **Astro 7**. No framework integrations; `astro.config.mjs` is intentionally empty. The package is named `astro` internally but this is not the Astro project itself.
 
+## Design Context
+
+Before any design or UI work, read **`PRODUCT.md`** (strategy: register, audience, brand personality, anti-references, design principles) and **`DESIGN.md`** (visual system: palette, typography, elevation, components, do's and don'ts). PRODUCT.md wins on strategic/voice decisions; DESIGN.md wins on visual decisions. In short: brand register, "handmade, wry, precise", Cardinal Red (#ed2024) marks on a Georgian Bay Mist (#defff2) field, Skolar PE prose with Enra Sans apparatus, flat ink-on-paper (no shadows or gradients). Anti-references: SaaS landing pages, dev-portfolio templates, minimalist gray blogs, rustic/artisanal costume. `.impeccable/` holds machine-readable design data and live-mode config for the impeccable skill.
+
 ## Commands
 
 Uses **pnpm** (v11.9.0, pinned via `packageManager`). Node version is pinned to v24.18.0 in `.nvmrc`.
