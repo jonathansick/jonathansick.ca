@@ -13,3 +13,8 @@
 .cache
 public
 pnpm-lock.yaml
+
+# Third-party Claude Code assets (installed skills + hooks, not developed here)
+.claude
+.github/skills
+.github/hooks
