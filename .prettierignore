@@ -1,4 +1,15 @@
+# Prettier only formats what Biome doesn't understand
+# (.astro, Markdown, YAML, HTML)
+*.js
+*.mjs
+*.cjs
+*.jsx
+*.ts
+*.tsx
+*.json
+*.jsonc
+*.css
+
 .cache
-package.json
-package-lock.json
 public
+pnpm-lock.yaml

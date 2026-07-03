@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:1-20
+FROM mcr.microsoft.com/devcontainers/javascript-node:1-24
 
-# Install latest pnpm
-RUN npm install -g pnpm
+# Enable corepack so pnpm resolves from the packageManager field
+RUN corepack enable
