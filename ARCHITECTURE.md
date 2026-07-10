@@ -77,7 +77,7 @@ One unified collection for **everything produced** — software, woodworking, ho
 | `title`                   | string                                           |                                                           |
 | `short_description`       | string, ≤200 chars                               | Index cards and meta descriptions.                        |
 | `date_start` / `date_end` | date / optional date                             | `date_end` absent while in progress.                      |
-| `date_precision`          | `day \| month \| year`                           | Old projects often only have a year; render accordingly.  |
+| `date_precision`          | `day \| month \| year`, default `day`            | Old projects often only have a year; render accordingly.  |
 | `status`                  | `in-progress \| completed \| ongoing \| retired` | `ongoing` for software that's maintained, not "finished." |
 | `thumbnail`               | `cfImage` (§7)                                   |                                                           |
 | `gallery`                 | `galleryItem[]` (§7)                             | Photos, R2 video clips, Stream embeds.                    |
