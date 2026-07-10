@@ -78,6 +78,7 @@ One unified collection for **everything produced** — software, woodworking, ho
 | `short_description`       | string, ≤200 chars                               | Index cards and meta descriptions.                        |
 | `date_start` / `date_end` | date / optional date                             | `date_end` absent while in progress.                      |
 | `date_precision`          | `day \| month \| year`, default `day`            | Old projects often only have a year; render accordingly.  |
+| `feed_date`               | optional date                                    | When it entered the feed — the "announce it" dial (§9).   |
 | `status`                  | `in-progress \| completed \| ongoing \| retired` | `ongoing` for software that's maintained, not "finished." |
 | `thumbnail`               | `cfImage` (§7)                                   |                                                           |
 | `gallery`                 | `galleryItem[]` (§7)                             | Photos, R2 video clips, Stream embeds.                    |
@@ -148,6 +149,7 @@ The digital garden (§1 naming note). Notes are living documents, revisited over
 | `created`       | date                                                           | When the note was planted.                                   |
 | `revised`       | date                                                           | Explicit frontmatter — see below.                            |
 | `maturity`      | `sketch \| draft \| fair-copy \| superseded`, default `sketch` | The notebook metaphor's draft/stable/deprecated lifecycle.   |
+| `feed_date`     | optional date                                                  | Set on first promotion past `sketch`; feed `pubDate` (§9).   |
 | `superseded_by` | optional `reference('notebook')`                               | Required when `superseded` — the successor the layout links. |
 | `note_type`     | `note \| essay \| guide \| list`                               | Shape of the content, orthogonal to maturity.                |
 | `topics`        | `reference('topics')[]`                                        |                                                              |
@@ -155,9 +157,11 @@ The digital garden (§1 naming note). Notes are living documents, revisited over
 | `projects`      | `reference('projects')[]`                                      | Note-to-project links; drives backlinks (§8).                |
 | `published`     | boolean, default true                                          | See "two dials" below.                                       |
 
-**`revised` is an editorial act, not automation.** It is explicit frontmatter, deliberately _not_ derived from git: Cloudflare builds use shallow clones (no history to mine), and a typo fix shouldn't claim the note was "tended." Bumping `revised` is the author saying "this note was substantively revisited" — and it's what the feed gate keys on (§9).
+**`revised` is an editorial act, not automation.** It is explicit frontmatter, deliberately _not_ derived from git: Cloudflare builds use shallow clones (no history to mine), and a typo fix shouldn't claim the note was "tended." Bumping `revised` is the author saying "this note was substantively revisited" — it drives the "recently revised" strip on the `/notebook` index and the sitemap's `lastmod` (§9). The feed deliberately ignores it; feed dates come from `feed_date`.
 
 **Maturity stages.** `sketch` (rough, just planted), `draft` (has a thesis, worth a reader's time), `fair-copy` (settled, polished — the notebook term for a cleanly rewritten page), `superseded` (kept for the record, points at its replacement via `superseded_by`). Maturity is displayed as apparatus on every note (Enra Sans, per DESIGN.md's Mechanical Warmth Rule) and is a filter facet on `/notebook`.
+
+**Maturity's companion fields are schema-enforced.** A Zod refinement on the collection keeps the lifecycle consistent: `draft` and `fair-copy` require `feed_date` (promoting a note past `sketch` _is_ setting it — that date is the feed's `pubDate`, §9), `sketch` forbids it, and `superseded` requires `superseded_by`. A note can't claim a stage without the apparatus that stage needs, so the feed gate and the successor link can never silently disagree with the maturity badge.
 
 **Two independent visibility dials.** `published` and `maturity` are deliberately separate axes:
 
@@ -168,7 +172,7 @@ The digital garden (§1 naming note). Notes are living documents, revisited over
 
 Books, records, films, and TV — each entry a short review essay (the markdown body). Discriminated union on `medium`.
 
-**Core:** `title`, `cover?: cfImage`, `date_added` (date), `date_finished?` (date), `recommended: boolean` (a curation flag — there are no star ratings; the site recommends or it doesn't), `topics: reference('topics')[]`, `external_url?` (Bookshop, Discogs, Letterboxd — a pointer, not an affiliate program), `published` (default true).
+**Core:** `title`, `cover?: cfImage`, `date_added` (date), `date_finished?` (date), `feed_date?` (date, §9), `recommended: boolean` (a curation flag — there are no star ratings; the site recommends or it doesn't), `topics: reference('topics')[]`, `external_url?` (Bookshop, Discogs, Letterboxd — a pointer, not an affiliate program), `published` (default true).
 
 **Variants:**
 
@@ -254,9 +258,9 @@ Unpublished entries (`published: false`) are excluded from routes, indexes, feed
 
 `/feed.xml` via `@astrojs/rss`, combining all dated collections. The policy is **new-items-only + POSSE**:
 
-- An item emits **once, when published** — never on edits. Guids are stable.
-- **Notebook feed gate: maturity ≥ `draft`.** Sketches are on the site and in the index but stay out of the feed — subscribers' attention isn't spent on stubs. A note enters the feed once, on first promotion past `sketch`, with `pubDate = revised` at promotion time — so it surfaces as _new_ when it becomes worth reading, not back-dated to when it was planted. `superseded` notes never emit.
-- Projects, now updates, and library entries emit on publication: `pubDate = date_start` / `date` / `date_added` respectively.
+- An item emits **once, when published** — never on edits. Guids are stable. And because a static rebuild is stateless — the feed is recomputed from frontmatter alone, every build — any date the feed reports must be **recorded in frontmatter** (`feed_date`), never inferred from a previous build's state.
+- **Notebook feed gate: maturity ≥ `draft`**, which by the §5 refinement means `feed_date` is set. Sketches are on the site and in the index but stay out of the feed — subscribers' attention isn't spent on stubs. A note enters the feed once, on first promotion past `sketch`, with `pubDate = feed_date` — so it surfaces as _new_ when it becomes worth reading, not back-dated to when it was planted, and later `revised` bumps never move it. `superseded` notes never emit.
+- Projects and library entries emit on publication with `pubDate = feed_date ?? date_start` / `feed_date ?? date_added`; now updates use their filename `date` (publication day by construction). The optional `feed_date` is the backfill dial: an old project added to the site today sets `feed_date` to today to surface as new, or omits it to slot quietly into feed history.
 - **Edit visibility** comes from two channels, neither of them the feed: a "recently revised" strip on the `/notebook` index (sorted by `revised`), and hand-announced significant rewrites via micro.blog, which POSSEs to Bluesky and Mastodon.
 
 _Rejected alternatives, recorded so they aren't re-litigated:_ a change-based feed (items re-emitting on `revised` bumps) causes guid churn and near-duplicate items in readers; putting sketches in the feed spends subscriber attention on stubs and pressures sketches to be born finished, which kills the garden.
