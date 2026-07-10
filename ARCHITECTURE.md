@@ -33,7 +33,7 @@ The organizing idea follows the "Surveyor's Field Kit" north star: the site is a
 
 Verified against the installed Astro 7.0.6, so implementation doesn't trip on stale v5-era examples:
 
-- Astro 7 ships **Zod 4**. Import `{ z }` from `astro/zod` — the `astro:content` `z` export is deprecated. Zod 4 idiom shifts: `z.looseObject()` replaces `.passthrough()`; build discriminated-union variants with `base.extend({...})`, never `z.intersection`.
+- Astro 7 ships **Zod 4**. Import `{ z }` from `astro/zod` — the `astro:content` `z` export is deprecated. Zod 4 idiom shifts: `z.looseObject()` replaces `.passthrough()`; string formats are top-level functions — `z.url()`, `z.email()` — not the deprecated `z.string().url()`; build discriminated-union variants with `base.extend({...})`, never `z.intersection`.
 - Collection config lives at **`src/content.config.ts`** — the legacy `src/content/config.ts` path requires a compat flag.
 - The `file()` loader natively parses JSON, YAML, and TOML. The `glob()` loader maps `foo/index.md` → id `foo` and honors a `slug` frontmatter override.
 - **`reference()` does not validate that the target exists** at build time — it is a shape transform only. A dangling reference surfaces as `getEntry() → undefined` at render. §8 describes the throwing resolver that turns these into build failures.
@@ -128,7 +128,7 @@ const projects = defineCollection({
   schema: z.discriminatedUnion("type", [
     projectCore.extend({
       type: z.literal("software"),
-      repository_url: z.string().url().optional() /* … */,
+      repository_url: z.url().optional() /* Zod 4 top-level format, … */,
     }),
     projectCore.extend({ type: z.literal("woodworking"), ...craftFields }),
     // …one extend per variant; never z.intersection
