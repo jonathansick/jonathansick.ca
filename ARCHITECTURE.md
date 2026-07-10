@@ -19,7 +19,9 @@ The organizing idea follows the "Surveyor's Field Kit" north star: the site is a
 | `/projects/[id]`        | `projects`                                          | Gallery, attachments, backlinked notes.                                     |
 | `/notebook`             | `notebook` + `now` adapter                          | Filter by topic, type, maturity; now entries appear as "field reports."     |
 | `/notebook/[id]`        | `notebook`                                          | Created/revised/maturity apparatus, backlinks.                              |
-| `/library`              | `library`                                           | Grouped by medium.                                                          |
+| `/library`              | `library`                                           | Featured shelves by medium + "recently logged" strip + wish list.           |
+| `/library/log`          | `library` (flattened `log` entries)                 | The full consumption journal, reverse-chronological (§6).                   |
+| `/library/[medium]`     | `library`                                           | Pre-rendered full shelf per medium, wish list included (§6).                |
 | `/library/[...id]`      | `library`                                           | Rest param — ids contain `/` (e.g. `books/annihilation`).                   |
 | `/topics/[id]`          | `topics` + all content collections                  | Cross-collection topic hubs.                                                |
 | `/feed.xml`             | all dated collections                               | New-items-only (§9).                                                        |
@@ -49,7 +51,7 @@ src/
   content/
     projects/<slug>/index.md # folder-per-project (colocate future files)
     notebook/<slug>.md
-    library/books/<slug>.md  # …and records/, films/, tv/
+    library/books/<slug>.md  # …and records/, films/, tv/ — never log/ (reserved, §6)
     now/2026-07-09.md        # one file per update; full-date filename is the id
   data/
     topics.yaml
@@ -170,9 +172,29 @@ The digital garden (§1 naming note). Notes are living documents, revisited over
 
 ## 6. Library collection
 
-Books, records, films, and TV — each entry a short review essay (the markdown body). Discriminated union on `medium`.
+Books, records, films, and TV — modeled as **works with an embedded consumption log**. The library is three things at once: a **journal** (every work consumed, as dated ledger lines), a **shelf** (the featured subset Jonathan recommends or is passionate about), and a **wish list** (works he means to get to). One file per work carries all three states: the frontmatter `log` records consumption events; the markdown body is the review essay, present only when the work has earned one; `featured` puts it on the front shelves. Discriminated union on `medium`.
 
-**Core:** `title`, `cover?: cfImage`, `date_added` (date), `date_finished?` (date), `feed_date?` (date, §9), `recommended: boolean` (a curation flag — there are no star ratings; the site recommends or it doesn't), `topics: reference('topics')[]`, `external_url?` (Bookshop, Discogs, Letterboxd — a pointer, not an affiliate program), `published` (default true).
+**Core:** `title`, `cover?: cfImage`, `log` (see below; default `[]`), `featured: boolean` (default false — the only curation flag; there are no star ratings, the site recommends or it doesn't), `feed_date?` (date, §9), `note?` (a one-line provenance/context string — "Sarah insisted", "via the Penetanguishene library sale" — rendered as apparatus on wish-list lines and ledger cards, never prose), `topics: reference('topics')[]`, `external_url?` (Bookshop, Discogs, Letterboxd — a pointer, not an affiliate program), `published` (default true).
+
+**The log.** `log: { date, date_precision?: day | month | year (default day), note? }[]`. Each entry is one consumption event — a finish, a reread, a rewatch; for records, where "finished" is meaningless, the date reads as "entered rotation." Log notes are a sentence or two of plain text (rendered in the journal stream, not as markdown). A reread or rewatch is simply another log line on the same file, so a work's history accumulates in one place. The log replaces the earlier `date_added`/`date_finished` pair: the first log date is when the work entered the library; the latest drives "recently logged" sorting and the sitemap's `lastmod`.
+
+**Lifecycle is derived, never declared.** A work's state falls out of its fields rather than a status enum, so states can't contradict the record:
+
+- **Wish list** — `log` is empty. The work is on the survey list, not yet visited; it appears in the `/library` wish-list section (candidate heading: "Unsurveyed"), never in the journal (it has no dates) and never in the feed.
+- **Logged** — `log` has at least one entry. It appears in the journal and gets a full ledger card.
+- **Featured** — `featured: true`. On the front shelves and in the feed.
+
+Adding the first log line _is_ moving a work off the wish list; writing the body and flipping `featured` _is_ shelving it — in-place edits to one file, echoing the notebook's sketch → fair-copy promotions (§5). "Currently reading/watching" is deliberately not modeled — log a work when done (with `date_precision: month` if the finish date is fuzzy); in-progress enthusiasm belongs on `/now`.
+
+**Featured's companion invariants.** A Zod refinement requires `feed_date` when `featured` (flipping the flag _is_ publishing to the feed, §9) and requires a non-empty `log` (the site doesn't recommend what Jonathan hasn't finished). The third invariant — featured entries have a review essay — lives in the `/library` index as a build-time assertion, because a Zod schema sees only frontmatter, never the markdown body.
+
+**Every published work gets a detail page.** Reviewed works render essay-first. Log-only and wish-list works render as a **ledger card**: cover, metadata, the dated log history (or "unsurveyed"), provenance note, external link — a well-made small page, not an apologetic stub. Every title in the journal, the wish list, and the topic hubs is a permalink, and reread history has a home.
+
+**`/library/log` — the journal.** Every (work × log entry) pair, flattened at build time, reverse-chronological, grouped by month. Each line is date · title (linked) · medium mark · note, with dates and medium marks in Enra Sans (the Mechanical Warmth Rule — the log is what the instrument recorded). The name is the surveyor's **logbook**, chosen over "journal" (overlaps the notebook's territory) and "ledger" (connotes money). `/library` itself leads with the featured shelves grouped by medium (most recently logged first), then a short "recently logged" strip linking to the full log, then the wish list. Because `/library/log` is a static route shadowing the `[...id]` rest param, **`log` is a reserved word — no medium subfolder may take that name**.
+
+**`/library/[medium]` — the full shelves.** Pre-rendered pages (`/library/books`, `/library/records`, `/library/films`, `/library/tv`) in the tier-1 pattern of §9, answering "show me all the books": every logged work in the medium, featured or not, sorted by most-recently-logged, with the medium's wish list as a trailing "Unsurveyed" subsection. These single-segment paths never collide with the `[...id]` rest param because entry ids always contain a slash — `/library/books` is the shelf, `/library/books/annihilation` the work on it, and the URL hierarchy reads the way it looks. Medium filtering on `/library/log` is the tier-2 progressive enhancement (§9). The wish list on `/library` itself stays an inline section for v1 (grouped by medium, alphabetical — it has no dates to sort by), promoted to its own route only if it outgrows the page.
+
+**Tier is a mark, not a section.** On shelves, in the journal, and on topic hubs, works in all three states sit on uniform ledger lines distinguished by a survey marker, never by page structure: a red flag for featured (the Field-Flag Rule — red marks what matters, and only featured earns red), a filled ink circle for logged, an open circle for unsurveyed (the nav's circle-outline punctuation already establishes the glyph vocabulary). Final glyphs are DESIGN.md's call; the IA decision recorded here is that a logged-only work is an ordinary ink entry in the record, not a lesser citizen filed in a separate bin.
 
 **Variants:**
 
@@ -184,6 +206,8 @@ Books, records, films, and TV — each entry a short review essay (the markdown 
 | `tv`     | `creator?`, `years` (string, e.g. `"2019–2023"`)           |
 
 Entries live in medium subfolders (`library/books/annihilation.md`), so ids contain a slash and the detail route is a rest param, `/library/[...id]`. The subfolder is **deliberately redundant** with the `medium` field — the folder organizes the repo, the field types the schema — and index pages assert the two agree so a misfiled entry fails the build rather than rendering in the wrong shelf.
+
+_Rejected alternatives, recorded so they aren't re-litigated:_ a file per consumption event (Letterboxd-diary style — work metadata duplicates across rewatches and the review has no single home); a central `log.yaml` with markdown files only for featured works (two sources of truth, and promoting a logged work migrates data between formats); an explicit `status: wishlist` field (an explicit flag can disagree with a non-empty log; the derived state can't); pages only for reviewed works (breaks permalinks from topic hubs and leaves reread history homeless); star ratings (the shelf recommends or it doesn't)._
 
 ## 7. Media & files (Cloudflare)
 
@@ -247,8 +271,8 @@ Mapping: `paper → publications`, `talk → talks`, `thesis → education` _and
 
 Static-build-compatible, two tiers:
 
-- **Pre-rendered single-facet pages:** `/projects/type/[type]` and `/topics/[id]` — real URLs, crawlable, zero JS.
-- **Combined facets** on `/projects` and `/notebook` (type × topic × maturity) are progressive enhancement: vanilla JS toggling visibility over `data-*` attributes, with History-API query-param sync so filtered views are shareable. No JS → the full index, still fine.
+- **Pre-rendered single-facet pages:** `/projects/type/[type]`, `/library/[medium]`, and `/topics/[id]` — real URLs, crawlable, zero JS.
+- **Combined facets** on `/projects` and `/notebook` (type × topic × maturity) are progressive enhancement: vanilla JS toggling visibility over `data-*` attributes, with History-API query-param sync so filtered views are shareable. `/library/log` gets the same treatment for its single medium facet. No JS → the full index, still fine.
 
 No pagination in v1 — the corpus is curated dozens, not thousands. Astro's `paginate()` slots in later without schema changes.
 
@@ -260,7 +284,8 @@ Unpublished entries (`published: false`) are excluded from routes, indexes, feed
 
 - An item emits **once, when published** — never on edits. Guids are stable. And because a static rebuild is stateless — the feed is recomputed from frontmatter alone, every build — any date the feed reports must be **recorded in frontmatter** (`feed_date`), never inferred from a previous build's state.
 - **Notebook feed gate: maturity ≥ `draft`**, which by the §5 refinement means `feed_date` is set. Sketches are on the site and in the index but stay out of the feed — subscribers' attention isn't spent on stubs. A note enters the feed once, on first promotion past `sketch`, with `pubDate = feed_date` — so it surfaces as _new_ when it becomes worth reading, not back-dated to when it was planted, and later `revised` bumps never move it. `superseded` notes never emit.
-- Projects and library entries emit on publication with `pubDate = feed_date ?? date_start` / `feed_date ?? date_added`; now updates use their filename `date` (publication day by construction). The optional `feed_date` is the backfill dial: an old project added to the site today sets `feed_date` to today to surface as new, or omits it to slot quietly into feed history.
+- Projects emit on publication with `pubDate = feed_date ?? date_start`; now updates use their filename `date` (publication day by construction). The optional `feed_date` is the backfill dial: an old project added to the site today sets `feed_date` to today to surface as new, or omits it to slot quietly into feed history.
+- **Library feed gate: `featured` only.** The feed is the recommendation channel — it carries what the site vouches for, nothing else. A featured work emits once with `pubDate = feed_date` (the §6 refinement guarantees it's set). Journal log lines, wish-list additions, and written-but-unfeatured reviews never emit; a busy month of logging costs subscribers nothing.
 - **Edit visibility** comes from two channels, neither of them the feed: a "recently revised" strip on the `/notebook` index (sorted by `revised`), and hand-announced significant rewrites via micro.blog, which POSSEs to Bluesky and Mastodon.
 
 _Rejected alternatives, recorded so they aren't re-litigated:_ a change-based feed (items re-emitting on `revised` bumps) causes guid churn and near-duplicate items in readers; putting sketches in the feed spends subscriber attention on stubs and pressures sketches to be born finished, which kills the garden.
@@ -300,6 +325,6 @@ The build order, each step leaving the site green (this document specifies; it d
 2. **Schemas** — `src/content.config.ts` with all seven collections + `src/schemas/media.ts`; seed one entry per collection; `astro sync` to confirm generated types.
 3. **`src/lib/` utilities** — `images.ts`, `files.ts`, `taxonomy.ts`, `cv.ts`, the now→notebook adapter, `backlinks.ts`.
 4. **Detail routes** — `/projects/[id]`, `/notebook/[id]`, `/library/[...id]`, `/now/[id]`.
-5. **Indexes + facets** — `/projects`, `/notebook`, `/library`, `/now`, `/topics/[id]`, `/projects/type/[type]`; nav update + `/making` redirect.
+5. **Indexes + facets** — `/projects`, `/notebook`, `/library`, `/library/log`, `/library/[medium]`, `/now`, `/topics/[id]`, `/projects/type/[type]`; nav update + `/making` redirect.
 6. **`/cv` and `/uses`**.
 7. **Feeds, sitemap, redirects, 404, colophon.**
