@@ -141,22 +141,23 @@ const projects = defineCollection({
 
 The digital garden (§1 naming note). Notes are living documents, revisited over time — not blog posts (the blog lives at jonathansick.blog).
 
-| Field         | Type / constraint                                              | Notes                                                      |
-| ------------- | -------------------------------------------------------------- | ---------------------------------------------------------- |
-| `title`       | string                                                         |                                                            |
-| `description` | optional string                                                |                                                            |
-| `created`     | date                                                           | When the note was planted.                                 |
-| `revised`     | date                                                           | Explicit frontmatter — see below.                          |
-| `maturity`    | `sketch \| draft \| fair-copy \| superseded`, default `sketch` | The notebook metaphor's draft/stable/deprecated lifecycle. |
-| `note_type`   | `note \| essay \| guide \| list`                               | Shape of the content, orthogonal to maturity.              |
-| `topics`      | `reference('topics')[]`                                        |                                                            |
-| `related`     | `reference('notebook')[]`                                      | Note-to-note links; drives backlinks (§8).                 |
-| `projects`    | `reference('projects')[]`                                      | Note-to-project links; drives backlinks (§8).              |
-| `published`   | boolean, default true                                          | See "two dials" below.                                     |
+| Field           | Type / constraint                                              | Notes                                                        |
+| --------------- | -------------------------------------------------------------- | ------------------------------------------------------------ |
+| `title`         | string                                                         |                                                              |
+| `description`   | optional string                                                |                                                              |
+| `created`       | date                                                           | When the note was planted.                                   |
+| `revised`       | date                                                           | Explicit frontmatter — see below.                            |
+| `maturity`      | `sketch \| draft \| fair-copy \| superseded`, default `sketch` | The notebook metaphor's draft/stable/deprecated lifecycle.   |
+| `superseded_by` | optional `reference('notebook')`                               | Required when `superseded` — the successor the layout links. |
+| `note_type`     | `note \| essay \| guide \| list`                               | Shape of the content, orthogonal to maturity.                |
+| `topics`        | `reference('topics')[]`                                        |                                                              |
+| `related`       | `reference('notebook')[]`                                      | Note-to-note links; drives backlinks (§8).                   |
+| `projects`      | `reference('projects')[]`                                      | Note-to-project links; drives backlinks (§8).                |
+| `published`     | boolean, default true                                          | See "two dials" below.                                       |
 
 **`revised` is an editorial act, not automation.** It is explicit frontmatter, deliberately _not_ derived from git: Cloudflare builds use shallow clones (no history to mine), and a typo fix shouldn't claim the note was "tended." Bumping `revised` is the author saying "this note was substantively revisited" — and it's what the feed gate keys on (§9).
 
-**Maturity stages.** `sketch` (rough, just planted), `draft` (has a thesis, worth a reader's time), `fair-copy` (settled, polished — the notebook term for a cleanly rewritten page), `superseded` (kept for the record, points at its replacement via `related`). Maturity is displayed as apparatus on every note (Enra Sans, per DESIGN.md's Mechanical Warmth Rule) and is a filter facet on `/notebook`.
+**Maturity stages.** `sketch` (rough, just planted), `draft` (has a thesis, worth a reader's time), `fair-copy` (settled, polished — the notebook term for a cleanly rewritten page), `superseded` (kept for the record, points at its replacement via `superseded_by`). Maturity is displayed as apparatus on every note (Enra Sans, per DESIGN.md's Mechanical Warmth Rule) and is a filter facet on `/notebook`.
 
 **Two independent visibility dials.** `published` and `maturity` are deliberately separate axes:
 
